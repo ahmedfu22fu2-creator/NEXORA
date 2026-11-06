@@ -1,0 +1,15 @@
+{
+  "functions": [
+    {
+      "source": "firebase-functions",
+      "codebase": "squad-primary"
+    }
+  ],
+  "firestore": {
+    "rules": "../site/chanse1/firestore.rules",
+    "indexes": "../firestore.indexes.json"
+  },
+  "storage": {
+    "rules": "../site/chanse3/storage.rules"
+  }
+}
