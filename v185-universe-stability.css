@@ -1,0 +1,7 @@
+/* v185: clearer status and compact mobile handling for the Universe Suite overlay. */
+.sq184-window footer[data-note]{display:flex;align-items:center;gap:8px;min-height:24px;line-height:1.65;border-top-color:#8bbde455}
+.sq184-window footer[data-note]::before{content:"☁";color:#9bd5ff;font-size:15px;flex:0 0 auto}
+.sq184-detail button:focus-visible,.sq184-window input:focus-visible,.sq184-window select:focus-visible{outline:2px solid #9bd5ff;outline-offset:2px}
+.sq184-detail form button:disabled{opacity:.55;cursor:not-allowed}
+@media(max-width:620px){.sq184-window footer[data-note]{font-size:11px;padding:10px 12px}.sq184-window header{padding:12px}.sq184-window main{padding-bottom:18px}}
+@media(prefers-reduced-motion:reduce){.sq184-overlay *{scroll-behavior:auto!important;animation:none!important;transition:none!important}}

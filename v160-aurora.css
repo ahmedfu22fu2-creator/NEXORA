@@ -1,0 +1,68 @@
+/* NEXORA v160 — Aurora Command Center.
+   Additive layer: scoped .sq160-* components plus progressive enhancements. Nothing existing is replaced. */
+:root{--sq160-gold:var(--sq158-gold,#d2b27a);--sq160-hi:var(--sq158-gold-bright,#f0dcb2);--sq160-ink:var(--sq158-text,#f4f2ed);--sq160-mute:var(--sq158-muted,#9ba8b5);--sq160-glass:rgba(12,18,27,.8);--sq160-line:rgba(213,188,143,.24);--sq160-ease:cubic-bezier(.2,.8,.2,1)}
+html[data-theme=light]{--sq160-ink:#1b1a17;--sq160-mute:#6d6659;--sq160-glass:rgba(251,247,238,.86);--sq160-line:rgba(128,99,60,.3)}
+
+/* ── Ambient aurora behind the social shell (GPU transform only, no repaint) ── */
+#app.social-mode{isolation:isolate}
+#app.social-mode>#social-shell{position:relative;z-index:1}
+#app.social-mode::before{content:"";position:fixed;inset:-20%;z-index:0;pointer-events:none;will-change:transform;
+ background:radial-gradient(38% 32% at 22% 28%,rgba(210,178,122,.16),transparent 70%),radial-gradient(34% 30% at 78% 18%,rgba(96,150,190,.14),transparent 70%),radial-gradient(40% 34% at 62% 86%,rgba(150,110,190,.1),transparent 72%);
+ animation:sq160-drift 46s ease-in-out infinite alternate}
+@keyframes sq160-drift{to{transform:translate3d(3%,2%,0) rotate(4deg) scale(1.06)}}
+html.sq160-noaurora #app.social-mode::before,html.squad-lite #app.social-mode::before,html.sq160-hidden #app.social-mode::before{animation:none;opacity:.55}
+html.squad-lite #app.social-mode::before{display:none}
+
+/* ── Fine details ── */
+::selection{background:rgba(210,178,122,.35);color:inherit}
+:where(button,a,input,textarea,select,[tabindex]):focus-visible{outline:2px solid var(--sq160-gold);outline-offset:2px}
+:where(#list,#ms,#social-main,.sq160-list){scrollbar-width:thin;scrollbar-color:rgba(210,178,122,.35) transparent;overscroll-behavior:contain}
+:where(.dr-icon-btn,.dr-nav button,.hubTile,.dr-mobile-nav button,.pri){transition:transform .18s var(--sq160-ease),box-shadow .25s,background-color .25s}
+:where(.dr-icon-btn,.dr-nav button,.hubTile,.dr-mobile-nav button,.pri):active{transform:scale(.965)}
+@media(hover:hover){:where(.hubTile,.dr-side-card):hover{transform:translateY(-2px)}}
+
+/* ── Rendering performance: skip layout/paint for off-screen rows ── */
+#ms .m:nth-last-child(n+31){content-visibility:auto;contain-intrinsic-size:auto 64px}
+html.sq160-hidden *,html.sq160-hidden *::before,html.sq160-hidden *::after{animation-play-state:paused!important}
+
+/* ── Theme switch cross-fade (View Transitions API, optional) ── */
+::view-transition-old(root),::view-transition-new(root){animation-duration:.38s;animation-timing-function:var(--sq160-ease)}
+
+/* ── Launcher ── */
+.sq160-fab{position:fixed;z-index:60;inset-inline-end:18px;bottom:calc(var(--dr-nav-h,72px) + 18px + env(safe-area-inset-bottom,0px));width:46px;height:46px;border-radius:16px;border:1px solid var(--sq160-line);background:var(--sq160-glass);color:var(--sq160-hi);font:700 13px/1 Inter,system-ui,sans-serif;letter-spacing:.02em;cursor:pointer;display:grid;place-items:center;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 10px 30px rgba(0,0,0,.3);transition:transform .2s var(--sq160-ease)}
+.sq160-fab:hover{transform:translateY(-2px)}
+@media(min-width:761px){.sq160-fab{bottom:22px}}
+#app[hidden]~.sq160-fab,body:has(#chat.open) .sq160-fab,body:has(#dst:not([hidden])) .sq160-fab{display:none}
+
+/* ── Command palette ── */
+.sq160-pal,.sq160-game{position:fixed;inset:0;z-index:100000;display:grid;place-items:start center;padding:min(14vh,120px) 14px 14px;background:rgba(3,6,10,.55);-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);animation:sq160-fade .18s ease-out}
+.sq160-pal[hidden],.sq160-game[hidden]{display:none}
+.sq160-card{width:min(640px,100%);max-height:min(70vh,560px);display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--sq160-line);border-radius:22px;background:var(--sq160-glass);color:var(--sq160-ink);box-shadow:0 30px 90px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.06);font-family:Inter,'IBM Plex Sans Arabic',Cairo,system-ui,sans-serif;animation:sq160-pop .26s var(--sq160-ease)}
+.sq160-in{-webkit-appearance:none;appearance:none;box-shadow:none;border-radius:0;width:100%;box-sizing:border-box;padding:18px 20px;border:0;border-bottom:1px solid var(--sq160-line);background:transparent;color:inherit;font:500 16px/1.2 inherit;outline:none}
+.sq160-in::placeholder{color:var(--sq160-mute)}
+.sq160-list{overflow:auto;padding:8px;margin:0;list-style:none}
+.sq160-h{padding:10px 12px 4px;font:700 10.5px/1 Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--sq160-mute)}
+.sq160-o{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:14px;cursor:pointer;min-height:44px}
+.sq160-o i{flex:none;width:30px;height:30px;border-radius:10px;display:grid;place-items:center;font-style:normal;background:rgba(210,178,122,.12);color:var(--sq160-hi)}
+.sq160-o b{font-weight:600;font-size:14px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sq160-o small{color:var(--sq160-mute);font-size:12px}
+.sq160-o[aria-selected=true]{background:linear-gradient(90deg,rgba(210,178,122,.2),rgba(210,178,122,.05));box-shadow:inset 0 0 0 1px var(--sq160-line)}
+.sq160-ft{display:flex;gap:16px;padding:10px 16px;border-top:1px solid var(--sq160-line);color:var(--sq160-mute);font-size:11.5px}
+.sq160-empty{padding:28px;text-align:center;color:var(--sq160-mute)}
+@keyframes sq160-fade{from{opacity:0}}
+@keyframes sq160-pop{from{opacity:0;transform:translateY(10px) scale(.97)}}
+
+/* ── HUD ── */
+.sq160-hud{position:fixed;z-index:99990;inset-inline-start:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));padding:7px 12px;border-radius:999px;border:1px solid var(--sq160-line);background:var(--sq160-glass);color:var(--sq160-hi);font:600 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;pointer-events:none;white-space:nowrap}
+
+/* ── Neon Dash ── */
+.sq160-game{place-items:center;padding:14px}
+.sq160-game .sq160-card{padding:14px;gap:10px;max-height:none}
+.sq160-game canvas{width:100%;height:auto;aspect-ratio:480/220;border-radius:14px;background:#070b11;touch-action:manipulation;cursor:pointer}
+.sq160-game p{margin:0;font-size:12px;color:var(--sq160-mute);display:flex;justify-content:space-between;gap:10px}
+
+@media(prefers-reduced-motion:reduce){#app.social-mode::before{animation:none}.sq160-pal,.sq160-game,.sq160-card{animation:none}.sq160-fab,.sq160-fab:hover{transition:none;transform:none}}
+html.squad-lite :where(.sq160-pal,.sq160-game,.sq160-fab,.sq160-hud,.sq160-card){-webkit-backdrop-filter:none;backdrop-filter:none}
+html.squad-lite .sq160-card,html.squad-lite .sq160-fab,html.squad-lite .sq160-hud{background:#0f1620}
+html.squad-lite[data-theme=light] .sq160-card,html.squad-lite[data-theme=light] .sq160-fab,html.squad-lite[data-theme=light] .sq160-hud{background:#fbf7ee}
+.sq160-in:focus{box-shadow:none;border-color:var(--sq160-line)}

@@ -1,0 +1,39 @@
+/* NEXORA v202 — cinematic universe portal login. Additive visual layer. */
+#auth .room-scene,#auth .room-brand,#auth .lamp-hint,#auth .lamp-sound{display:none!important}
+#auth{position:relative;isolation:isolate;overflow:hidden;background:#050617!important;color:#f7f4ff!important}
+#auth .sq202-portal-stage{position:absolute;inset:0;min-height:100%;display:grid;place-items:center;overflow:hidden;background:radial-gradient(ellipse at 50% 48%,#25216b 0,#10143c 38%,#060817 78%);z-index:1}
+.sq202-cosmos,.sq202-starfield{position:absolute;inset:0;pointer-events:none}
+.sq202-starfield{opacity:.8;background-image:radial-gradient(2px 2px at 12% 18%,#fff 55%,transparent 70%),radial-gradient(1px 1px at 28% 72%,#f7d98a 55%,transparent 70%),radial-gradient(2px 2px at 76% 21%,#fff 55%,transparent 70%),radial-gradient(1px 1px at 88% 67%,#a9baff 55%,transparent 70%),radial-gradient(1px 1px at 54% 12%,#fff 55%,transparent 70%);background-size:370px 280px}
+.sq202-planet{position:absolute;border-radius:50%;box-shadow:inset -24px -18px 35px #02030d,0 0 45px #6c56ff66}
+.sq202-planet-a{width:clamp(90px,14vw,190px);height:clamp(90px,14vw,190px);left:7%;top:13%;background:radial-gradient(circle at 32% 28%,#b9b5ff,#6350bb 38%,#171c56 75%)}
+.sq202-planet-b{width:clamp(55px,8vw,110px);height:clamp(55px,8vw,110px);right:12%;top:16%;background:radial-gradient(circle at 30% 28%,#ffe4a0,#9e67ce 48%,#20204f 78%)}
+.sq202-island{position:absolute;width:clamp(120px,19vw,260px);height:42px;border-radius:50%;background:linear-gradient(180deg,#9b8dff,#22245d 50%,#090c21);filter:drop-shadow(0 18px 20px #000b);transform:rotate(-8deg)}
+.sq202-island:after{content:"";position:absolute;left:24%;right:20%;top:24px;height:65px;background:linear-gradient(90deg,#34336f,#11142d);clip-path:polygon(0 0,100% 0,68% 100%,34% 75%)}
+.sq202-island-a{left:2%;bottom:18%}.sq202-island-b{right:1%;bottom:25%;transform:rotate(9deg) scale(.8)}
+.sq202-portal-copy{position:absolute;top:7%;left:50%;transform:translateX(-50%);text-align:center;z-index:2;width:min(90%,700px)}
+.sq202-kicker{font:700 11px/1.4 Inter,system-ui;letter-spacing:.28em;color:#e9cf8c}
+.sq202-portal-copy h2{margin:7px 0 0;font:900 clamp(32px,5vw,64px)/1 Sora,Inter,sans-serif;letter-spacing:.08em;background:linear-gradient(100deg,#fff1bf,#9ecbff 45%,#d9a6ff 75%,#f5d27c);color:transparent;background-clip:text;text-shadow:0 0 30px #9675ff55}
+.sq202-portal-copy p{margin:9px 0;color:#d9d7ff;font-size:clamp(13px,1.6vw,17px)}
+.sq202-gate-wrap{position:absolute;left:50%;top:52%;width:min(52vw,430px);height:min(52vw,430px);min-width:250px;min-height:250px;transform:translate(-50%,-50%);display:grid;place-items:center}
+.sq202-gate{position:relative;width:100%;height:100%;border-radius:50%;display:grid;place-items:center;filter:drop-shadow(0 0 25px #7d5bff99)}
+.sq202-gate-ring{position:absolute;inset:2%;border-radius:50%;border:clamp(7px,1vw,13px) solid transparent;background:linear-gradient(135deg,#ffe7a2,#6b75ff 35%,#d77bff 68%,#e9c66f) border-box;mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0);mask-composite:exclude;box-shadow:0 0 28px #8c6bff, inset 0 0 20px #e3c2ff88;animation:sq202-rotate 18s linear infinite}
+.sq202-gate-ring-inner{inset:9%;border-width:2px;opacity:.8;animation-direction:reverse;animation-duration:12s}
+.sq202-gate-core{position:absolute;inset:12%;border-radius:50%;background:radial-gradient(ellipse at 50% 45%,#b6a2ff 0,#5d4ec4 20%,#191c60 52%,#050718 78%);box-shadow:inset 0 0 55px #050617,0 0 70px #8063ff88;animation:sq202-pulse 4s ease-in-out infinite}
+.sq202-gate-crown{position:absolute;top:-8%;font-size:clamp(28px,5vw,54px);color:#f7d987;text-shadow:0 0 18px #ffcf62}
+.sq202-orbit{position:absolute;left:50%;top:52%;width:min(70vw,650px);height:min(25vw,210px);border:1px solid #b9a6ff66;border-radius:50%;transform:translate(-50%,-50%) rotate(-18deg);pointer-events:none}
+.sq202-orbit-two{transform:translate(-50%,-50%) rotate(24deg);width:min(76vw,720px);border-color:#e9c77b55}
+.sq202-enter{position:absolute;z-index:4;bottom:8%;display:flex;align-items:center;gap:18px;padding:14px 24px;border:1px solid #e7cb84;border-radius:999px;color:#fff8e7;background:linear-gradient(100deg,#4736c7,#7629c5 55%,#b7862f);box-shadow:0 0 30px #7657ff99,0 8px 30px #0008;font-weight:800;font-size:15px;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.sq202-enter:hover{transform:translateY(-3px);box-shadow:0 0 42px #9b7aff}
+.sq202-enter b{font-size:22px;color:#ffe6a3}
+.sq202-portal-hint{position:absolute;bottom:3%;margin:0;color:#c8c5f0;font-size:12px;z-index:3}
+#auth.sq202-opening .sq202-gate{animation:sq202-open .95s cubic-bezier(.2,.8,.2,1) forwards}
+#auth.sq202-opening .sq202-gate-core{animation:sq202-core-open .95s ease-in forwards}
+#auth.sq202-opening .sq202-enter{opacity:0;transform:scale(.8);transition:opacity .3s,transform .3s}
+#auth.sq202-card-ready .sq202-portal-stage{opacity:0;visibility:hidden;transition:opacity .65s,visibility .65s}
+#auth .card{position:relative;z-index:5}
+@keyframes sq202-rotate{to{transform:rotate(360deg)}}
+@keyframes sq202-pulse{50%{filter:brightness(1.3);box-shadow:inset 0 0 65px #050617,0 0 95px #987bff}}
+@keyframes sq202-open{to{transform:scale(1.22) rotate(22deg);opacity:.15}}
+@keyframes sq202-core-open{to{transform:scale(2.4);opacity:0;filter:brightness(2)}}
+@media(max-width:700px){.sq202-portal-copy{top:10%}.sq202-gate-wrap{top:48%;width:75vw;height:75vw}.sq202-planet-a{left:-8%;top:25%}.sq202-planet-b{right:-7%;top:24%}.sq202-enter{bottom:11%;max-width:88%;white-space:nowrap}.sq202-portal-hint{bottom:5%}.sq202-orbit{width:100vw}}
+@media(prefers-reduced-motion:reduce){.sq202-gate-ring,.sq202-gate-core{animation:none!important}.sq202-enter{transition:none!important}#auth.sq202-opening .sq202-gate{animation:none!important}#auth.sq202-card-ready .sq202-portal-stage{transition:none!important}}

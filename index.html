@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>NEXORA — Your World. Your People.</title>
+<script>/* v194: one startup recovery path, with a standalone fallback if v175 fails to load. */
+(()=>{
+ let done=false;
+ const show=reason=>{
+  if(done||window.__squadBootReady)return;
+  const splash=document.getElementById('splash'),auth=document.getElementById('auth');
+  if(!splash||!auth)return;
+  done=true;
+  if(typeof window.__squadBootShowRecovery==='function'){
+   window.__squadBootShowRecovery(reason||'startup watchdog');
+   return;
+  }
+  splash.classList.add('off');auth.hidden=false;auth.classList.add('boot-recovery');
+  let note=document.getElementById('squadBootInlineFallback');
+  if(!note){
+   note=document.createElement('section');note.id='squadBootInlineFallback';
+   note.setAttribute('role','alert');note.setAttribute('aria-live','assertive');
+   note.style.cssText='max-width:560px;margin:12px auto;padding:14px 16px;border:1px solid #b8860b;border-radius:14px;background:#17130b;color:#f3d77a;text-align:center;font:14px/1.8 system-ui';
+   const message=document.createElement('p');message.textContent='تعذر إكمال بدء التطبيق. تأكد من اتصال الإنترنت ثم أعد المحاولة.';
+   const retry=document.createElement('button');retry.type='button';retry.textContent='إعادة المحاولة';retry.style.cssText='padding:9px 18px;border:1px solid #d9b76d;border-radius:9px;background:#d9b76d;color:#17130b;font-weight:700;cursor:pointer';retry.addEventListener('click',()=>location.reload());
+   note.append(message,retry);auth.prepend(note);
+  }
+ };
+ window.__squadHardBootTimer=setTimeout(()=>show('startup watchdog after 10s'),10000);
+ window.addEventListener('error',e=>{const src=e.filename||'';if(/firebase|app\.js|auth\.js/i.test(src))setTimeout(()=>show(e.message||'startup script error'),0);},true);
+ window.addEventListener('unhandledrejection',e=>{const message=String(e.reason?.message||e.reason||'');if(/firebase|network|auth|initialize|startup/i.test(message))show(message);});
+})();
+</script>
+<meta name="squad-startup-fix" content="v194-startup-cache-repair">
+<meta name="theme-color" content="#0B0C10"><meta name="color-scheme" content="dark">
+<meta name="application-name" content="NEXORA"><meta name="description" content="NEXORA — Your world. Your people. Your story.">
+<script>try{var t=localStorage.theme||"dark";document.documentElement.dataset.theme=t=="auto"?(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"):t}catch(e){document.documentElement.dataset.theme="dark"}</script>
+<script>/* v144: detect constrained devices before styles render. */(()=>{try{const c=navigator.hardwareConcurrency||8,m=navigator.deviceMemory||8,d=navigator.connection&&navigator.connection.saveData; if(c<=4||m<=4||d)document.documentElement.classList.add("squad-lite");}catch(e){}})();</script>
+<link rel="manifest" href="chanse1/manifest.json">
+<link rel="icon" type="image/svg+xml" href="chanse4/icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="chanse3/icon-192.png">
+<link rel="apple-touch-icon" href="chanse2/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://www.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="chanse4/tokens.css">
+<link rel="stylesheet" href="chanse1/squad.css">
+<link rel="stylesheet" href="chanse4/ui2.css">
+<link rel="stylesheet" href="chanse1/gold.css">
+<link rel="stylesheet" href="chanse1/v27.css">
+<link rel="stylesheet" href="chanse3/luxe.css">
+<link rel="stylesheet" href="chanse2/living-palace.css">
+<link rel="stylesheet" href="chanse1/living-palace-premium.css">
+<link rel="stylesheet" href="chanse2/premium-refinement-v89.css">
+<link rel="stylesheet" href="chanse1/auth.css">
+<link rel="stylesheet" href="chanse4/auth-v119.css">
+<link rel="stylesheet" href="chanse3/auth-v121.css">
+<link rel="stylesheet" href="chanse2/stage4-chat-ui.css">
+<link rel="stylesheet" href="chanse3/admin-monitor.css?v=258">
+<link rel="stylesheet" href="chanse3/quality-polish-v120.css">
+<link rel="stylesheet" href="chanse3/social-expansion.css">
+<link rel="stylesheet" href="chanse3/performance-v144.css">
+<link rel="stylesheet" href="chanse4/platform-redesign-v151.css">
+<link rel="stylesheet" href="v195-premium-navigation.css">
+<link rel="stylesheet" href="v197-home-command.css">
+<link rel="stylesheet" href="v198-messenger-evolution.css">
+<link rel="stylesheet" href="v199-squad-identity.css?v=261">
+<link rel="stylesheet" href="v200-stories-channels.css">
+<link rel="stylesheet" href="v201-3d-calls.css">
+<link rel="stylesheet" href="v263-avatar-capture-studio.css">
+<link rel="stylesheet" href="v265-avatar-creator.css?v=267">
+<link rel="stylesheet" href="v268-social-ai.css?v=268">
+<link rel="stylesheet" href="v269-spatial-social.css?v=269">
+<link rel="stylesheet" href="v270-creator-economy.css?v=270">
+<link rel="stylesheet" href="v271-privacy-safety.css?v=271">
+<link rel="stylesheet" href="v272-quality-upgrade.css?v=272">
+<link rel="stylesheet" href="v273-performance-reliability.css?v=273">
+<link rel="stylesheet" href="v274-ai-core-evolution.css?v=275">
+<link rel="stylesheet" href="v275-ai-integration.css?v=275">
+<link rel="stylesheet" href="v276-ai-intelligence.css?v=276">
+<link rel="stylesheet" href="v277-ai-agents.css?v=277">
+<link rel="stylesheet" href="v278-ai-collaboration.css?v=278">
+<link rel="stylesheet" href="v279-project-intelligence.css?v=279">
+<link rel="stylesheet" href="v280-workspace-knowledge.css?v=280">
+<link rel="stylesheet" href="v281-command-center.css?v=281">
+<link rel="stylesheet" href="v282-cross-system-integration.css?v=282">
+<link rel="stylesheet" href="v283-experience-engine.css?v=283">
+<link rel="stylesheet" href="v284-adaptive-workspace.css?v=284">
+<link rel="stylesheet" href="v285-stability-center.css?v=285">
+<link rel="stylesheet" href="v286-global-discovery.css?v=286">
+<link rel="stylesheet" href="v287-unified-ui-redesign.css?v=287">
+<link rel="stylesheet" href="v288-social-evolution.css?v=288">
+<link rel="stylesheet" href="v289-ai-control-tower.css?v=289">
+<link rel="stylesheet" href="v290-3d-universe-evolution.css?v=290">
+<link rel="stylesheet" href="v203-design-system.css">
+<link rel="stylesheet" href="v202-portal-login.css">
+<link rel="stylesheet" href="v202-social-feed.css">
+<link rel="stylesheet" href="v225-post-controls.css">
+<link rel="stylesheet" href="v227-messenger.css">
+<link rel="stylesheet" href="v223-home-inbox.css">
+<link rel="stylesheet" href="v149-scroll-repair.css">
+<link rel="stylesheet" href="visual-refresh-v158.css">
+<link rel="stylesheet" href="v160-aurora.css">
+<link rel="stylesheet" href="v162-global-hub.css?v=256">
+<link rel="stylesheet" href="v163-community-evolution.css">
+<link rel="stylesheet" href="v164-platform-expansion.css">
+<link rel="stylesheet" href="v165-squad-universe.css">
+<link rel="stylesheet" href="v166-global-connect.css">
+<link rel="stylesheet" href="v168-universe-integration.css">
+<link rel="stylesheet" href="v170-personal-vault.css">
+<link rel="stylesheet" href="v171-achievements.css">
+<link rel="stylesheet" href="v172-events-hub.css">
+<link rel="stylesheet" href="v173-shared-events.css">
+<link rel="stylesheet" href="v178-civilization.css">
+<link rel="stylesheet" href="v179-living-universe.css">
+<link rel="stylesheet" href="v180-city-life.css">
+<link rel="stylesheet" href="v181-world-systems.css">
+<link rel="stylesheet" href="v184-universe-suite.css">
+<link rel="stylesheet" href="v185-universe-stability.css">
+<link rel="stylesheet" href="v186-control-center.css">
+<link rel="stylesheet" href="v192-login-lamp-restore.css">
+<link rel="stylesheet" href="v205-visual-expansion.css">
+<link rel="stylesheet" href="v206-lifestyle.css">
+<link rel="stylesheet" href="v219-brand-system.css">
+<link rel="stylesheet" href="v220-auth-door.css">
+<link rel="stylesheet" href="v240-cinematic-identity.css">
+<link rel="stylesheet" href="v250-platform-quality.css?v=250">
+<link rel="stylesheet" href="v251-social-experience.css?v=251">
+<link rel="stylesheet" href="v252-profile-friends-refinement.css?v=262">
+<link rel="stylesheet" href="v253-messenger-refinement.css?v=253">
+<link rel="stylesheet" href="v254-stories-notifications.css?v=254">
+<link rel="stylesheet" href="v255-communities-channels.css?v=259">
+</head>
+<body>
+<a class="sq250-skip-link" href="#social-main" lang="ar">تخطي إلى المحتوى الرئيسي</a>
+<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3d77a"/><stop offset="1" stop-color="#b8860b"/></linearGradient></defs></svg>
+
+<div id="splash"><svg class="logo" viewBox="0 0 64 64" fill="none"><path d="M32 4 56 18v28L32 60 8 46V18z" stroke="url(#lg)" stroke-width="3" stroke-linejoin="round"/><path d="M40 22c-3-3-16-4-16 4 0 9 17 5 17 14 0 8-13 7-17 3" stroke="url(#lg)" stroke-width="5" stroke-linecap="round"/></svg><h1>NEXORA</h1><p>More than a conversation</p><i class="bar"></i></div>
+
+<main id="auth" class="v2 dark-room" dir="ltr" aria-label="Sign in to NEXORA" hidden>
+
+ <section class="sq202-portal-stage" aria-label="بوابة عالم NEXORA">
+  <div class="sq202-cosmos" aria-hidden="true">
+   <span class="sq202-planet sq202-planet-a"></span><span class="sq202-planet sq202-planet-b"></span>
+   <span class="sq202-island sq202-island-a"></span><span class="sq202-island sq202-island-b"></span>
+   <span class="sq202-starfield"></span>
+  </div>
+  <div class="sq202-portal-copy"><span class="sq202-kicker">YOUR WORLD · YOUR PEOPLE</span><h2>NEXORA</h2><p>عالمك. أصحابك. مغامرتك.</p></div>
+  <div class="sq202-gate-wrap" aria-hidden="true"><div class="sq202-gate"><div class="sq202-gate-core"></div><div class="sq202-gate-ring"></div><div class="sq202-gate-ring sq202-gate-ring-inner"></div><span class="sq202-gate-crown">♛</span></div></div>
+  <div class="sq202-orbit sq202-orbit-one" aria-hidden="true"></div><div class="sq202-orbit sq202-orbit-two" aria-hidden="true"></div>
+  <button id="sq202-enter-portal" class="sq202-enter" type="button"><span>ادخل عالم NEXORA</span><b>↗</b></button>
+  <p class="sq202-portal-hint" id="sq202-portal-hint" role="status">اضغط لفتح البوابة</p>
+ </section>
+
+ <div class="room-scene">
+  <div class="room-wall" aria-hidden="true"></div><div class="room-door-shadow" aria-hidden="true"></div>
+  <div class="room-dust dust-a" aria-hidden="true"></div><div class="room-dust dust-b" aria-hidden="true"></div><div class="room-dust dust-c" aria-hidden="true"></div><div class="room-dust dust-d" aria-hidden="true"></div><div class="room-dust dust-e" aria-hidden="true"></div><div class="room-dust dust-f" aria-hidden="true"></div>
+  <div class="room-desk" aria-hidden="true"></div>
+  <div class="lamp-halo" aria-hidden="true"></div>
+  <svg class="desk-lamp" viewBox="0 0 300 340" role="presentation" aria-hidden="true" focusable="false">
+   <defs>
+    <linearGradient id="lampMetal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#77664c"/><stop offset=".34" stop-color="#d1b47e"/><stop offset=".7" stop-color="#514332"/><stop offset="1" stop-color="#1d1b19"/></linearGradient>
+    <linearGradient id="lampShade" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5c5142"/><stop offset=".45" stop-color="#282521"/><stop offset="1" stop-color="#121315"/></linearGradient>
+    <radialGradient id="lampBulb"><stop offset="0" stop-color="#fff3d5"/><stop offset=".55" stop-color="#e9c987"/><stop offset="1" stop-color="#b58b4f"/></radialGradient>
+   </defs>
+   <ellipse cx="154" cy="317" rx="90" ry="12" fill="#000" opacity=".48"/>
+   <path d="M150 288 Q155 251 170 222 L190 171" fill="none" stroke="#090a0c" stroke-width="17" stroke-linecap="round"/>
+   <path d="M150 288 Q155 251 170 222 L190 171" fill="none" stroke="url(#lampMetal)" stroke-width="11" stroke-linecap="round"/>
+   <path d="M187 176 L205 159" stroke="url(#lampMetal)" stroke-width="13" stroke-linecap="round"/>
+   <path d="M143 289 Q151 278 161 289 L176 308 Q178 316 166 319 L111 319 Q99 316 104 307 L122 289Z" fill="url(#lampMetal)" stroke="#8e7958" stroke-opacity=".5"/>
+   <path d="M122 294 Q145 300 165 294" fill="none" stroke="#ead4a7" stroke-opacity=".28" stroke-width="2"/>
+   <path d="M165 105 Q206 91 248 111 L276 174 Q211 199 145 174Z" fill="url(#lampShade)" stroke="#9d8762" stroke-opacity=".55" stroke-width="2"/>
+   <path d="M165 105 Q208 127 248 111" fill="none" stroke="#c1a576" stroke-opacity=".25" stroke-width="2"/>
+   <path class="lamp-inner" d="M151 172 Q211 190 270 172 L264 184 Q210 205 156 184Z" fill="#c69c5d" opacity=".16"/>
+   <ellipse class="lamp-bulb" cx="210" cy="181" rx="18" ry="5" fill="url(#lampBulb)" opacity=".08"/>
+  </svg>
+  <button id="lampPull" class="lamp-pull" type="button" aria-label="Pull the cord to sign in" aria-describedby="lampHint">
+   <svg viewBox="0 0 42 126" aria-hidden="true" focusable="false"><path class="pull-cord" d="M21 2 C18 30 25 47 21 73"/><path class="pull-bead" d="M21 72 C14 72 11 79 13 88 L16 104 Q21 113 26 104 L29 88 C31 79 28 72 21 72Z"/></svg>
+  </button>
+ </div>
+ <div class="room-brand" aria-hidden="true"><span class="brand-mark">S</span><span>NEXORA</span><small>YOUR WORLD. YOUR PEOPLE.</small></div>
+ <p id="lampHint" class="lamp-hint" role="status">Pull the cord</p>
+ <button id="lampSound" class="lamp-sound" type="button" aria-pressed="false" aria-label="Play lamp click sound"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h4l5 4V6l-5 4H4Z"/><path d="M16 9a4 4 0 0 1 0 6"/><path d="M18.5 6.5a8 8 0 0 1 0 11"/></svg><span>Sound off</span></button>
+ <div class="card" hidden>
+  <button id="abk" class="gh" type="button" hidden>رجوع للحساب الحالي</button>
+  <div class="auth-card-head"><span class="auth-kicker">WELCOME BACK</span><h1>Welcome to your world</h1><p>Your stories and your people, all in one place.</p></div>
+  <div class="tb"><button data-m="in" class="on" type="button">Sign in</button><button data-m="up" type="button">Create account</button></div>
+  <section id="vin">
+   <h2 class="ah2">Welcome to NEXORA</h2><p class="mu sub">ادخل عالمك باستخدام رقمك الشخصي وكلمة السر</p>
+   <label for="lid">الرقم الشخصي أو البريد الإلكتروني<input id="lid" autocomplete="username" inputmode="numeric" autocapitalize="none" spellcheck="false" placeholder="123 456 7890" dir="ltr"></label>
+   <label for="pw">Password<div class="row"><input id="pw" type="password" autocomplete="current-password" placeholder="اكتب Password"><button id="eye" class="ic" type="button" title="إظهار Password" aria-label="إظهار Password"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.4-6 9.5-6 9.5 6 9.5 6-3.4 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.7"/></svg></button></div></label>
+   <button id="go" class="pri" type="button"><span>دخول</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></button>
+   <button id="resetPassword" class="gh" type="button">نسيت Password؟ ابعتلي رابط استرجاع</button>
+  </section>
+  <section id="vup" hidden></section>
+  <p id="aerr" role="alert" aria-live="polite"></p>
+  <section id="vacc" hidden></section>
+  <div class="auth-card-foot"><span></span><small>PRIVATE BY DESIGN</small><span></span></div>
+ </div>
+</main>
+
+<div id="app" hidden>
+ <div id="social-shell" dir="ltr">
+  <aside id="social-rail" class="sq195-rail" aria-label="NEXORA navigation">
+   <div class="dr-brand"><span class="dr-brand-mark">S</span><span><b>NEXORA</b><small>CREATOR &amp; VISIONARY</small></span></div>
+   <div class="sq195-workspace"><span class="sq195-live-dot"></span><span>مساحتك الخاصة</span><small>PREMIUM SPACE</small></div>
+   <nav class="sq195-nav" aria-label="الأقسام الرئيسية">
+    <details class="sq195-group" open><summary><i>⌂</i><span>مساحتي</span><small>01</small></summary><div class="sq195-subnav">
+     <button type="button" data-squad-open="home"><span>⌂</span>الرئيسية</button>
+     <button type="button" data-squad-open="accounts"><span>♙</span>الحسابات والملفات الشخصية</button>
+    </div></details>
+    <details class="sq195-group"><summary><i>✉</i><span>التواصل</span><small>02</small></summary><div class="sq195-subnav">
+     <button type="button" data-squad-open="messenger"><span>▤</span>المحادثات</button>
+     <button type="button" data-squad-open="stories"><span>◉</span>الحالات والقنوات والمجتمعات</button>
+    </div></details>
+    <details class="sq195-group"><summary><i>◇</i><span>التجارب</span><small>03</small></summary><div class="sq195-subnav">
+     <button type="button" data-squad-open="calls"><span>◖</span>المكالمات ثلاثية الأبعاد</button>
+     <button type="button" data-squad-open="cinema"><span>▣</span>السينما</button>
+     <button type="button" data-squad-open="games"><span>♧</span>الألعاب</button>
+    </div></details>
+    <details class="sq195-group"><summary><i>⌖</i><span>العالم</span><small>04</small></summary><div class="sq195-subnav">
+     <button type="button" data-squad-open="world"><span>⌖</span>عالم NEXORA</button>
+     <button type="button" data-squad-open="civilization"><span>♜</span>الحضارة والعالم الحي</button>
+    </div></details>
+    <details class="sq195-group"><summary><i>✧</i><span>الخدمات</span><small>05</small></summary><div class="sq195-subnav">
+     <button type="button" data-squad-open="ai"><span>✧</span>مركز الذكاء الاصطناعي</button>
+     <button type="button" data-squad-open="store"><span>◇</span>المتجر</button>
+    </div></details>
+    <details class="sq195-group"><summary><i>⚙</i><span>الإدارة</span><small>06</small></summary><div class="sq195-subnav">
+     <button type="button" data-squad-open="admin"><span>▦</span>الإدارة والإعلانات</button>
+     <button type="button" data-squad-open="security"><span>⛨</span>الأمان والأداء</button>
+    </div></details>
+   </nav>
+   <button type="button" class="sq195-account" data-squad-open="accounts"><span class="sq195-avatar" id="sq195-avatar">S</span><span class="sq195-account-copy"><b id="sq195-user-name">حسابي</b><small id="sq195-user-role">NEXORA MEMBER</small></span><span class="sq195-account-arrow">↗</span></button>
+  </aside>
+  <main id="social-main" tabindex="-1"><header class="dr-top"><div><h1 id="dr-title">Home</h1><p id="dr-subtitle">Your space and community, all in one place</p></div><div class="dr-actions"><button class="dr-icon-btn" data-social="messages" aria-label="Messages"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v9a2.5 2.5 0 0 1-2.5 2.5H10l-5 4v-4.2A2.5 2.5 0 0 1 4 14.5z"/></svg><b class="dr-count" id="dr-top-count">0</b></button></div></header><section id="dr-screen"></section></main>
+  <aside id="social-aside"><div class="dr-side-card"><h3>Your world in NEXORA</h3>
+   <a class="dr-shortcut" href="#" data-hub="city"><i>⌂</i><span>Open City<small>Your 3D world</small></span></a>
+   <a class="dr-shortcut" href="#" data-hub="cafe"><i>◈</i><span>The Café<small>Meet your friends</small></span></a>
+   <a class="dr-shortcut" href="#" data-hub="cinema"><i>▣</i><span>Cinema<small>Watch together</small></span></a>
+   <a class="dr-shortcut" href="#" data-social="messages"><i>✉</i><span>Conversations<small>Your messages and calls</small></span></a>
+   <a class="dr-shortcut" href="chanse3/services-hub.html"><i>✧</i><span>Services Hub<small>Assistants, stores and games</small></span></a>
+  </div><div class="dr-side-card"><h3>Suggested for You</h3><div class="dr-empty"><strong>Discover Your Community</strong>Suggestions will appear here when platform data is connected.</div></div></aside>
+  <nav class="dr-mobile-nav" aria-label="Mobile navigation">
+   <button class="active" data-social="feed"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5V21h-6v-6H9v6H3z"/></svg>Home</button>
+   <button data-social="videos"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="m10 9 5 3-5 3z"/></svg>Videos</button>
+   <button class="create" data-social="create" aria-label="Create"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+   <button data-social="explore"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="7.3"/><path d="m16.2 16.2 4.3 4.3M13.5 8.5l-1.8 4.8-4.8 1.8 1.8-4.8z"/></svg>Explore</button>
+   <button data-social="profile"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 21c.5-4.2 3-6.3 7.5-6.3s7 2.1 7.5 6.3"/></svg>My Profile</button>
+   <a class="dr-shortcut" href="chanse3/services-hub.html">Services Hub</a>
+  </nav>
+ </div>
+ <aside id="side">
+  <header><svg class="logo sm" viewBox="0 0 64 64" fill="none"><path d="M32 4 56 18v28L32 60 8 46V18z" stroke="url(#lg)" stroke-width="4" stroke-linejoin="round"/><path d="M40 22c-3-3-16-4-16 4 0 9 17 5 17 14 0 8-13 7-17 3" stroke="url(#lg)" stroke-width="6" stroke-linecap="round"/></svg><h2>NEXORA</h2><button id="gear" class="ic" title="Settings">⚙️</button><button id="plus" class="ic" title="New"></button></header>
+  <div id="home">
+   <div class="sr"><input id="q" placeholder="Search conversations or groups..."></div>
+   <div id="recent"></div>
+   <div id="tabs"><button data-f="all" class="on">All</button><button data-f="p">Conversations</button><button data-f="g">Groups</button><button data-f="pin">Pinned</button></div>
+   <div id="list"></div>
+  </div>
+  <div id="oth" hidden></div>
+  <nav id="nav"><button data-go="home" class="on"><i></i>Home</button><button data-go="up"><i></i>Updates</button><button data-go="find"><i></i>Explore</button><button data-go="me"><i></i>My Profile</button></nav>
+ </aside>
+ <section id="chat">
+  <div id="empty"><svg class="logo big" viewBox="0 0 64 64" fill="none"><path d="M32 4 56 18v28L32 60 8 46V18z" stroke="url(#lg)" stroke-width="2.5" stroke-linejoin="round"/><path d="M40 22c-3-3-16-4-16 4 0 9 17 5 17 14 0 8-13 7-17 3" stroke="url(#lg)" stroke-width="4.5" stroke-linecap="round"/></svg><h2>NEXORA World</h2><p>Everything you love in one place — choose where to begin.</p>
+   <div id="squadHub" aria-label="اختصارات NEXORA">
+    <button class="hubTile hubCity" data-hub="city"><i>🏙️</i><b>Open City</b><small>استكشف Explore the city, vehicles and players</small><span>Enter the World →</span></button>
+    <button class="hubTile hubCafe" data-hub="cafe"><i>☕</i><b>The Café ثلاثي الأبعاد</b><small>Meet your friends واتكلموا جوه العالم</small><span>ادخل The Café ←</span></button>
+    <button class="hubTile" data-hub="find"><i>🧭</i><b>Explore Members</b><small>دور على أصحابك واكتشف ناس Newة</small><span>Discover →</span></button>
+    <button class="hubTile" data-hub="up"><i>✨</i><b>Updates والقصص</b><small>Catch up on posts and stories</small><span>شوف الNew ←</span></button>
+   </div>
+  </div>
+  <div class="cv">
+   <header><button id="bk" class="ic"></button><div id="ct"></div><button id="cla" class="ic" title="Voice call"></button><button id="clv" class="ic" title="Video call"></button><button id="mn" class="ic"></button></header>
+   <div id="cb" hidden></div>
+   <div id="ms"></div>
+   <div id="rp" hidden><span></span><button id="xr">✕</button></div>
+   <footer><button id="em" class="ic"></button><button id="ph" class="ic"></button><textarea id="in" rows="1" placeholder="Write a message..."></textarea><button id="vn" class="ic"></button><button id="snd" class="ic pri"></button></footer>
+   <input id="pf" type="file" accept="image/*" hidden>
+  </div>
+ </section>
+</div>
+
+<div id="sh" hidden><div class="box"></div></div>
+<div id="ts" hidden></div>
+
+<!-- v91: legacy WebGL login intro is intentionally not loaded; replaced by auth-scene.js (SVG/CSS). Original living-palace.js file is preserved. -->
+<script src="v175-startup-recovery.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-functions-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+<script src="chanse4/firebase-config.js"></script>
+<script src="chanse3/acct.js"></script>
+<script src="chanse1/time.js"></script><script src="chanse1/app.js"></script>
+<script src="chanse1/auth.js"></script>
+<script src="chanse2/stories.js"></script>
+<script src="chanse3/calls.js"></script><script src="chanse3/cafe.js"></script><script src="chanse2/extras.js"></script><script src="chanse4/games.js"></script>
+<script src="chanse1/push.js"></script>
+<script src="chanse3/bot.js"></script><script src="chanse4/channel.js"></script><script src="chanse2/cafe2.js"></script><script src="chanse3/cafe3.js"></script><script src="chanse1/community.js"></script><script src="chanse3/plus.js"></script><script src="chanse1/theme.js"></script><script src="chanse1/look.js"></script><script src="chanse3/chatx.js"></script><script src="chanse3/settings.js"></script><script src="chanse1/ads.js"></script><script src="chanse3/accounts.js"></script><script src="chanse3/social-feed.js"></script>
+<script src="v202-social-feed.js" defer></script><script src="chanse3/social-expansion.js"></script><script src="chanse1/ui2.js"></script><script src="chanse2/profile.js"></script><script src="chanse3/stage4-chat-ui.js"></script><link rel="stylesheet" href="chanse4/stage4-extras.css"><link rel="stylesheet" href="v190-final-polish.css"><script src="chanse2/stage4-extras.js"></script><script src="chanse3/living-palace-engine.js"></script><script>
+/* v188 hotfix: delayed Cinema initialization; source retained at chanse4/cinema.js. */
+/* cinema.js is intentionally inlined here to keep the single-file startup repair deployable. */
+/* NEXORA v29 — سينما الدور الثالث: فيلم متزامن للكل، مكتبة أفلام محفوظة، رفع فيلم، و«شغّل لنفسي».
+   الحالة في world/{room}/cinema/state، المكتبة في world/{room}/movies، والملفات في Firebase Storage (cinema/{room}/{uid}/...).
+   الفيديو بيتعرض على شاشة السينما في الغرفة 3D (VideoTexture)، ولو الجهاز/السيرفر مش مسمّح بكده بيتحوّل تلقائي لملء الشاشة. */
+(()=>{
+const $c=s=>document.querySelector(s),MOBC=/Android|iPhone|iPad|Mobi/i.test(navigator.userAgent);
+let ROOM='main',on=0,lvl=0,S=null,mode='sync',solo=null,vid=null,vtex=null,skew=0,cur='',full=0,texOK=1,retried=0,unS=null,unM=null,movies=[],lastChk=0,busy=0,hint='';
+const FULL='position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;z-index:4;',HIDE='position:absolute;left:0;top:0;width:2px;height:2px;opacity:0;pointer-events:none;';
+document.head.insertAdjacentHTML('beforeend',`<style>
+#wcinb{position:absolute;bottom:calc(34% + 52px);left:50%;transform:translateX(-50%);z-index:3;padding:10px 18px;border-radius:14px;border:1px solid rgba(255,58,90,.5);background:rgba(40,8,16,.82);backdrop-filter:blur(10px);color:#fff;font:800 14px Cairo,sans-serif;cursor:pointer}#wcinb[hidden]{display:none}
+#wcin{position:absolute;top:calc(58px + env(safe-area-inset-top,0px));inset-inline-end:10px;width:min(370px,calc(100% - 20px));max-height:calc(100% - 130px);overflow:auto;z-index:8;padding:12px;border-radius:18px;background:rgba(14,8,18,.93);backdrop-filter:blur(14px);border:1px solid rgba(255,58,90,.35);color:#eaf6ff;font-family:Cairo,sans-serif;direction:rtl;display:flex;flex-direction:column;gap:8px}#wcin[hidden]{display:none}
+#wcin h4{margin:0;display:flex;justify-content:space-between;align-items:center;font-size:16px}
+#wcin button{padding:8px 11px;border-radius:11px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.09);color:#fff;font:700 13px Cairo,sans-serif;cursor:pointer}
+#wcin input[type=text],#wcin input:not([type]){border-radius:10px;padding:8px 10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:#fff;font:13px Cairo,sans-serif;width:100%;box-sizing:border-box}
+#wcin .row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}#wcin .sec{display:flex;flex-direction:column;gap:6px;padding:8px;border-radius:12px;background:rgba(255,255,255,.05)}
+#wcnow{font-size:13.5px;line-height:1.6;color:#ffd9de}#wce{color:#ff8a8a;font-size:12.5px;min-height:15px}#wcpr{height:6px;border-radius:4px;background:rgba(255,255,255,.12);overflow:hidden}#wcpr i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ff3a5a,#ffb870)}
+#wcl .mv{display:flex;flex-direction:column;gap:5px;padding:8px;border-radius:10px;background:rgba(255,255,255,.06);margin-top:6px}#wcl .mv b{font-size:13.5px}#wcl .mv small{color:#9fb0d8}
+#wcinv{position:absolute;top:calc(10px + env(safe-area-inset-top,0px));inset-inline:10px;z-index:7;display:flex;gap:8px;justify-content:center}#wcinv[hidden]{display:none}#wcinv button{padding:9px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.2);background:rgba(10,14,30,.78);color:#fff;font:700 14px Cairo,sans-serif}
+</style>`);
+/* The 3D world is loaded on demand. Wait for its host instead of crashing at page startup. */
+function initCinema(root){
+if(!root || typeof root.insertAdjacentHTML!=='function')return;
+if(window.CINEMA&&window.CINEMA.__initialized)return;
+root.insertAdjacentHTML('beforeend',`<button id="wcinb" hidden>🎬 السينما</button>
+<div id="wcinv" hidden><button id="wcvp">⏯</button><button id="wcvx">✕ رجوع للغرفة</button></div>
+<div id="wcin" hidden>
+ <h4><span>🍿 سينما NEXORA</span><button id="wcx">✕</button></h4>
+ <div id="wcnow">مفيش فيلم شغّال دلوقتي</div>
+ <div class="row"><button id="wcb1">⏪ 10</button><button id="wcpp">⏯ شغّل / وقّف</button><button id="wcb2">10 ⏩</button><button id="wcfs">⛶ ملء الشاشة</button><button id="wcst">⏹ إيقاف للكل</button><button id="wcmd" hidden>👥 ارجع أتفرج مع الكل</button></div>
+ <div class="row">🔊 <input id="wcvol" type="range" min="0" max="1" step="0.05" value="1" style="flex:1"></div>
+ <div class="sec"><b>➕ أضف فيلم برابط مباشر (https)</b><input id="wct" maxlength="80" placeholder="اسم الفيلم"><input id="wcurl" dir="ltr" maxlength="1500" placeholder="https://.../film.mp4"><div class="row"><button id="wcua">إضافة للمكتبة</button></div></div>
+ <div class="sec"><b>⬆️ ارفع فيلم من جهازك</b><input id="wcf" type="file" accept="video/*"><div class="row"><button id="wcu">ارفع للمكتبة (للكل)</button><button id="wclo">شغّله لنفسي بس (من غير رفع)</button></div><div id="wcpr" hidden><i></i></div></div>
+ <div id="wce"></div>
+ <div class="sec"><b>🎞 مكتبة الأفلام</b><div id="wcl"></div></div>
+</div>`);
+const path=d=>`world/${ROOM}/${d}`,sDoc=()=>db.doc(path('cinema/state'));
+const err=m=>{$c('#wce').textContent=m||'';if(m&&typeof toast=='function'&&0)toast(m)};
+const fmt=s=>{s=Math.max(0,Math.round(s));return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')};
+const sMs=d=>d&&d.t&&d.t.toMillis?d.t.toMillis():Date.now();
+function expPos(){if(!S)return 0;return S.pl?S.pos+Math.max(0,(Date.now()+skew-sMs(S))/1000):S.pos}
+function wantPlay(){return on&&(lvl==2||full)}
+/* ---------- الفيديو والتكستشر ---------- */
+function ensureVid(){if(vid)return vid;vid=document.createElement('video');vid.playsInline=true;vid.setAttribute('playsinline','');vid.preload='auto';vid.style.cssText=HIDE;vid.volume=+$c('#wcvol').value;
+ vid.addEventListener('loadeddata',()=>{bindTex();sync(1)});
+ vid.addEventListener('error',()=>{if(!cur)return;if(vid.crossOrigin&&!retried){retried=1;texOK=0;const u=cur;vid.removeAttribute('crossorigin');vid.src=u;vid.load();return}err('مقدرتش أشغّل الفيلم ده (الرابط مش فيديو أو مش بيسمح بالتشغيل).')});
+ vid.addEventListener('ended',()=>{if(mode=='sync'&&S&&S.u==me.uid&&S.pl)writeState({ti:S.ti,url:S.url,pl:false,pos:0})});
+ root.append(vid);return vid}
+function bindTex(){const SQ=window.SQ3;if(!SQ||!SQ.screen||!texOK||!vid)return;try{if(!vtex){vtex=new SQ.THREE.VideoTexture(vid);vtex.minFilter=SQ.THREE.LinearFilter;vtex.magFilter=SQ.THREE.LinearFilter;vtex.format=SQ.THREE.RGBFormat}SQ.screen.material.map=vtex;SQ.screen.material.needsUpdate=true}catch(e){texOK=0;console.error(e)}}
+function unbindTex(){const SQ=window.SQ3;if(SQ&&SQ.screen&&SQ.idle){try{SQ.screen.material.map=SQ.idle;SQ.screen.material.needsUpdate=true}catch(e){}}}
+function setFull(o){full=o;$c('#wcinv').hidden=!o;if(vid)vid.style.cssText=o?FULL:HIDE;if(!o)render();else sync(1)}
+function load(url){const v=ensureVid();if(cur==url)return;cur=url;retried=0;texOK=!/^blob:/.test(url)?texOK:texOK;if(!/^blob:/.test(url))v.crossOrigin='anonymous';else v.removeAttribute('crossorigin');v.src=url;v.load();if(vtex){vtex.dispose&&vtex.dispose();vtex=null}}
+function unload(){if(!vid||!cur)return;try{vid.pause()}catch(e){}vid.removeAttribute('src');vid.load();cur='';unbindTex();if(vtex){vtex.dispose&&vtex.dispose();vtex=null}}
+function curTarget(){return mode=='solo'&&solo?{url:solo.url,pl:true,pos:0,solo:1}:S&&S.url?S:null}
+/* مزامنة الفيديو مع الحالة */
+function sync(force){if(!on)return;const T=curTarget();if(!T||!wantPlay()){if(vid&&cur&&!vid.paused)vid.pause();if(!T)unload();return}
+ load(T.url);if(!vid||vid.readyState<1)return;
+ if(T.solo){if(vid.paused&&!vid.ended)vid.play().catch(()=>{hint='اضغط «شغّل» عشان الفيلم يبدأ';render()});return}
+ const e=expPos();if(T.pl){if(Math.abs(vid.currentTime-e)>(force?.4:1.5))try{vid.currentTime=e}catch(_){}if(vid.paused)vid.play().then(()=>{hint='';render()}).catch(()=>{hint='المتصفح منع التشغيل التلقائي: اضغط «شغّل / وقّف»';render()})}
+ else{if(!vid.paused)vid.pause();if(Math.abs(vid.currentTime-S.pos)>.4)try{vid.currentTime=S.pos}catch(_){}}}
+/* ---------- الكتابة ---------- */
+function writeState(o){return sDoc().set({u:me.uid,n:nm().slice(0,40),ti:String(o.ti||'').slice(0,80),url:o.url||'',pl:!!o.pl,pos:Math.max(0,Math.min(99999,+o.pos||0)),t:FV.serverTimestamp()}).catch(()=>err('مقدرتش أغيّر حالة السينما. انشر قواعد Firebase الجديدة (v29).'))}
+function measureSkew(){const a=Date.now();db.doc(path('cinema/clk_'+me.uid)).set({t:FV.serverTimestamp()}).then(()=>db.doc(path('cinema/clk_'+me.uid)).get()).then(d=>{const x=d.data(),b=Date.now();if(x&&x.t&&x.t.toMillis)skew=x.t.toMillis()-(a+b)/2}).catch(()=>{})}
+/* ---------- الواجهة ---------- */
+function render(){if(!on)return;const nowEl=$c('#wcnow');let h='';
+ if(mode=='solo'&&solo)h=`👤 بتتفرج لنفسك: <b>${esc(solo.ti)}</b>`;else if(S&&S.url)h=`${S.pl?'▶':'⏸'} <b>${esc(S.ti||'فيلم')}</b> — شغّله ${esc(S.n||'عضو')} · ${fmt(expPos())}`;else h='مفيش فيلم شغّال دلوقتي';
+ nowEl.innerHTML=h+(hint?`<br><small>${esc(hint)}</small>`:'');$c('#wcmd').hidden=mode!='solo';
+ const mine=m=>m.u==me.uid;$c('#wcl').innerHTML=movies.length?movies.map(m=>`<div class="mv"><b>${esc(m.ti)}</b><small>رفعه ${esc(m.n||'عضو')}${m.sz?' · '+(m.sz/1048576).toFixed(0)+' MB':''}</small><div class="row"><button data-a="all" data-id="${m.id}">▶ شغّل للكل</button><button data-a="me" data-id="${m.id}">👤 لنفسي</button>${mine(m)?`<button data-a="del" data-id="${m.id}">🗑 حذف</button>`:''}</div></div>`).join(''):'<small>المكتبة فاضية. أضف رابط أو ارفع فيلم.</small>'}
+function sub(){unS=sDoc().onSnapshot(d=>{S=d.exists?d.data():null;render();sync(1)},()=>{});
+ unM=db.collection(path('movies')).onSnapshot(s=>{const a=[];s.forEach(d=>a.push({id:d.id,...d.data()}));a.sort((x,y)=>sMs(y)-sMs(x));movies=a;render()},()=>{})}
+function playAll(m){writeState({ti:m.ti,url:m.url,pl:true,pos:0});mode='sync';solo=null;render()}
+function playMe(url,ti){mode='solo';solo={url,ti};load(url);hint='';render();sync(1)}
+function stopLocal(){mode='sync';solo=null;hint='';if(S&&S.url)load(S.url);else unload();render();sync(1)}
+$c('#wcl').addEventListener('click',async e=>{const b=e.target.closest('button[data-a]');if(!b)return;const m=movies.find(x=>x.id==b.dataset.id);if(!m)return;err('');
+ if(b.dataset.a=='all')playAll(m);else if(b.dataset.a=='me')playMe(m.url,m.ti);else if(b.dataset.a=='del'){if(!await SquadDialog.confirm('تحذف «'+m.ti+'» من المكتبة؟'))return;
+  db.doc(path('movies/'+m.id)).delete().then(()=>{if(m.sp&&window.firebase&&firebase.storage){try{firebase.storage().ref(m.sp).delete().catch(()=>{})}catch(_){}}}).catch(()=>err('مقدرتش أحذف الفيلم'))}});
+function openP(o){$c('#wcin').hidden=!o;if(o){render();err('')}}
+$c('#wcinb').onclick=()=>openP($c('#wcin').hidden);$c('#wcx').onclick=()=>openP(0);
+$c('#wcvx').onclick=()=>setFull(0);$c('#wcfs').onclick=()=>{openP(0);setFull(1)};
+$c('#wcvp').onclick=()=>ctlPlay();
+function ctlPlay(){if(!vid)return;if(mode=='solo'){vid.paused?vid.play():vid.pause();return}
+ if(!S||!S.url)return;if(S.pl&&vid.paused){vid.play().then(()=>{hint='';render()}).catch(()=>{});return}
+ const p=expPos();writeState({ti:S.ti,url:S.url,pl:!S.pl,pos:p})}
+$c('#wcpp').onclick=ctlPlay;
+function seek(d){if(mode=='solo'&&vid){vid.currentTime=Math.max(0,vid.currentTime+d);return}if(!S||!S.url)return;writeState({ti:S.ti,url:S.url,pl:S.pl,pos:Math.max(0,expPos()+d)})}
+$c('#wcb1').onclick=()=>seek(-10);$c('#wcb2').onclick=()=>seek(10);
+$c('#wcst').onclick=()=>{if(mode=='solo'){stopLocal();return}if(S&&S.url)writeState({ti:'',url:'',pl:false,pos:0})};
+$c('#wcmd').onclick=()=>{if(mode=='solo')stopLocal()};
+$c('#wcvol').oninput=e=>{if(vid)vid.volume=+e.target.value};
+$c('#wcua').onclick=()=>{err('');const ti=$c('#wct').value.trim(),url=$c('#wcurl').value.trim();
+ if(!/^https:\/\//i.test(url)){err('الرابط لازم يبدأ بـ https:// (فيديو مباشر مثل mp4). روابط يوتيوب مش بتشتغل هنا.');return}
+ const t2=ti||decodeURIComponent((url.split('?')[0].split('/').pop()||'فيلم').replace(/\.[^.]+$/,'')).slice(0,80)||'فيلم';
+ db.collection(path('movies')).add({u:me.uid,n:nm().slice(0,40),ti:t2.slice(0,80),url:url.slice(0,1500),t:FV.serverTimestamp()}).then(()=>{$c('#wct').value='';$c('#wcurl').value=''}).catch(()=>err('مقدرتش أضيف الفيلم. انشر قواعد Firebase الجديدة (v29).'))};
+function fileOK(){const f=$c('#wcf').files&&$c('#wcf').files[0];if(!f){err('اختار ملف فيديو الأول');return null}if(!/^video\//.test(f.type||'')){err('الملف لازم يكون فيديو (mp4 مثلًا)');return null}return f}
+$c('#wclo').onclick=()=>{err('');const f=fileOK();if(!f)return;playMe(URL.createObjectURL(f),f.name.replace(/\.[^.]+$/,''))};
+function ensureStorage(cb){if(window.firebase&&firebase.storage)return cb(1);const s=document.createElement('script');s.src='https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js';s.onload=()=>cb(!!(firebase.storage));s.onerror=()=>cb(0);document.head.append(s)}
+$c('#wcu').onclick=()=>{err('');if(busy)return;const f=fileOK();if(!f)return;if(f.size>1500*1024*1024){err('الملف أكبر من 1.5 جيجا');return}
+ const ti=($c('#wct').value.trim()||f.name.replace(/\.[^.]+$/,'')).slice(0,80);busy=1;$c('#wcu').disabled=true;const pr=$c('#wcpr');pr.hidden=false;pr.firstElementChild.style.width='0';
+ const done=m=>{busy=0;$c('#wcu').disabled=false;pr.hidden=true;if(m)err(m)};
+ ensureStorage(ok=>{if(!ok)return done('مقدرتش أحمّل Firebase Storage. اتأكد من النت.');
+  const p=`cinema/${ROOM}/${me.uid}/${Date.now()}_${f.name.replace(/[^\w.\-]+/g,'_').slice(-60)}`;let task;try{task=firebase.storage().ref(p).put(f,{contentType:f.type})}catch(e){return done('Storage مش متفعّل في مشروعك: '+(e&&e.message||e))}
+  task.on('state_changed',s=>{pr.firstElementChild.style.width=Math.round(s.bytesTransferred/s.totalBytes*100)+'%'},e=>done('فشل الرفع: '+((e&&e.code)||e)+' (اتأكد من تفعيل Storage ونشر storage.rules)'),()=>{
+   task.snapshot.ref.getDownloadURL().then(url=>db.collection(path('movies')).add({u:me.uid,n:nm().slice(0,40),ti,url,sp:p,sz:f.size,t:FV.serverTimestamp()})).then(()=>{done();$c('#wct').value='';$c('#wcf').value=''}).catch(e=>done('الملف اترفع بس مقدرتش أسجّله في المكتبة: '+((e&&e.code)||e)))})})};
+/* ---------- دورة الحياة ---------- */
+window.CINEMA={
+ enter(room){ROOM=room||'main';on=1;S=null;mode='sync';solo=null;movies=[];skew=0;full=0;hint='';ensureVid();measureSkew();sub();render()},
+ leave(){on=0;unS&&unS();unM&&unM();unS=unM=null;openP(0);setFull(0);$c('#wcinb').hidden=true;try{unload()}catch(e){}if(vid){vid.remove();vid=null}cur='';S=null;solo=null;mode='sync';lvl=0},
+ tick(P,t){if(!on)return;const nl=P.lv;if(nl!=lvl){const was=lvl;lvl=nl;$c('#wcinb').hidden=lvl!=2;if(lvl==2){if(S&&S.url&&S.pl)hint='فيه فيلم شغّال — بيتعرض على الشاشة الكبيرة';render();sync(1)}else if(was==2){openP(0);if(vid&&!vid.paused&&!full)vid.pause()}}
+  if(t-lastChk>1500){lastChk=t;if(lvl==2||full){sync(0);if(!$c('#wcin').hidden)render()}}
+  if(vtex&&vid&&vid.readyState>=2)vtex.needsUpdate=true},
+ dbg(){return{on,mode,cur,exp:expPos(),lvl,full,tex:texOK,S}},
+ __initialized:true
+};
+}
+let cinemaObserver=null;
+function findWorld(){
+ const world=$c('#world');
+ if(world && world.isConnected){if(cinemaObserver){cinemaObserver.disconnect();cinemaObserver=null;}initCinema(world);return true;}
+ return false;
+}
+if(!findWorld()){
+ cinemaObserver=new MutationObserver(()=>findWorld());
+ cinemaObserver.observe(document.documentElement,{childList:true,subtree:true});
+}
+})();
+
+</script>
+<style>#squadOffline{position:fixed;z-index:99999;inset-inline:12px;top:calc(8px + env(safe-area-inset-top,0px));margin:auto;width:max-content;max-width:calc(100% - 24px);padding:8px 14px;border:1px solid #d9b76d;border-radius:999px;background:#171717;color:#f5d98e;font:600 12px Cairo,sans-serif;box-shadow:0 5px 22px #0008}#squadOffline[hidden]{display:none}</style><div id="squadOffline" role="status" aria-live="polite" hidden>You are offline — saved content is available; messaging and multiplayer are temporarily paused.</div>
+<script>/* v112: مؤشر اتصال واضح، مع استمرار فتح الواجهة المحفوظة دون إنترنت. */(()=>{const el=document.getElementById('squadOffline');function sync(){if(el)el.hidden=navigator.onLine}addEventListener('online',sync);addEventListener('offline',sync);sync()})();</script>
+<script>
+/* v110: تحميل عالم The Café والمدينة عند الطلب فقط، مع منع تكرار تنزيل نفس الملف. */
+(()=>{
+ const pending=new Map();
+ function load(src){
+  if(pending.has(src))return pending.get(src);
+  const promise=new Promise((resolve,reject)=>{
+   const existing=[...document.scripts].find(x=>x.dataset.squadLazy===src);
+   if(existing){if(existing.dataset.loaded==='1')return resolve();existing.addEventListener('load',resolve,{once:true});existing.addEventListener('error',()=>reject(Error('تعذر تحميل '+src)),{once:true});return}
+   const el=document.createElement('script');el.src=src;el.dataset.squadLazy=src;
+   el.onload=()=>{el.dataset.loaded='1';resolve()};el.onerror=()=>{pending.delete(src);reject(Error('تعذر تحميل '+src))};document.head.appendChild(el);
+  }); pending.set(src,promise);return promise;
+ }
+ window.SQUAD_LOAD_WORLD=()=>load('chanse2/world.js');
+ window.SQUAD_LOAD_DISTRICT=()=>load('chanse1/district-core.js').then(()=>load('chanse2/district.js'));
+})();
+</script><script src="chanse4/welcome.js"></script><script src="chanse1/luxe.js"></script>
+<script>
+/* تحديث تلقائي خفيف: ملف manifest واحد بدل تنزيل عشرات الملفات دوريًا. حدّث version.json مع كل نشر. */
+(()=>{let base=null,pending=false;const safeToReload=()=>{const chat=document.getElementById('chat'),city=document.getElementById('dst');const typing=document.activeElement&&(document.activeElement.matches('input,textarea,[contenteditable=true]'));return !(chat&&chat.classList.contains('open'))&&!(city&&!city.hidden)&&!typing&&!window.SQUAD_CALL_ACTIVE&&!window.DISTRICT_SESSION_ACTIVE};const chk=async()=>{try{const r=await fetch('version.json',{cache:'no-store'});if(!r.ok)return;const t=await r.text();if(base===null)base=t;else if(t!==base){pending=true;const e=document.getElementById('ts');if(e){e.textContent='A new update is ready. It will install when your call, city session, or chat is safe to close.';e.hidden=false;if(safeToReload())setTimeout(()=>{if(safeToReload())location.reload()},1200)}}}catch(e){}};setTimeout(chk,10000);setInterval(()=>{if(pending&&safeToReload())location.reload();else chk()},480000);document.addEventListener('visibilitychange',()=>{if(document.hidden)return;if(pending&&safeToReload())location.reload();else chk()})})();
+</script>
+<script>
+/* v90: real home-hub shortcuts connected to existing destinations */
+(()=>{const h=document.getElementById('squadHub');if(!h)return;h.addEventListener('click',async e=>{const b=e.target.closest('[data-hub]');if(!b)return;const k=b.dataset.hub;try{if(k==='city'){await window.SQUAD_LOAD_DISTRICT();window.DISTRICT&&DISTRICT.enter({})}else if(k==='cafe'){await window.SQUAD_LOAD_WORLD();window.WORLD&&WORLD.enter()}else{const n=document.querySelector(`#nav [data-go=\"${k}\"]`);if(n)n.click()}}catch(err){console.error('lazy game load',err);window.toast&&toast('تعذر تحميل اللعبة. راجع اتصال الإنترنت وحاول مرة أخرى.')}})})();
+</script>
+<script src="chanse3/admin-monitor.js?v=258"></script>
+<script src="v196-premium-navigation.js" defer></script>
+<script src="v197-home-command.js" defer></script>
+<script src="v198-messenger-evolution.js" defer></script>
+<script src="v199-squad-identity.js" defer></script>
+<script src="chanse4/english-ui-v152.js"></script>
+<script src="chanse2/auth-scene.js" defer></script>
+<script src="v202-portal-login.js" defer></script>
+<script src="v220-auth-door.js" defer></script>
+<script src="v203-design-system.js" defer></script>
+<script src="v205-visual-expansion.js" defer></script>
+<script src="v206-lifestyle.js" defer></script>
+<script src="v160-aurora.js" defer></script>
+<script src="v162-global-hub.js" defer></script>
+<script src="v163-community-evolution.js" defer></script>
+<script src="v164-platform-expansion.js" defer></script>
+<script>
+/* v188 hotfix: create Universe event handlers only after its root exists. */
+/* v165-squad-universe.js is intentionally inlined here for this single-file repair. */
+/* NEXORA v165 — Squad Universe. Additive, local-first companion layer.
+   No existing Firebase schema, auth, chat, rooms, rules, or legacy feature is replaced. */
+(()=>{'use strict';
+if(window.SquadV165)return;
+const $=(s,r=document)=>r.querySelector(s), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const userKey=()=>{try{return window.firebase?.auth?.().currentUser?.uid||'guest'}catch(_){return'guest'}};
+const key=k=>`squad.v165.${userKey()}.${k}`;
+const read=(k,fallback=[])=>{try{const v=JSON.parse(localStorage.getItem(key(k)));return v??fallback}catch(_){return fallback}};
+const write=(k,v)=>{try{localStorage.setItem(key(k),JSON.stringify(v));return true}catch(_){notify('مساحة التخزين ممتلئة؛ احذف بعض العناصر القديمة.');return false}};
+const notify=m=>window.toast?window.toast(m):console.info('[Squad]',m);
+let root=null,tab='overview';
+const nav=[['overview','✦','الرئيسية'],['workspace','▤','مساحة العمل'],['avatar','◉','استوديو الشخصية'],['home','⌂','بيتي الافتراضي'],['memories','◷','ذكرياتي'],['map','⌖','خريطة العالم'],['circles','◎','دوائري'],['ai','✧','مساعداتي']];
+const defaults={avatar:{k:'0.0.0.200.0.0'},home:{name:'منزلي الأول',style:'skyline',items:['أريكة فاخرة','شاشة سينما','نبات مضيء']},wallet:{coins:250,history:[]}};
+const get=(k)=>read(k,defaults[k]||[]);
+function open(t){tab=t||'overview';if(!root){root=document.createElement('section');root.id='sq165';root.className='sq165-backdrop';root.hidden=true;root.innerHTML=`<div class="sq165-window" role="dialog" aria-modal="true" aria-labelledby="sq165-title"><header class="sq165-head"><div><small>NEXORA ∞ · UNIVERSE</small><h2 id="sq165-title">عالمك… بطريقتك</h2><p>مساحتك الاجتماعية والإبداعية والافتراضية</p></div><button data-close aria-label="إغلاق">×</button></header><nav class="sq165-nav">${nav.map(([id,icon,label])=>`<button data-tab="${id}"><i>${icon}</i><span>${label}</span></button>`).join('')}</nav><main id="sq165-content"></main><footer>v165 · البيانات الشخصية الجديدة محفوظة على هذا الجهاز حتى يتم ربطها بخدمة متزامنة</footer></div>`;root.addEventListener('click',handle);
+root.addEventListener('submit',e=>{const f=e.target.closest('form[data-form]');if(!f)return;e.preventDefault();const d=new FormData(f),type=f.dataset.form,title=String(d.get('title')||'').trim(),body=String(d.get('body')||'').trim();if(type==='task'){const a=get('tasks');a.unshift({title,priority:d.get('priority'),done:false,at:Date.now()});write('tasks',a)}if(type==='note'){const a=get('notes');a.unshift({title,body,at:Date.now()});write('notes',a)}if(type==='memory'){const a=get('memories');a.unshift({title,body,at:Date.now()});write('memories',a)}notify('تم الحفظ');render()});
+root.addEventListener('change',e=>{if(e.target.matches('[data-item]')){const h=get('home');h.items=[...root.querySelectorAll('[data-item]:checked')].map(x=>x.dataset.item);write('home',h)}});
+
+document.body.append(root)}root.hidden=false;render();}
+function close(){if(root)root.hidden=true}
+function card(title,body,extra=''){return `<section class="sq165-card ${extra}"><h3>${title}</h3>${body}</section>`}
+function overview(){const tasks=get('tasks'),mem=get('memories'),home=get('home'),wallet=get('wallet');return `<section class="sq165-hero"><span>YOUR PERSONAL UNIVERSE</span><h3>أهلاً بك في NEXORA ∞</h3><p>مش مجرد شات أو شبكة اجتماعية؛ دي مساحة تجمع أصحابك وإبداعك وعالمك الافتراضي.</p><div class="sq165-stats"><b>${tasks.length}<small>مهام</small></b><b>${mem.length}<small>ذكريات</small></b><b>${wallet.coins}<small>نقاط تجريبية</small></b></div></section><div class="sq165-grid">${nav.slice(1).map(([id,ic,n])=>`<button class="sq165-tile" data-tab="${id}"><i>${ic}</i><b>${n}</b><small>${({workspace:'ملاحظات ومهام ومشاريع',avatar:'صمّم مظهرك الافتراضي',home:'منزل وأثاث ومقتنيات',memories:'احتفظ بلحظاتك المهمة',map:'أماكن افتراضية داخل اللعبة',circles:'انتقل إلى مجتمعاتك',ai:'اختصارات المساعدات الذكية'})[id]}</small><span>افتح ←</span></button>`).join('')}</div><div class="sq165-note">بيتك الحالي: <b>${esc(home.name||'منزلي')}</b> · النقاط تجريبية داخل هذا الجهاز وليست أموالًا حقيقية.</div>`}
+function workspace(){const tasks=get('tasks');return `<section class="sq165-hero"><span>SQUAD WORKSPACE</span><h3>غرفة أفكارك ومشاريعك</h3><p>أنشئ مهامًا وملاحظات وخططًا صغيرة. الحفظ محلي على هذا الجهاز.</p></section>${card('مهمة جديدة',`<form data-form="task"><input name="title" maxlength="100" placeholder="مثلاً: تجهيز فكرة فعالية" required><select name="priority"><option>عادية</option><option>مهمة</option><option>عاجلة</option></select><button class="primary">إضافة المهمة</button></form>`)}${card('ملاحظة سريعة',`<form data-form="note"><input name="title" maxlength="80" placeholder="عنوان الملاحظة" required><textarea name="body" maxlength="1500" placeholder="اكتب فكرتك هنا…"></textarea><button class="primary">حفظ الملاحظة</button></form>`)}<div class="sq165-list">${tasks.map((x,i)=>`<article class="sq165-item"><label><input type="checkbox" data-done="${i}" ${x.done?'checked':''}> <span class="${x.done?'done':''}">${esc(x.title)}</span></label><small>${esc(x.priority||'ملاحظة')}</small><button data-delete-task="${i}">حذف</button></article>`).join('')||'<p class="sq165-muted">لا توجد مهام بعد.</p>'}</div><div class="sq165-list">${get('notes').map((x,i)=>`<article class="sq165-item"><div><b>${esc(x.title)}</b><p>${esc(x.body)}</p></div><button data-delete-note="${i}">حذف</button></article>`).join('')}</div>`}
+const AV_SK=['فاتحة','قمحية','بنية','وردية','سمراء','داكنة'],AV_HR=['أسود','بني','فحمي','بنفسجي','عسلي','ذهبي','أحمر'],AV_ST=['قصير','شوكي','كعكة','طويل','مجعّد','أصلع'],AV_HUES=[0,25,50,120,170,200,230,270,310],AV_PC=['كحلي','أسود','أزرق','بني','خمري','أخضر','افتراضي'];
+function avatarLook(){const a=get('avatar');if(typeof a.k==='string'){const n=a.k.split('.').map(Number);if(n.length===6&&n.every(Number.isFinite))return{sk:Math.max(0,Math.min(5,n[0])),hr:Math.max(0,Math.min(6,n[1])),st:Math.max(0,Math.min(5,n[2])),c:Math.max(0,Math.min(359,n[3])),pc:Math.max(0,Math.min(6,n[4])),ac:Math.max(0,Math.min(15,n[5]))}}if(a.color){const m=/^#?([0-9a-f]{6})$/i.exec(a.color);if(m){const v=parseInt(m[1],16),r=(v>>16&255)/255,g=(v>>8&255)/255,b=(v&255)/255,hi=Math.max(r,g,b),lo=Math.min(r,g,b),d=hi-lo;let h=0;if(d){if(hi===r)h=((g-b)/d)%6;else if(hi===g)h=(b-r)/d+2;else h=(r-g)/d+4;h=Math.round((h*60+360)%360)}return{sk:0,hr:0,st:a.style==='cyber'?1:0,c:h,pc:0,ac:String(a.accessory||'').includes('نظارة')?2:String(a.accessory||'').includes('تاج')?8:0}}}return{sk:0,hr:0,st:0,c:200,pc:0,ac:0}}
+const avatarEncode=a=>[a.sk,a.hr,a.st,a.c,a.pc,a.ac].join('.');
+let avatarCloudUid='',avatarCloudLoading=false;
+async function loadAvatarCloud(){const uid=userKey();if(!uid||uid==='guest'||avatarCloudUid===uid||avatarCloudLoading)return;avatarCloudLoading=true;try{const d=await window.firebase.firestore().doc('looks/'+uid).get();if(d.exists&&typeof d.data()?.k==='string'){const k=d.data().k;if(k.split('.').length===6){write('avatar',{k});if(tab==='avatar')render()}}avatarCloudUid=uid}catch(e){console.warn('[Squad avatar] cloud load unavailable',e)}finally{avatarCloudLoading=false}}
+function avatar(){const a=avatarLook(),sw=(key,arr)=>arr.map((n,i)=>`<button type="button" data-avatar-set="${key}" data-value="${i}" class="${a[key]===i?'selected':''}">${n}</button>`).join(''),hues=AV_HUES.map(h=>`<button type="button" data-avatar-set="c" data-value="${h}" class="sq165-swatch ${a.c===h?'selected':''}" style="--swatch:hsl(${h} 68% 52%)" aria-label="لون ${h}"></button>`).join(''),acc=[['🎧 سماعة',1],['🕶 نظارة',2],['🧔 دقن',4],['🧢 كاب',8]].map(([n,v])=>`<button type="button" data-avatar-toggle="${v}" class="${a.ac&v?'selected':''}">${n}</button>`).join('');return `<section class="sq165-hero"><span>AVATAR STUDIO · 3D SYNC</span><h3>اصنع هويتك الافتراضية</h3><p>نفس إعدادات الشخصية المستخدمة داخل المدينة ثلاثية الأبعاد. يتم حفظ التصميم في حسابك ومزامنته مع اللاعبين.</p></section><div class="sq165-avatar-preview" style="--avatar:hsl(${a.c} 68% 52%)"><div class="sq165-orb">◈</div><b>${AV_ST[a.st]} · ${AV_HR[a.hr]}</b><small>معاينة إعدادات الشخصية</small></div>${card('لون البشرة',`<div class="sq165-choice">${sw('sk',AV_SK)}</div>`)}${card('تسريحة الشعر',`<div class="sq165-choice">${sw('st',AV_ST)}</div><label>لون الشعر</label><div class="sq165-choice">${sw('hr',AV_HR)}</div>`)}${card('لون الملابس',`<div class="sq165-choice sq165-color-choice">${hues}</div><label>نمط البنطلون</label><div class="sq165-choice">${sw('pc',AV_PC)}</div>`)}${card('الإكسسوارات',`<div class="sq165-choice">${acc}</div><button class="primary" data-save-avatar>حفظ ومزامنة الشخصية</button><button class="primary" data-avatar-world>فتح محرر الشخصية داخل المدينة</button><button class="primary" data-avatar-creator>🧬 استوديو إنشاء الشخصية</button><button class="primary" data-avatar-capture>🎥 فتح مركز التصوير المرجعي</button><small class="sq165-muted">التصوير يتم محليًا على جهازك ولا تُرفع الصور تلقائيًا. الحفظ السحابي يحتاج تسجيل الدخول وقواعد Firestore المنشورة. لا توجد مشتريات أو عناصر مدفوعة في هذا الاستوديو.</small>`)}`}
+function home(){const h=get('home'),w=get('wallet');return `<section class="sq165-hero"><span>MY DIGITAL HOME</span><h3>مساحتك الخاصة في العالم الافتراضي</h3><p>رتّب منزلك واختر طابعه. هذا نموذج محلي وليس عقارًا أو شراءً حقيقيًا داخل السيرفر.</p></section><div class="sq165-home-preview"><span>⌂</span><b>${esc(h.name)}</b><small>${esc(h.style)}</small></div>${card('تخصيص المنزل',`<input id="sq165-home-name" maxlength="45" value="${esc(h.name)}" placeholder="اسم المنزل"><select id="sq165-home-style"><option value="skyline" ${h.style==='skyline'?'selected':''}>برج المدينة</option><option value="villa" ${h.style==='villa'?'selected':''}>فيلا هادئة</option><option value="palace" ${h.style==='palace'?'selected':''}>قصر فاخر</option></select><button class="primary" data-save-home>حفظ المنزل</button>`)}${card('المقتنيات',`<div class="sq165-inventory">${['أريكة فاخرة','شاشة سينما','نبات مضيء','لوحة فنية','مصباح نيون','طاولة ألعاب'].map(x=>`<label><input type="checkbox" data-item="${esc(x)}" ${(h.items||[]).includes(x)?'checked':''}> ${x}</label>`).join('')}</div>`)}<div class="sq165-note">رصيد تجريبي: <b>${w.coins} نقطة</b>. لا توجد مدفوعات أو تحويلات أو قيمة نقدية.</div>`}
+function memories(){const rows=get('memories');return `<section class="sq165-hero"><span>SQUAD MEMORIES</span><h3>أرشيف لحظاتك</h3><p>احفظ ذكرى أو إنجازًا أو فكرة تريد الرجوع إليها.</p></section>${card('إضافة ذكرى',`<form data-form="memory"><input name="title" maxlength="90" placeholder="عنوان الذكرى" required><textarea name="body" maxlength="1200" placeholder="اكتب ما تريد تذكره…"></textarea><button class="primary">حفظ الذكرى</button></form>`)}<div class="sq165-list">${rows.map((x,i)=>`<article class="sq165-item"><div><b>${esc(x.title)}</b><p>${esc(x.body)}</p><small>${new Date(x.at).toLocaleString()}</small></div><button data-delete-memory="${i}">حذف</button></article>`).join('')||'<p class="sq165-muted">لسه مفيش ذكريات محفوظة.</p>'}</div>`}
+function map(){const places=[['الساحة المركزية','تجمع الأصدقاء والفعاليات','🏙️'],['حيّ المبدعين','ورش ومكاتب افتراضية','🎨'],['منطقة الألعاب','تحديات وألعاب جماعية','🎮'],['شارع المتاجر','معارض ومقتنيات افتراضية','🛍️'],['شاطئ السكون','مكان هادئ للقاءات','🌅'],['مركز السينما','مشاهدة جماعية للمحتوى المسموح','🎬']];return `<section class="sq165-hero"><span>VIRTUAL WORLD MAP</span><h3>خريطة أماكن NEXORA</h3><p>أماكن افتراضية مقترحة داخل اللعبة فقط. لا نستخدم GPS ولا نعرض موقعك الحقيقي.</p></section><div class="sq165-map">${places.map(([n,d,i])=>`<button data-virtual-place="${esc(n)}"><i>${i}</i><b>${n}</b><small>${d}</small><span>استكشف ←</span></button>`).join('')}</div><p class="sq165-muted">الأماكن هنا دليل تصميمي؛ ربطها بمناطق ثلاثية الأبعاد فعلية يحتاج توصيلها بمحرك المدينة الموجود.</p>`}
+function circles(){return `<section class="sq165-hero"><span>SOCIAL CIRCLES</span><h3>دوائرك ومجتمعاتك</h3><p>استخدم المجتمعات والأصدقاء الموجودة بالفعل بدل إنشاء نظام مكرر.</p></section><div class="sq165-grid"><button class="sq165-tile" data-legacy="communities"><i>🌐</i><b>المجتمعات</b><small>اكتشف وانضم للمجموعات</small><span>افتح ←</span></button><button class="sq165-tile" data-legacy="friends"><i>🤝</i><b>الأصدقاء</b><small>إدارة علاقاتك داخل المنصة</small><span>افتح ←</span></button><button class="sq165-tile" data-legacy="feed"><i>✦</i><b>المنشورات</b><small>تابع جديد مجتمعك</small><span>افتح ←</span></button></div><p class="sq165-muted">قوائم الأصدقاء والمجتمعات الفعلية تظل تحت إدارة الأنظمة الأصلية في NEXORA.</p>`}
+function ai(){return `<section class="sq165-hero"><span>AI TOOLBOX</span><h3>مساعداتك الذكية</h3><p>اختصارات تفتح المواقع الرسمية في تبويب جديد؛ لا نرسل بيانات حسابك إليها.</p></section><div class="sq165-grid">${[['ChatGPT','https://chatgpt.com','🤖'],['Claude','https://claude.ai','✧'],['Gemini','https://gemini.google.com','◇']].map(([n,u,i])=>`<a class="sq165-tile" href="${u}" target="_blank" rel="noopener noreferrer"><i>${i}</i><b>${n}</b><small>افتح المساعد في موقعه الرسمي</small><span>فتح ↗</span></a>`).join('')}</div><p class="sq165-muted">هذه اختصارات فقط، وليست تكامل API أو مساعدًا مدمجًا داخل المحادثات.</p>`}
+function render(){if(!root)return;if(tab==='avatar')loadAvatarCloud();root.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));const views={overview,workspace,avatar,home,memories,map,circles,ai};$('#sq165-content',root).innerHTML=(views[tab]||overview)()}
+async function handle(e){const b=e.target.closest('button');if(b){if(b.hasAttribute('data-close'))return close();if(b.dataset.tab){tab=b.dataset.tab;return render()}if(b.dataset.avatarSet){const a=avatarLook();a[b.dataset.avatarSet]=Number(b.dataset.value);write('avatar',{k:avatarEncode(a)});window.SquadAvatar3D?.preview?.(avatarEncode(a));return render()}if(b.dataset.avatarToggle){const a=avatarLook();a.ac^=Number(b.dataset.avatarToggle);write('avatar',{k:avatarEncode(a)});window.SquadAvatar3D?.preview?.(avatarEncode(a));return render()}if(b.hasAttribute('data-save-avatar')){const k=avatarEncode(avatarLook());write('avatar',{k});const uid=userKey();if(uid==='guest')return notify('سجّل الدخول أولاً لحفظ الشخصية على حسابك');try{if(window.SquadAvatar3D?.save)await window.SquadAvatar3D.save(k);else await window.firebase.firestore().doc('looks/'+uid).set({k});notify('تم حفظ الشخصية ومزامنتها مع المدينة ثلاثية الأبعاد ✅')}catch(e){console.error(e);notify('تعذّر الحفظ السحابي. التصميم محفوظ محليًا؛ تحقق من قواعد Firebase')}return render()}if(b.hasAttribute('data-avatar-world')){try{if(!window.WORLD&&window.SQUAD_LOAD_WORLD)await window.SQUAD_LOAD_WORLD();if(!window.WORLD?.state?.().open)window.WORLD?.enter?.();window.SquadAvatar3D?.openEditor?.()}catch(e){notify('تعذر تحميل المدينة ثلاثية الأبعاد. حاول مرة أخرى')}return}if(b.hasAttribute('data-save-home')){const h=get('home');h.name=$('#sq165-home-name',root).value.trim()||'منزلي';h.style=$('#sq165-home-style',root).value;h.items=[...root.querySelectorAll('[data-item]:checked')].map(x=>x.dataset.item);write('home',h);notify('تم حفظ المنزل الافتراضي');return render()}if(b.dataset.deleteTask!==undefined){const a=get('tasks');a.splice(+b.dataset.deleteTask,1);write('tasks',a);return render()}if(b.dataset.deleteNote!==undefined){const a=get('notes');a.splice(+b.dataset.deleteNote,1);write('notes',a);return render()}if(b.dataset.deleteMemory!==undefined){const a=get('memories');a.splice(+b.dataset.deleteMemory,1);write('memories',a);return render()}if(b.dataset.virtualPlace){notify(`تم اختيار ${b.dataset.virtualPlace} — ربط المنطقة بمحرك العالم خطوة لاحقة.`);return}if(b.dataset.legacy){close();const k=b.dataset.legacy;document.querySelector(`[data-social="${k==='communities'?'explore':k}"]`)?.click();if(k==='communities')document.querySelector('#nav [data-go="find"]')?.click();return}}
+if(e.target.matches('[data-done]')){const a=get('tasks');a[+e.target.dataset.done].done=e.target.checked;write('tasks',a);return render()}}
+function launcher(){const host=$('#social-main .dr-actions');if(!host||host.querySelector('[data-sq165-open]'))return;const b=document.createElement('button');b.type='button';b.className='dr-icon-btn sq165-launch';b.dataset.sq165Open='1';b.textContent='∞ Universe';b.addEventListener('click',()=>open());host.append(b)}
+const observer=new MutationObserver(launcher);if(document.body)observer.observe(document.body,{childList:true,subtree:true});launcher();document.addEventListener('keydown',e=>{if(e.key==='Escape'&&root&&!root.hidden)close()});window.SquadV165={open,close,version:165};
+})();
+
+</script>
+<script src="v166-global-connect.js" defer></script>
+<script src="v168-universe-integration.js" defer></script>
+<script src="v170-personal-vault.js" defer></script>
+<script src="v171-achievements.js" defer></script>
+<script src="v172-events-hub.js" defer></script>
+<script src="v173-shared-events.js" defer></script>
+<script src="v178-civilization.js" defer></script>
+<script src="v179-living-universe.js" defer></script>
+<script src="v180-city-life.js" defer></script>
+<script src="v181-world-systems.js" defer></script>
+<script src="v182-cloud-sync.js" defer></script>
+<script src="v184-universe-suite.js" defer></script>
+<script src="v185-universe-cloud-sync.js" defer></script>
+<script src="v186-control-center.js" defer></script>
+<script src="v187-call-network.js" defer></script>
+<script src="v201-3d-calls.js" defer></script>
+<script src="v263-avatar-capture-studio.js" defer></script>
+<script src="v265-avatar-creator.js?v=267" defer></script>
+<script src="v268-social-ai.js?v=268" defer></script>
+<script src="v269-spatial-social.js?v=269" defer></script>
+<script src="v270-creator-economy.js?v=270" defer></script>
+<script src="v271-privacy-safety.js?v=271" defer></script>
+<script src="v272-quality-upgrade.js?v=272" defer></script>
+<script src="v273-performance-reliability.js?v=273" defer></script>
+<script src="v274-ai-core-evolution.js?v=275" defer></script>
+<script src="v275-ai-integration.js?v=275" defer></script>
+<script src="v276-ai-intelligence.js?v=276" defer></script>
+<script src="v277-ai-agents.js?v=277" defer></script>
+<script src="v278-ai-collaboration.js?v=278" defer></script>
+<script src="v279-project-intelligence.js?v=279" defer></script>
+<script src="v280-workspace-knowledge.js?v=280" defer></script>
+<script src="v281-command-center.js?v=281" defer></script>
+<script src="v282-cross-system-integration.js?v=282" defer></script>
+<script src="v283-experience-engine.js?v=283" defer></script>
+<script src="v284-adaptive-workspace.js?v=284" defer></script>
+<script src="v285-stability-center.js?v=285" defer></script>
+<script src="v286-global-discovery.js?v=286" defer></script>
+<script src="v287-unified-ui-redesign.js?v=287" defer></script>
+<script src="v288-social-evolution.js?v=288" defer></script>
+<script src="v289-ai-control-tower.js?v=289" defer></script>
+<script src="v290-3d-universe-evolution.js?v=290" defer></script>
+<div class="squad-credit" aria-label="Design credit">Designed by Ahmed Fouad — The Devil Behind the Code 😈</div>
+<script src="v200-stories-channels.js" defer></script>
+<script src="v223-home-inbox.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+/* NEXORA v201 — 3D call controls and participant roster. */
+#sq201-call-state{display:block;margin-top:5px;color:#b9c9ee;font-size:12px}
+#sq201-people{position:absolute;z-index:7;top:112px;inset-inline-end:18px;width:min(290px,calc(100vw - 36px));max-height:min(52vh,420px);overflow:auto;padding:15px;border:1px solid rgba(212,175,55,.28);border-radius:20px;background:rgba(7,13,29,.88);backdrop-filter:blur(18px);box-shadow:0 18px 55px #0008;color:#f4f6ff}
+#sq201-people>b{display:block;margin-bottom:10px;font-size:15px}
+#sq201-people-list{display:grid;gap:7px}
+.sq201-person{display:flex;align-items:center;gap:9px;min-height:34px;padding:6px 8px;border-radius:11px;background:rgba(255,255,255,.055);font-size:13px}
+.sq201-dot{width:8px;height:8px;flex:0 0 auto;border-radius:50%;background:#34d399;box-shadow:0 0 10px #34d39988}
+#sq201-network{display:block;margin-top:12px;color:#a8b5d1;font-size:11px;line-height:1.6}
+#cshr.on{background:rgba(56,189,248,.28);box-shadow:0 0 16px rgba(56,189,248,.35)}
+#cshr:disabled,#ccam:disabled{opacity:.45;cursor:wait}
+@media(max-width:650px){
+ #sq201-people{top:94px;inset-inline:12px;width:auto;max-height:42vh}
+ .cbar{gap:6px;padding:8px}
+ .cbar .ic{width:44px;height:44px}
+}
+@media(prefers-reduced-motion:reduce){#sq201-people{scroll-behavior:auto}}
+
+/* v228 — clear call connectivity state */
+#cnet{display:block;margin-top:4px;color:#9fb5dc;font-size:11px;line-height:1.5}
+#call .ctop{gap:4px}

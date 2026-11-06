@@ -1,0 +1,22 @@
+/* NEXORA v190 — responsive stabilization layer; existing feature logic untouched. */
+:root{--sq-safe:clamp(12px,2vw,28px)}
+html,body{max-width:100%;overflow-x:hidden}
+#auth{position:relative;isolation:isolate;min-height:100svh;width:100%;overflow:hidden;display:grid;place-items:center;padding:clamp(16px,3vw,36px)}
+#auth[hidden],#app[hidden]{display:none!important}
+#auth .room-scene{position:absolute;inset:0;pointer-events:none}
+#auth .auth-card{position:relative;z-index:2;width:min(100%,460px);max-height:calc(100svh - 32px);overflow:auto;overscroll-behavior:contain}
+#auth input,#auth button{max-width:100%;font:inherit}
+#app{min-width:0;width:100%;max-width:100%;overflow-x:clip}
+#social-shell{display:grid;grid-template-columns:minmax(64px,auto) minmax(0,1fr);align-items:start;min-height:100svh;width:100%;max-width:100%;gap:clamp(8px,1.5vw,20px)}
+#social-rail,#social-main,#social-aside,#dr-screen{min-width:0;max-width:100%}
+#social-aside{position:sticky;top:12px;align-self:start;max-height:calc(100svh - 24px);overflow:auto}
+#dr-screen>*{max-width:100%}
+button,a,[role=button]{touch-action:manipulation}
+button:focus-visible,a:focus-visible,[role=button]:focus-visible,input:focus-visible{outline:2px solid #d8b45d;outline-offset:3px}
+canvas,video,iframe{max-width:100%}
+canvas{display:block}
+.squad-world,.world-screen,.district-screen,[id*="world"],[class*="world-stage"],[class*="district-stage"]{min-width:0;max-width:100%;overflow:hidden}
+.squad-world canvas,.world-screen canvas,[id*="world"] canvas,[class*="district-stage"] canvas{width:100%;height:100%;touch-action:pan-y}
+.squad-credit{position:fixed;left:max(12px,env(safe-area-inset-left));bottom:max(10px,env(safe-area-inset-bottom));z-index:9999;padding:7px 11px;border:1px solid rgba(218,183,102,.35);border-radius:999px;background:rgba(8,10,16,.78);color:#e5c77f;font-size:11px;letter-spacing:.04em;backdrop-filter:blur(12px);pointer-events:none}
+@media(max-width:760px){#social-shell{grid-template-columns:1fr;gap:8px}#social-rail{position:sticky;top:0;z-index:50}#social-aside{position:static;max-height:none;overflow:visible}#auth{padding:12px}#auth .auth-card{max-height:calc(100svh - 24px)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}

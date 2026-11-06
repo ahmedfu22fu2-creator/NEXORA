@@ -1,0 +1,53 @@
+/* NEXORA — Phase 1: canonical brand system (v219)
+   Single source of truth for the visual identity. Additive override: legacy selectors remain intact. */
+:root{
+  /* Brand palette */
+  --squad-bg:#0B0C10;
+  --squad-bg-elevated:#111319;
+  --squad-surface:#171A21;
+  --squad-surface-raised:#1D212A;
+  --squad-ivory:#F5F5F7;
+  --squad-muted:#A7A9B2;
+  --squad-accent:#D4AF37;
+  --squad-accent-soft:rgba(212,175,55,.14);
+  --squad-accent-line:rgba(212,175,55,.34);
+  --squad-danger:#E47777;
+  --squad-success:#83C99A;
+  --squad-glass:rgba(19,22,29,.76);
+  --squad-radius-sm:12px;
+  --squad-radius-md:14px;
+  --squad-radius-lg:16px;
+  --squad-shadow-soft:0 12px 36px rgba(0,0,0,.34);
+  --squad-shadow-deep:0 24px 72px rgba(0,0,0,.52);
+  --squad-glow:0 0 30px rgba(212,175,55,.16);
+  --squad-font-ar:'IBM Plex Sans Arabic','Cairo',sans-serif;
+  --squad-font-en:'Sora','Inter',sans-serif;
+  /* Existing token compatibility: all legacy components inherit the new brand. */
+  --dr-bg:var(--squad-bg);--dr-bg-2:var(--squad-bg-elevated);
+  --dr-panel:var(--squad-surface);--dr-panel-2:var(--squad-surface-raised);
+  --dr-panel-glass:var(--squad-glass);--dr-ink:var(--squad-ivory);
+  --dr-muted:var(--squad-muted);--dr-muted-2:#777B86;
+  --dr-line:var(--squad-accent-line);--dr-line-soft:rgba(245,245,247,.075);
+  --dr-gold:var(--squad-accent);--dr-gold-hi:#F0D982;--dr-gold-deep:#92751F;
+  --dr-gold-wash:var(--squad-accent-soft);
+  --dr-font-ar:var(--squad-font-ar);--dr-font-latin:var(--squad-font-en);
+  --dr-r-sm:var(--squad-radius-sm);--dr-r-md:var(--squad-radius-md);--dr-r-lg:var(--squad-radius-lg);
+  --dr-shadow:var(--squad-shadow-deep);--dr-shadow-gold:var(--squad-glow);
+  --sq-gold-500:var(--squad-accent);--sq-gold-300:#F0D982;--sq-gold-700:#92751F;
+  --sq-bg:var(--squad-bg);--sq-surface:var(--squad-surface);--sq-surface-2:var(--squad-surface-raised);
+  --sq-ink:var(--squad-ivory);--sq-ink-2:#D5D6DC;--sq-muted:var(--squad-muted);
+  --sq-line:rgba(245,245,247,.09);--sq-line-gold:var(--squad-accent-line);
+  --sq-grad-action:linear-gradient(135deg,#E8CB69,#D4AF37 58%,#A98522);
+  --sq-grad-gold:linear-gradient(135deg,#F0D982,#D4AF37 58%,#A98522);
+  --sq-grad-brand:linear-gradient(110deg,#F5F5F7,#E8CB69 48%,#D4AF37);
+  --sq-font-display:var(--squad-font-en);--sq-font-body:var(--squad-font-ar);
+}
+html,body{background-color:var(--squad-bg);color:var(--squad-ivory)}
+body{font-family:var(--squad-font-ar),var(--squad-font-en),sans-serif}
+:where(button,input,textarea,select){font-family:inherit}
+:where(.card,.sq-card,.auth-card,.panel,.modal,.sheet){border-radius:var(--squad-radius-md)}
+:where(.sq-card--glass,.auth-card,.glass,.modal,.sheet){background-color:var(--squad-glass);border-color:var(--squad-accent-line);box-shadow:var(--squad-shadow-soft)}
+:where(.brand-mark,.dr-brand-mark){color:var(--squad-accent);text-shadow:0 0 22px rgba(212,175,55,.28)}
+:focus-visible{outline-color:var(--squad-accent)}
+::selection{background:rgba(212,175,55,.34);color:var(--squad-ivory)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important}}

@@ -1,0 +1,29 @@
+/* NEXORA v192 — restore the original brass desk-lamp intro from the user's approved screenshot. */
+#auth.dark-room .room-scene{
+  background:#08090b url('chanse2/assets/design/auth-lamp-v118.jpg') center center / 100% 100% no-repeat !important;
+}
+#auth.dark-room .room-wall,
+#auth.dark-room .room-door-shadow,
+#auth.dark-room .room-dust,
+#auth.dark-room .room-desk,
+#auth.dark-room .lamp-halo,
+#auth.dark-room .desk-lamp,
+#auth.dark-room .room-brand,
+#auth.dark-room .lamp-hint,
+#auth.dark-room .lamp-sound{display:none!important;visibility:hidden!important;opacity:0!important}
+/* Invisible hit target sits over the cord in the restored lamp image. */
+#auth.dark-room .lamp-pull{
+  position:absolute!important;z-index:20!important;right:16.7%!important;top:32.5%!important;
+  width:44px!important;height:128px!important;padding:0!important;margin:0!important;
+  border:0!important;background:transparent!important;opacity:0!important;
+  cursor:grab!important;pointer-events:auto!important;touch-action:none!important;
+}
+#auth.dark-room .lamp-pull svg{width:100%;height:100%;opacity:0!important}
+#auth.dark-room.is-lit .room-scene{
+  background-image:linear-gradient(90deg,rgba(3,5,10,.05),rgba(3,5,10,.08)),url('chanse2/assets/design/auth-login-v121.png')!important;
+  background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important;
+}
+@media(max-width:760px){
+ #auth.dark-room .room-scene{background-size:auto 100%!important;background-position:82% center!important}
+ #auth.dark-room .lamp-pull{right:calc(50% - 18px)!important;top:clamp(105px,28vh,210px)!important;width:38px!important;height:112px!important}
+}

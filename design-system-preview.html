@@ -1,0 +1,21 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>NEXORA — Design System v203</title>
+<link rel="stylesheet" href="v203-design-system.css">
+<style>html{background:#060818;min-height:100%}body{margin:0;background:radial-gradient(ellipse at 50% -10%,#25216b 0,#0a1240 40%,#060818 80%) no-repeat;min-height:100vh;color:var(--sq-ink);font-family:var(--sq-font-body);padding:var(--sq-s-5) 0 calc(var(--sq-s-7) + var(--sq-safe-b))}h2{margin:var(--sq-s-6) 0 var(--sq-s-3)}.ico{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:10px}.ico div{display:grid;justify-items:center;gap:6px;padding:12px 4px;border:1px solid var(--sq-line);border-radius:var(--sq-r-md);font-size:11px;color:var(--sq-ink-2)}.ico .sq-icon{width:26px;height:26px;color:var(--sq-gold-300)}</style></head>
+<body><main class="sq-container">
+<p class="sq-caption">NEXORA · DESIGN SYSTEM v203</p>
+<h1 class="sq-display sq-gradient-text">NEXORA</h1>
+<p class="sq-text">هوية بصرية موحّدة: أزرق · بنفسجي · ذهبي. كل المكوّنات دي بتتستخدم في باقي الشاشات.</p>
+<h2 class="sq-title">Buttons</h2>
+<div class="sq-row"><button class="sq-btn sq-btn--primary sq-btn--lg"><span data-sq-icon="sparkles"></span>Primary</button><button class="sq-btn sq-btn--gold"><span data-sq-icon="crown"></span>Gold</button><button class="sq-btn">Default</button><button class="sq-btn sq-btn--ghost">Ghost</button><button class="sq-btn sq-btn--danger"><span data-sq-icon="trash"></span>Delete</button><button class="sq-btn sq-btn--icon" aria-label="Notifications"><span data-sq-icon="bell"></span></button><button class="sq-btn" disabled>Disabled</button></div>
+<h2 class="sq-title">Cards · Inputs · Chips</h2>
+<div class="sq-grid sq-stagger">
+<article class="sq-card sq-card--glass" data-sq-glow><p class="sq-caption">Wallet</p><h3 class="sq-title"><bdi>10,000 SQ</bdi></h3><p class="sq-text">عملة افتراضية فقط.</p><span class="sq-chip is-on"><span data-sq-icon="shield"></span>Protected</span></article>
+<article class="sq-card sq-card--gold" data-sq-glow><div class="sq-row"><span class="sq-avatar" data-online="true">A</span><div><b>Ahmed</b><br><small class="sq-text">Online now</small></div><span class="sq-badge">3</span></div></article>
+<article class="sq-card"><input class="sq-input" placeholder="ابحث…" aria-label="search"><div class="sq-row" style="margin-top:12px"><span class="sq-chip">Posts</span><span class="sq-chip" aria-pressed="true">Stories</span><span class="sq-chip">Channels</span></div></article>
+<article class="sq-card"><div class="sq-skeleton" style="height:14px;width:70%"></div><div class="sq-skeleton" style="height:14px;width:45%;margin-top:10px"></div><div class="sq-skeleton" style="height:60px;margin-top:10px"></div></article>
+</div>
+<h2 class="sq-title">Icons (<span id="n"></span>)</h2><div class="ico" id="ico"></div>
+<hr class="sq-divider"><button class="sq-btn sq-btn--primary" id="t">Toast</button>
+</main>
+<script src="v203-design-system.js"></script>
+<script>document.getElementById('n').textContent=SquadDesign.icons().length;document.getElementById('ico').innerHTML=SquadDesign.icons().map(n=>'<div>'+SquadDesign.icon(n)+n+'</div>').join('');document.getElementById('t').onclick=()=>SquadDesign.toast('تم الحفظ',{kind:'success'});</script></body></html>

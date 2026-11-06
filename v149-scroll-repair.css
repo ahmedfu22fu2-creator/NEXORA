@@ -1,0 +1,37 @@
+/* v156 — stable document scrolling and restrained nested-scroll styling.
+   The social shell scrolls with the document on desktop; grids/feed wrappers are not scroll containers. */
+:root { scrollbar-gutter: stable; }
+html, body {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(210,180,110,.62) rgba(255,255,255,.035);
+}
+body { overflow-y: auto !important; }
+body::-webkit-scrollbar { width: 10px; height: 10px; }
+body::-webkit-scrollbar-thumb { background: rgba(210,180,110,.62); border: 2px solid rgba(255,255,255,.035); border-radius: 12px; }
+
+/* Keep these rules on real overflow panes only; do not promote feed/layout wrappers to scrollers. */
+#list, #oth, #ms, #bm, .dr-sheet, .dr-modal {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(210,180,110,.55) rgba(255,255,255,.045);
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+#list::-webkit-scrollbar, #oth::-webkit-scrollbar, #ms::-webkit-scrollbar,
+#bm::-webkit-scrollbar, .dr-sheet::-webkit-scrollbar, .dr-modal::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+#list::-webkit-scrollbar-thumb, #oth::-webkit-scrollbar-thumb, #ms::-webkit-scrollbar-thumb,
+#bm::-webkit-scrollbar-thumb, .dr-sheet::-webkit-scrollbar-thumb, .dr-modal::-webkit-scrollbar-thumb {
+  background: rgba(210,180,110,.55);
+  border-radius: 12px;
+}
+@supports (-webkit-overflow-scrolling: touch) {
+  #list, #oth, #ms, #bm, .dr-sheet, .dr-modal { -webkit-overflow-scrolling: touch; }
+}
+
+/* Defer paint work for off-screen cards on large desktop feeds without changing their layout or behavior. */
+@media (min-width: 901px) {
+  .dr-feed > .dr-post { content-visibility: auto; contain-intrinsic-size: auto 620px; }
+  .dr-video-feed > .dr-video-view { content-visibility: auto; contain-intrinsic-size: auto 720px; }
+}
