@@ -1,5 +1,5 @@
 # NEXORA
 
-Project archive: `NEXORA_TESTED_REPAIRED.zip`.
+Repository initialized. The project archive has not yet been uploaded.
 
-Download the ZIP from this repository and extract it to access the project files and folders.
+Source archive: `NEXORA_TESTED_REPAIRED.zip` (27 MB; 2,652 ZIP entries).
