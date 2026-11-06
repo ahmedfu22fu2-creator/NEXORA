@@ -1,15 +1,19 @@
 {
   "functions": [
     {
-      "source": "firebase-functions",
+      "source": "backend/firebase-functions",
       "codebase": "squad-primary"
     }
   ],
   "firestore": {
-    "rules": "../site/chanse1/firestore.rules",
-    "indexes": "../firestore.indexes.json"
+    "rules": "site/chanse1/firestore.rules"
   },
   "storage": {
-    "rules": "../site/chanse3/storage.rules"
+    "rules": "site/chanse3/storage.rules"
+  },
+  "hosting": {
+    "public": "dist",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "cleanUrls": true
   }
 }

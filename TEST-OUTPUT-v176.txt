@@ -1,0 +1,117 @@
+
+> the-squad@176.0.0 test
+> npm run audit:production && node scripts/smoke-tests.mjs && node scripts/localization-check.mjs && node scripts/owner-monitor-check.mjs && node scripts/account-monitor-check.mjs && node scripts/release-integrity-check.mjs && node scripts/v156-regression-check.mjs && node scripts/v157-zero-cost-messaging-check.mjs && node scripts/v158-visual-refresh-check.mjs && node scripts/v159-elevator-performance-check.mjs && node scripts/v160-aurora-check.mjs && node scripts/v161-startup-recovery-check.mjs && node scripts/v162-global-hub-check.mjs && node scripts/v163-community-evolution-check.mjs && node scripts/v164-platform-expansion-check.mjs && node scripts/v165-squad-universe-check.mjs && node scripts/v166-global-connect-check.mjs && node scripts/v167-conversation-digest-check.mjs && node scripts/v168-universe-integration-check.mjs && node scripts/v169-sync-conflict-guard-check.mjs && node scripts/v170-personal-vault-check.mjs && node scripts/v171-achievements-check.mjs && node scripts/v172-events-hub-check.mjs && node scripts/v173-shared-events-check.mjs && node scripts/v174-startup-recovery-check.mjs && node scripts/v175-startup-diagnostics-check.mjs && node scripts/v176-build-readiness-check.mjs
+
+
+> the-squad@176.0.0 audit:production
+> node scripts/audit-production.mjs
+
+PRODUCTION AUDIT PASSED — 86 local HTML references checked; four source and site folders present; test fixtures excluded; basic Firestore guard checks passed.
+SMOKE TESTS PASSED — 48 local scripts resolved; 56 JavaScript files parsed; basic Firestore checks passed.
+LOCALIZATION CHECK PASSED — English/Arabic selectable entry points, shared translator, and Service Worker cache are wired.
+PASS release metadata is v176
+PASS dashboard is English and explicitly private
+PASS owner identity remains server-verified
+PASS all privileged dashboard requests use callable endpoints
+PASS financial changes require explicit confirmation
+PASS wallet ID is read from the backend response, not hardcoded as the admin ID
+PASS private message bodies and passwords are not rendered
+PASS report text and service names are escaped
+PASS wallet payout is clearly described as manual only
+PASS dashboard handles narrow layouts and reduced motion
+PASS dashboard assets are loaded by the main page
+PASS dashboard assets are included in the new Service Worker cache
+12/12 OWNER MONITOR CHECKS PASSED
+PASS release metadata is v176
+PASS account lookup accepts exact SID or username only
+PASS account endpoints require owner authorization
+PASS account result is privacy minimized
+PASS activity uses aggregate counts, not private message reads
+PASS legacy and social report formats are both supported
+PASS report queue is read-only from the client
+PASS account UI calls only secured callable endpoints
+PASS account search and reports are in the owner dashboard
+PASS dynamic account and report fields are escaped
+PASS responsive account monitoring styling exists
+PASS deployment copy matches reviewed backend
+PASS service worker cache is v176
+13/13 ACCOUNT MONITOR CHECKS PASSED
+RELEASE INTEGRITY PASSED — v176, root + legacy manifests synced, 96 valid precache entries, all four source/site folders present.
+PASS Stage 4 bridge is emitted from the actual IIFE-local social renderer
+PASS chat-data changes notify Stage 4 without replacing legacy auth/chat functions
+PASS Stage 4 no longer relies on inaccessible window.drRender/drRoute globals
+PASS Stage 4 filtering, conversation opening and management controls remain wired
+PASS login artwork URL resolves from its CSS directory
+PASS login artwork is included in the new service-worker precache
+PASS login controls and Firebase sign-in callables are retained
+PASS backend still exports both server-verified legacy sign-in callables
+PASS document scrollbar styling targets the real page scroller
+PASS nested momentum scrolling is limited to actual overflow panes
+PASS large desktop feeds defer off-screen paint without changing scroll containers
+PASS scroll repair is loaded after the platform base stylesheet
+PASS source and deployed chanse1 directories are preserved
+PASS source and deployed chanse2 directories are preserved
+PASS source and deployed chanse3 directories are preserved
+PASS source and deployed chanse4 directories are preserved
+V156 REGRESSION CHECKS PASSED
+PASS Firestore offline persistence remains enabled
+PASS active chat query remains bounded to 100 latest messages
+PASS new images are compressed and bounded before Firestore send
+PASS new chat media handlers do not upload to Firebase Storage
+PASS new voice notes use bounded inline data URLs instead of Firebase Storage
+PASS existing Firestore rules already accept bounded image/audio data URLs
+PASS legacy Storage paths remain readable for old messages
+PASS unread fallback derives from last-message and per-user seen timestamps
+PASS posts and Cinema Storage dependencies are explicitly documented as remaining migration work
+PASS E2EE and WhatsApp-scale claims are not falsely enabled
+PASS sensitive backend file retained: site/chanse1/firestore.rules
+PASS sensitive backend file retained: site/chanse3/storage.rules
+PASS sensitive backend file retained: site/chanse4/firebase-config.js
+PASS sensitive backend file retained: backend/firebase-functions/index.js
+V157 ZERO-COST MESSAGING CHECKS PASSED
+PASS release manifests advance to v172 and remain synchronized
+PASS new visual stylesheet loads after previous platform layer
+PASS new visual stylesheet is present in Service Worker precache
+PASS platform rail, feed, stories, and side utility panels receive new styling
+PASS message center and legacy live chat receive dedicated visual treatment
+PASS mobile navigation and reduced-motion preferences are handled
+PASS Firestore rules remain present and unchanged by the visual-only release
+PASS v158 baseline rules snapshot is preserved and v173 rules are additive
+PASS preserved site folder exists: chanse1
+PASS preserved site folder exists: chanse2
+PASS preserved site folder exists: chanse3
+PASS preserved site folder exists: chanse4
+V158 VISUAL REFRESH CHECKS PASSED
+V159 ELEVATOR + PERFORMANCE CHECKS PASSED — 12 lifts, 31 building floors inspected, 21750 ms of controlled travel simulated, 1,800 movement frames, no Firestore schema changes.
+PASS release manifests are v176 and synchronized
+PASS index loads the new stylesheet after v158 and the script deferred
+PASS service worker precaches both new files under the v176 cache name
+PASS v160 script parses
+PASS layer never touches Firebase, auth or network APIs (comments excluded)
+PASS palette is accessible (dialog, combobox, listbox, active descendant, Escape)
+PASS motion and weak-device safeguards exist in CSS and JS
+PASS Arabic normalization is implemented
+PASS all new CSS classes are namespaced
+PASS preserved folder: chanse1
+PASS preserved folder: chanse2
+PASS preserved folder: chanse3
+PASS preserved folder: chanse4
+PASS Firestore rules retained with additive v173 policy
+V160 AURORA CHECKS PASSED
+STARTUP RECOVERY REGRESSION PASSED — splash has a bounded recovery path and auth-state completion marker.
+V162 GLOBAL HUB CHECKS PASSED
+V163 COMMUNITY EVOLUTION CHECKS PASSED
+v164 static integration checks passed
+v165 Squad Universe static integration checks passed
+v166 Global Connect checks passed — external translation handoff, optional browser dictation, manual translated speech, and local caption drafts are wired with limitations disclosed.
+v167 Conversation Digest checks passed — local-only extractive summary, follow-up candidates, manual review notice, and release metadata.
+v167 summarizer behavior checks passed — Arabic/English summary, follow-up extraction, question extraction, and minimum-length guard.
+v168 integration checks passed — private per-user vault, message translation handoff, friend request flow, missions, legacy world/assets bridges, and release metadata.
+v169 sync conflict guard checks passed — remote changes no longer silently overwrite unsynced local edits; user chooses which version to keep.
+v170 personal vault checks passed
+v171 member journey checks passed
+v172 events hub checks passed
+v173 shared events checks passed — UI wiring, Firestore schema, invite/RSVP ownership constraints, release assets.
+V174 STARTUP RECOVERY REGRESSION PASSED — original splash fallback and successful auth-state marker retained in v175.
+V175 STARTUP DIAGNOSTICS PASSED — local-file guidance, offline/online recovery, missing SDK diagnosis, retry control, timeout, and successful-start guard.
+V176 BUILD READINESS CHECK PASSED — package versions, build scripts, Vite config, preflight helper, manifests, and cache version are synchronized.
