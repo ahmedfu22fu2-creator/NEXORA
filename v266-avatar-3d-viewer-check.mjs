@@ -1,0 +1,4 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';
+const js=fs.readFileSync('site/v265-avatar-creator.js','utf8'),css=fs.readFileSync('site/v265-avatar-creator.css','utf8'),html=fs.readFileSync('site/index.html','utf8'),sw=fs.readFileSync('site/sw.js','utf8');
+for(const [n,v] of [['GLTFLoader',/GLTFLoader/],['WebGL renderer',/WebGLRenderer/],['local GLB parsing',/loader\.parse\(buffer/],['interactive rotation',/pointermove/],['zoom controls',/addEventListener\('wheel'/],['reset view',/data-reset-view/],['fullscreen',/data-fullscreen/],['resource cleanup',/renderer\.dispose/]]){assert.match(js,v,n);console.log('PASS',n)}
+assert.match(css,/sq266-viewer-wrap/);assert.match(html,/v265-avatar-creator.js\?v=267/);assert.match(sw,/v267-avatar-complete-pipeline/);assert.match(sw,/"v265-avatar-creator.js"/);console.log('PASS v266 viewer integration · 12 checks');

@@ -1,0 +1,12 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';import {execFileSync} from 'node:child_process';import os from 'node:os';import path from 'node:path';
+const root=process.cwd(),html=fs.readFileSync(path.join(root,'site/chanse3/store.html'),'utf8'),mirror=fs.readFileSync(path.join(root,'source/The-Squad-v137/chanse3/store.html'),'utf8'),js=fs.readFileSync(path.join(root,'site/v248-store-adaptive.js'),'utf8'),css=fs.readFileSync(path.join(root,'site/v248-store-adaptive.css'),'utf8');
+assert.equal(html,mirror,'deployed and source store pages must match');
+for(const t of ['NEXORA — المتجر الرسمي','data-item-id="${x.id}"','economyGet','economyAction','buyCar','buyEstate','buyApartment','لا توجد مدفوعات بنكية أو تحويلات أموال حقيقية مفعّلة','v248-store-adaptive.js'])assert.ok(html.includes(t),`missing ${t}`);
+assert.equal((html.match(/\{id:'[^']+',type:'/g)||[]).length,11,'preserve all 11 catalog items');
+for(const t of ['STORE SPOTLIGHT','إعلان داخل المتجر','مختارة لك','localStorage','prefers-reduced-motion','visibilitychange','MutationObserver','data-filter','data-target'])assert.ok(js.includes(t),`adaptive system missing ${t}`);
+for(const t of ['sq248-campaign','sq248-recs','@media(max-width:680px)','prefers-reduced-motion'])assert.ok(css.includes(t),`adaptive style missing ${t}`);
+assert.ok(!/MGA|mga-|wa\.me|amazon/i.test(js+css),'no MGA branding, external ads, or MGA tracking should be imported');
+const tmp=path.join(os.tmpdir(),`squad-v248-${process.pid}.mjs`);fs.writeFileSync(tmp,js);try{execFileSync(process.execPath,['--check',tmp],{stdio:'pipe'})}finally{fs.rmSync(tmp,{force:true})}
+for(const rel of ['site/version.json','site/chanse4/version.json','source/The-Squad-v137/version.json','source/The-Squad-v137/chanse4/version.json'])assert.ok(JSON.parse(fs.readFileSync(path.join(root,rel))).build>=248,`${rel} must retain or advance beyond v248`) ;
+for(const rel of ['site/sw.js','source/The-Squad-v137/sw.js']){const sw=fs.readFileSync(path.join(root,rel),'utf8');assert.ok(sw.includes('v248-store-adaptive.js'),`${rel} must precache adaptive JS`);assert.ok(sw.includes('v247-store-experience-refinement-v248-mga-adaptive-store'),`${rel} cache namespace`)}
+console.log('PASS v248: NEXORA branding applied; 11 catalog items and server-authoritative purchase actions preserved; responsive adaptive campaign + local category-interest recommendations; no MGA assets/identity/tracking imported; mirrors, versions, service-worker precache and JS syntax verified.');

@@ -1,0 +1,18 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const read=p=>fs.readFileSync(p,'utf8');
+const cafe=read('site/chanse3/cafe3.js');
+const version=JSON.parse(read('site/version.json'));
+const channel=JSON.parse(read('site/chanse4/version.json'));
+const sw=read('site/sw.js');
+assert.ok(version.build>=264);
+assert.ok(channel.build>=264);
+assert.match(cafe,/targetMouth = sp \? Math\.min\(\.95, \.12 \+ lv \* 2\.7\)/);
+assert.match(cafe,/d\.mouthOpen = .*\* \.32/);
+assert.match(cafe,/o\.rotation\.x = \(sp \?/);
+assert.match(cafe,/mouthOpen: \.035/);
+assert.match(cafe,/level\(u\)/);
+assert.match(sw,/v264-avatar-expression-lipsync-refinement/);
+assert.match(read('source/The-Squad-v137/site/chanse3/cafe3.js'),/targetMouth/);
+assert.match(read('the_squad_handoff/TheSquad/src/site/chanse3/cafe3.js'),/targetMouth/);
+console.log('v264 avatar expression / smoothed voice-driven mouth / mirror checks passed — 10 assertions');

@@ -1,0 +1,17 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const root=new URL('../',import.meta.url);
+const css=fs.readFileSync(new URL('../site/v252-profile-friends-refinement.css',import.meta.url),'utf8');
+const html=fs.readFileSync(new URL('../site/index.html',import.meta.url),'utf8');
+const sw=fs.readFileSync(new URL('../site/sw.js',import.meta.url),'utf8');
+const profile=fs.readFileSync(new URL('../site/chanse3/accounts.js',import.meta.url),'utf8');
+const friends=fs.readFileSync(new URL('../site/chanse3/social-expansion.js',import.meta.url),'utf8');
+assert.match(html,/v252-profile-friends-refinement\.css\?v=262/);
+assert.match(sw,/v252-profile-friends-refinement\.css/);
+assert.match(profile,/async function profSheet/);
+assert.match(profile,/ACCTUI=\{page,profile,askPin,prof:profSheet\}/);
+assert.match(friends,/async function loadFriends/);
+assert.match(friends,/async function removeFriend/);
+assert.match(friends,/async function blockPerson/);
+for(const token of ['.pfcard','.sq-social-hub','.sq-social-columns','prefers-reduced-motion','focus-visible','@media(max-width:680px)']) assert.ok(css.includes(token),`missing ${token}`);
+console.log('v252 profile/friends refinement checks passed');
