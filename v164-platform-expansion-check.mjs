@@ -1,0 +1,14 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const html=fs.readFileSync('site/index.html','utf8');
+const js=fs.readFileSync('site/v164-platform-expansion.js','utf8');
+const css=fs.readFileSync('site/v164-platform-expansion.css','utf8');
+const rules=fs.readFileSync('site/chanse1/firestore.rules','utf8');
+for(const f of ['achievements','clubs','market','events','profile','notices','close','search','language','lite']) assert(js.includes(`['${f}'`)||js.includes(`${f}:`),`missing feature ${f}`);
+assert(html.includes('v164-platform-expansion.js'));
+assert(html.includes('v164-platform-expansion.css'));
+assert(rules.includes('match /marketplace/{listingId}'));
+assert(rules.includes('match /events/{eventId}'));
+assert(rules.includes('match /attendees/{attendeeUid}'));
+assert(css.includes('.sq164-overlay'));
+console.log('v164 static integration checks passed');

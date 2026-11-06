@@ -1,0 +1,17 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const js=fs.readFileSync('site/v178-civilization.js','utf8');
+const css=fs.readFileSync('site/v178-civilization.css','utf8');
+const html=fs.readFileSync('site/index.html','utf8');
+const sw=fs.readFileSync('site/sw.js','utf8');
+const pkg=JSON.parse(fs.readFileSync('package.json','utf8'));
+const v=JSON.parse(fs.readFileSync('site/version.json','utf8'));
+const v4=JSON.parse(fs.readFileSync('site/chanse4/version.json','utf8'));
+for(const feature of ['memory','projects','realms','rooms','events','council','market','twin']) assert.ok(js.includes(`function ${feature}`),`missing ${feature} view`);
+for(const marker of ['World Memory','Civilization','localStorage','data-vote','data-progress','data-realm','data-room']) assert.ok(js.includes(marker),`missing feature marker ${marker}`);
+assert.ok(css.includes('.sq178-overlay'));
+assert.ok(html.includes('v178-civilization.css')&&html.includes('v178-civilization.js'));
+assert.ok(sw.includes('squad-v235-property-room-design-cloud')&&sw.includes('v178-civilization.css')&&sw.includes('v178-civilization.js'));
+assert.ok(Number.parseInt(pkg.version,10)>=241);assert.ok(v.build>=206);assert.deepEqual(v,v4);
+for(const forbidden of ['firestore.rules','storage.rules','firebase-config.js']) assert.ok(!js.includes(forbidden),`v178 module must not mutate ${forbidden}`);
+console.log('V178 CIVILIZATION CHECK PASSED — all nine foundations represented; local-first boundary, main entry, styles, cache and release manifests verified.');

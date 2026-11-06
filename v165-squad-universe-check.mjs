@@ -1,0 +1,14 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const html=fs.readFileSync('site/index.html','utf8');
+const js=fs.readFileSync('site/v165-squad-universe.js','utf8');
+const css=fs.readFileSync('site/v165-squad-universe.css','utf8');
+const sw=fs.readFileSync('site/sw.js','utf8');
+for(const id of ['overview','workspace','avatar','home','memories','map','circles','ai']) assert(js.includes(`${id}(){`)||js.includes(`${id},`),`missing ${id}`);
+assert(html.includes('v165-squad-universe.js'));
+assert(html.includes('v165-squad-universe.css'));
+assert(sw.includes('v165-squad-universe.js')&&sw.includes('v165-squad-universe.css'));
+assert(css.includes('#sq165'));
+assert(js.includes('localStorage'));
+assert(js.includes('does not')||js.includes('GPS')||js.includes('الموقع الحقيقي'));
+console.log('v165 Squad Universe static integration checks passed');

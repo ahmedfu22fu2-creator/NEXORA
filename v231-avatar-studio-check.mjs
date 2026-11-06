@@ -1,0 +1,17 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const root=new URL('../site/',import.meta.url);
+const html=fs.readFileSync(new URL('index.html',root),'utf8');
+const world=fs.readFileSync(new URL('chanse2/world.js',root),'utf8');
+const rules=fs.readFileSync(new URL('chanse1/firestore.rules',root),'utf8');
+assert.match(html,/AVATAR STUDIO · 3D SYNC/);
+assert.match(html,/data-avatar-set/);
+assert.match(html,/data-avatar-toggle/);
+assert.match(html,/SquadAvatar3D/);
+assert.match(html,/looks\/\'\+uid/);
+assert.match(world,/window\.SquadAvatar3D=/);
+assert.match(world,/parseLook\(k\)/);
+assert.match(world,/db\.doc\('looks\/'\+me\.uid\)\.set\(\{k:value\}\)/);
+assert.match(rules,/match \/looks\/\{u\}/);
+assert.match(rules,/request\.resource\.data\.k is string && request\.resource\.data\.k\.size\(\) <= 30/);
+console.log('v231 avatar studio / 3D cloud sync checks passed');

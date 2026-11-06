@@ -1,0 +1,20 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const html=fs.readFileSync('site/index.html','utf8');
+const css=fs.readFileSync('site/v195-premium-navigation.css','utf8');
+const js=fs.readFileSync('site/v195-premium-navigation.js','utf8');
+const sw=fs.readFileSync('site/sw.js','utf8');
+const version=JSON.parse(fs.readFileSync('site/version.json','utf8'));
+const nested=JSON.parse(fs.readFileSync('site/chanse4/version.json','utf8'));
+const pkg=JSON.parse(fs.readFileSync('package.json','utf8'));
+assert.ok(version.build>=206);assert.deepEqual(version,nested);assert.ok(Number.parseInt(pkg.version,10)>=241);
+assert.match(html,/v195-premium-navigation\.css/);assert.match(html,/v196-premium-navigation\.js/);
+assert.match(html,/class="sq195-nav"/);assert.match(html,/class="sq195-account"/);
+const actions=[...html.matchAll(/data-squad-open="([^"]+)"/g)].map(x=>x[1]);
+assert.equal(actions.length,14,'13 section links plus account profile shortcut');
+for(const key of ['home','messenger','accounts','stories','calls','cinema','games','world','civilization','ai','store','admin','security'])assert.ok(actions.includes(key),`navigation destination ${key} exists`);
+assert.match(css,/prefers-reduced-motion/);assert.match(css,/\.sq195-group/);assert.match(css,/\.sq195-account/);
+assert.match(js,/SquadCivilization/);assert.match(js,/SQUAD_LOAD_DISTRICT/);assert.match(js,/CINEMA/);assert.match(js,/sqAdminLaunch/);
+assert.match(sw,/squad-v235-property-room-design-cloud/);for(const f of ['v195-premium-navigation.css','v195-premium-navigation.js','v196-premium-navigation.js']){assert.ok(sw.includes(f));assert.ok(fs.existsSync('site/'+f));}
+for(const f of ['site/chanse1/app.js','site/chanse1/auth.js','site/chanse2/auth-scene.js','site/chanse3/calls.js','site/chanse2/world.js','site/v178-civilization.js'])assert.ok(fs.existsSync(f),`preserved feature ${f}`);
+console.log('V195 PREMIUM NAVIGATION CHECK PASSED — six groups, 13 destinations, account footer, route bridges, reduced-motion styling, and precache wiring verified.');

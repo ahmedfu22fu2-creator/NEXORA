@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import vm from 'node:vm';
+const root=new URL('../site/',import.meta.url);
+const js=fs.readFileSync(new URL('v170-personal-vault.js',root),'utf8');
+const html=fs.readFileSync(new URL('index.html',root),'utf8');
+const css=fs.readFileSync(new URL('v170-personal-vault.css',root),'utf8');
+const sw=fs.readFileSync(new URL('sw.js',root),'utf8');
+assert.match(html,/v170-personal-vault\.js/);assert.match(html,/v170-personal-vault\.css/);
+assert.match(sw,/squad-v235-property-room-design-cloud/);assert.match(sw,/v170-personal-vault\.js/);assert.match(sw,/v170-personal-vault\.css/);
+assert.match(js,/the-squad-personal-vault/);assert.match(js,/function validate\(/);assert.match(js,/2_000_000/);assert.match(js,/لا تتضمن كلمات المرور/);assert.match(css,/#sq170-vault/);
+// Run module in a minimal browser-like sandbox and validate backup schema without touching real storage.
+const store=new Map();const fakeDoc={body:{append(){}},querySelector(){return null},addEventListener(){},createElement(){return {addEventListener(){},append(){},click(){},remove(){},setAttribute(){},style:{}}}};
+const context={window:{firebase:{auth:()=>({currentUser:{uid:'test-user'}})}},document:fakeDoc,localStorage:{getItem:k=>store.get(k)||null,setItem:(k,v)=>store.set(k,v)},MutationObserver:class{observe(){}},URL:{createObjectURL(){return 'blob:test'},revokeObjectURL(){}},Blob,Date,JSON,Number,String,Array,Error,console,setTimeout,alert(){},confirm(){return true}};
+vm.runInNewContext(js,context);
+const api=context.window.SquadV170Vault;assert.equal(api.version,170);
+const valid={schema:'the-squad-personal-vault',version:1,workspace:{tasks:[],notes:[],memories:[],wallet:{coins:0,history:[]}}};assert.equal(api.validate(valid),true);
+assert.throws(()=>api.validate({...valid,workspace:{...valid.workspace,tasks:[{title:'x'.repeat(101)}]}}));
+assert.throws(()=>api.validate({...valid,version:99}));
+console.log('v170 personal vault checks passed');

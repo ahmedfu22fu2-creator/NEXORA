@@ -1,0 +1,18 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const js=fs.readFileSync('site/v179-living-universe.js','utf8');
+const css=fs.readFileSync('site/v179-living-universe.css','utf8');
+const html=fs.readFileSync('site/index.html','utf8');
+const sw=fs.readFileSync('site/sw.js','utf8');
+const pkg=JSON.parse(fs.readFileSync('package.json','utf8'));
+const a=JSON.parse(fs.readFileSync('site/version.json','utf8'));
+const b=JSON.parse(fs.readFileSync('site/chanse4/version.json','utf8'));
+for(const name of ['creator','business','cinema','npc','reputation','weather','home','map','challenge','auction','history','guide']) assert.ok(js.includes(`function ${name}`),`missing ${name} view`);
+for(const marker of ['Squad Creator','Squad Companies','Cinema Studio','Living NPCs','Reputation','Dynamic Seasons','Smart Home','Social Map','Weekly Challenges','Auction House','Civilization Chronicle','AI City Guide']) assert.ok(js.includes(marker),`missing ${marker}`);
+assert.ok(js.includes('localStorage')&&js.includes('aria-modal')&&js.includes('textContent'));
+assert.ok(css.includes('.sq179-overlay')&&css.includes('@media(max-width:600px)'));
+assert.ok(html.includes('v179-living-universe.css')&&html.includes('v179-living-universe.js'));
+assert.ok(sw.includes('squad-v235-property-room-design-cloud')&&sw.includes('v179-living-universe.css')&&sw.includes('v179-living-universe.js'));
+assert.ok(Number.parseInt(pkg.version,10)>=241);assert.ok(a.build>=206);assert.deepEqual(a,b);
+for(const forbidden of ['firestore.rules','storage.rules','firebase-config.js','fetch(','XMLHttpRequest','WebSocket']) assert.ok(!js.includes(forbidden),`v179 local module must not use or mutate ${forbidden}`);
+console.log('V179 LIVING UNIVERSE CHECK PASSED — 12 local-first feature views, safe text rendering, mobile styles, entry wiring, service-worker cache and release manifests verified.');

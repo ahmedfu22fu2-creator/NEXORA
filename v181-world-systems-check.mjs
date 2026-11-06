@@ -1,0 +1,17 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const js=fs.readFileSync('site/v181-world-systems.js','utf8');
+const css=fs.readFileSync('site/v181-world-systems.css','utf8');
+const html=fs.readFileSync('site/index.html','utf8');
+const sw=fs.readFileSync('site/sw.js','utf8');
+const pkg=JSON.parse(fs.readFileSync('package.json','utf8'));
+const a=JSON.parse(fs.readFileSync('site/version.json','utf8'));
+const b=JSON.parse(fs.readFileSync('site/chanse4/version.json','utf8'));
+for(const name of ['discover','memory','civ','lab','market','community'])assert.ok(js.includes(`function ${name}`),`missing ${name} view`);
+for(const marker of ['بوابات العوالم المتغيرة','متحف ذاكرة المدينة','شجرة الحضارة','مجلس المدينة','Room Concept Lab','مساعد المدينة','جسر اللغات','مول اللاعبين','مشروع تجاري مشترك','تحدي الاختراع الجماعي','إذاعة المدينة','سمعتك المجتمعية','localStorage','aria-modal','textContent'])assert.ok(js.includes(marker),`missing ${marker}`);
+assert.ok(css.includes('.sq181-overlay')&&css.includes('@media(max-width:600px)'));
+assert.ok(html.includes('v181-world-systems.css')&&html.includes('v181-world-systems.js')&&html.includes('v182-cloud-sync.js'));
+assert.ok(sw.includes('squad-v235-property-room-design-cloud')&&sw.includes('v181-world-systems.css')&&sw.includes('v181-world-systems.js')&&sw.includes('v182-cloud-sync.js'));
+assert.ok(Number.parseInt(pkg.version,10)>=241);assert.ok(a.build>=206);assert.equal(a.version,`v${a.build}-${a.featureName}`);assert.deepEqual(a,b);
+for(const forbidden of ['firestore.rules','storage.rules','firebase-config.js','fetch(','XMLHttpRequest','WebSocket','https://'])assert.ok(!js.includes(forbidden),`local prototype must not use ${forbidden}`);
+console.log('V181 WORLD SYSTEMS CHECK PASSED — six local-first views, portals, memories, civilization, council, design lab, guide, phrasebook, economy, projects, challenges, radio and reputation verified.');

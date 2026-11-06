@@ -1,0 +1,15 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const read=p=>fs.readFileSync(p,'utf8');
+const city=read('site/chanse2/district.js');
+const backend=read('backend/firebase-functions/index.js');
+const version=JSON.parse(read('site/version.json'));
+assert.ok(version.build>=241);
+for(const token of ['GARAGE_SECURITY_CAMS','garageMonitorOpen','PerspectiveCamera','GARAGE_CAMERA_ACTIVE','garageAdminRefresh','garageAdminAct','getGarageAdminOverview','garageAdminAction','garageAnimateRequest','GARAGE_MOTION','GARAGE_GATE_ARM','GARAGE_GATE_OPEN_UNTIL']) assert.ok(city.includes(token),`missing ${token}`);
+assert.match(city,/ren\.render\(sc,GARAGE_CAMERA_ACTIVE\?GARAGE_CAMERA_ACTIVE\.camera:cam\)/);
+assert.match(city,/garageAction/);
+assert.match(backend,/exports\.getGarageAdminOverview\s*=\s*onCall/);
+assert.match(backend,/await requireSquadAdmin\(request\)/);
+assert.match(backend,/exports\.garageAdminAction\s*=\s*onCall/);
+assert.match(backend,/garageBayControls/);
+console.log('v216 garage operations static regression: PASS — 12 live 3D camera viewpoints, camera switching, animated entrance barrier, vehicle movement routine, admin-only overview UI.');

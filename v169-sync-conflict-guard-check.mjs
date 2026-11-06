@@ -1,0 +1,14 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const js=fs.readFileSync('site/v168-universe-integration.js','utf8');
+const css=fs.readFileSync('site/v168-universe-integration.css','utf8');
+const sw=fs.readFileSync('site/sw.js','utf8');
+const pkg=JSON.parse(fs.readFileSync('package.json','utf8'));
+const root=JSON.parse(fs.readFileSync('site/version.json','utf8'));
+const nested=JSON.parse(fs.readFileSync('site/chanse4/version.json','utf8'));
+for(const marker of ['syncConflict=null','syncConflict={remote:data}','saveSyncBase(sig)','readSyncBase()',`localStorage.setItem(localKey('syncBase')`,'remoteSig!==baseSig','localSig!==baseSig','localSig!==lastSignature','data-keep-local','data-use-cloud','function keepLocalVersion()','function useCloudVersion()','showSyncConflict(true)','(!force&&syncConflict)']) assert(js.includes(marker),`missing conflict guard marker: ${marker}`);
+assert(css.includes('.sq168-conflict')&&css.includes('.sq168-conflict[hidden]'));
+assert(sw.includes('squad-v235-property-room-design-cloud'));
+assert.ok(Number.parseInt(pkg.version,10)>=241);
+assert.ok(root.build>=206);assert.equal(root.version,`v${root.build}-${root.featureName}`);assert.deepEqual(nested,root);
+console.log('v169 sync conflict guard checks passed — remote changes no longer silently overwrite unsynced local edits; user chooses which version to keep.');

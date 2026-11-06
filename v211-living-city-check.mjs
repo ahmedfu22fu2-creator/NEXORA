@@ -1,0 +1,15 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const read=p=>fs.readFileSync(new URL(p,import.meta.url),'utf8');
+const city=read('../site/chanse2/district.js'),core=read('../site/chanse1/district-core.js');
+const cityMirror=read('../source/The-Squad-v137/chanse2/district.js'),coreMirror=read('../source/The-Squad-v137/chanse1/district-core.js');
+const rules=read('../site/chanse1/firestore.rules'),rulesMirror=read('../source/The-Squad-v137/chanse1/firestore.rules');
+const sw=read('../site/sw.js'),version=JSON.parse(read('../site/version.json')),pkg=JSON.parse(read('../package.json'));
+assert.ok(version.build>=241);assert.ok(Number.parseInt(pkg.version,10)>=241);assert.match(sw,/squad-v235-property-room-design-cloud/);
+assert.match(core,/id: 'garage'.*n: 3, fh: 4.6/s);assert.match(core,/FURN\.garage = function/);assert.match(core,/SP\(0,0,hd-3,3\.6,'garage'\)/);
+assert.match(city,/garage:\{lead:/);assert.match(city,/function buildAmbientTraffic\(/);assert.match(city,/function animateAmbientTraffic\(/);assert.match(city,/AMBIENT_TRAFFIC\.push/);
+assert.match(city,/function roomDecorBlocks\(/);assert.match(city,/roomDecorBlocks\(P\.x,P\.z,P\.y\)/);
+assert.match(city,/function roomDecorProperty\(/);assert.match(city,/httpsCallable\('propertyRoomLayout'\)/);assert.doesNotMatch(city,/collection\('roomLayouts'\)/);assert.match(city,/function loadRoomDecorCloud\(/);assert.match(city,/function saveRoomDecorCloud\(/);
+assert.match(read('../site/FIRESTORE-RULES-v235.rules'),/match \/propertyRoomLayouts\/{layoutId} \{ allow read, write: if false; \}/);assert.match(read('../backend/firebase-functions/index.js'),/exports\.propertyRoomLayout = onCall/);
+assert.equal(city,cityMirror,'district.js source mirror');assert.equal(core,coreMirror,'district-core.js source mirror');assert.equal(rules,rulesMirror,'Firestore rules source mirror');
+console.log('v211 living city checks: PASS — 3-floor garage, animated ambient traffic, furniture collision guard, server-authorized property room layouts, source mirrors.');

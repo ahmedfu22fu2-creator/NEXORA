@@ -1,0 +1,18 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const pkg=JSON.parse(fs.readFileSync('package.json','utf8'));
+const root=JSON.parse(fs.readFileSync('site/version.json','utf8'));
+const nested=JSON.parse(fs.readFileSync('site/chanse4/version.json','utf8'));
+const sw=fs.readFileSync('site/sw.js','utf8');
+const vite=fs.readFileSync('vite.config.mjs','utf8');
+const preflight=fs.readFileSync('scripts/v176-build-preflight.mjs','utf8');
+assert.ok(Number.parseInt(pkg.version,10)>=241);
+assert.ok(root.build>=206); assert.deepEqual(root,nested);
+assert.equal(pkg.devDependencies.vite,'^7.1.12');
+assert.equal(pkg.devDependencies.esbuild,'^0.25.12');
+assert.match(pkg.scripts.build,/vite build/);
+assert.match(pkg.scripts['build:preflight'],/v176-build-preflight/);
+assert.match(vite,/from 'vite'/); assert.match(vite,/from 'esbuild'/);
+assert.match(sw,/squad-v235-property-room-design-cloud/);
+assert.match(preflight,/npm install --no-audit --no-fund/);
+console.log('V176 BUILD READINESS CHECK PASSED — package versions, build scripts, Vite config, preflight helper, manifests, and cache version are synchronized.');

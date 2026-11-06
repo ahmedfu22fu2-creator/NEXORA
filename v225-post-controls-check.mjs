@@ -1,0 +1,17 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const js=fs.readFileSync(new URL('../site/chanse3/social-feed.js',import.meta.url),'utf8');
+const rules=fs.readFileSync(new URL('../site/chanse1/firestore.rules',import.meta.url),'utf8');
+const index=fs.readFileSync(new URL('../site/index.html',import.meta.url),'utf8');
+const sw=fs.readFileSync(new URL('../site/sw.js',import.meta.url),'utf8');
+assert.match(js,/async function editPost\(id\)/);
+assert.match(js,/async function editComment\(postId,commentId,initial\)/);
+assert.match(js,/data-edit-post/);
+assert.match(js,/data-edit-comment/);
+assert.match(js,/authorUid===uid\(\)/);
+assert.match(rules,/affectedKeys\(\)\.hasOnly\(\['text','visibility','updatedAt','status'\]\)/);
+assert.match(rules,/affectedKeys\(\)\.hasOnly\(\['text'\]\)/);
+assert.match(index,/v225-post-controls\.css/);
+assert.match(sw,/v225-post-controls\.css/);
+assert.match(sw,/v225-post-controls/);
+console.log('v225 post and comment controls checks passed');

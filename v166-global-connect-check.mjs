@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const html=fs.readFileSync('site/index.html','utf8');
+const js=fs.readFileSync('site/v166-global-connect.js','utf8');
+const css=fs.readFileSync('site/v166-global-connect.css','utf8');
+const sw=fs.readFileSync('site/sw.js','utf8');
+for(const marker of ['LIVE LANGUAGE BRIDGE','translate.google.com','SpeechRecognition','speechSynthesis','CREATOR STUDIO','noopener,noreferrer']) assert(js.includes(marker),`missing ${marker}`);
+assert(html.includes('v166-global-connect.js')&&html.includes('v166-global-connect.css'));
+assert(sw.includes('v166-global-connect.js')&&sw.includes('v166-global-connect.css'));
+assert(css.includes('#sq166'));
+assert(js.includes('لا تترجم صوت المكالمة مباشرة'));
+console.log('v166 Global Connect checks passed — external translation handoff, optional browser dictation, manual translated speech, and local caption drafts are wired with limitations disclosed.');

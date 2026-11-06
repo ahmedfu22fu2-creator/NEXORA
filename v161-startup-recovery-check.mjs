@@ -1,0 +1,10 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const html=fs.readFileSync('site/index.html','utf8');
+const app=fs.readFileSync('site/chanse1/app.js','utf8');
+const recovery=fs.readFileSync('site/v175-startup-recovery.js','utf8');
+assert.match(html,/v175-startup-recovery\.js/);
+assert.match(recovery,/startup timeout/);
+assert.match(recovery,/auth\.hidden=false/);
+assert.match(app,/window\.__squadBootReady=true/);
+console.log('STARTUP RECOVERY REGRESSION PASSED — splash has a bounded recovery path and auth-state completion marker.');

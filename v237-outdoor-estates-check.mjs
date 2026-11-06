@@ -1,0 +1,11 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const city=fs.readFileSync('site/chanse2/district.js','utf8');
+const mirror=fs.readFileSync('source/The-Squad-v137/chanse2/district.js','utf8');
+const version=JSON.parse(fs.readFileSync('site/version.json','utf8'));
+const pkg=JSON.parse(fs.readFileSync('package.json','utf8'));
+assert.equal(city,mirror,'district source mirror must match deployed source');
+for(const token of ['v237: private outdoor living','pergola lounge','garden path','waterAccent','hedgeMat','warmGlow']) assert.ok(city.includes(token),`missing outdoor estate feature: ${token}`);
+assert.ok(version.build>=241);assert.equal(version.version,`v${version.build}-${version.featureName}`);assert.ok(Number.parseInt(pkg.version,10)>=241);
+const sw=fs.readFileSync('site/sw.js','utf8');assert.ok(sw.includes('v238-social-interaction-notifications'));
+console.log('v237 outdoor estate checks passed: pergola lounge, garden walk lighting, hedges, secondary water feature, mirrored source and release cache metadata.');

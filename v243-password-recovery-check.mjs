@@ -1,0 +1,14 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const auth=fs.readFileSync(new URL('../site/chanse1/auth.js',import.meta.url),'utf8');
+const sw=fs.readFileSync(new URL('../site/sw.js',import.meta.url),'utf8');
+const version=JSON.parse(fs.readFileSync(new URL('../site/version.json',import.meta.url),'utf8'));
+assert.match(auth,/sendPasswordResetEmail\(email\)/,'password recovery must use Firebase Auth');
+assert.match(auth,/resetBusy/,'duplicate clicks must be guarded');
+assert.match(auth,/resetNextAllowedAt=Date\.now\(\)\+45000/,'successful requests must apply a cooldown');
+assert.match(auth,/auth\/too-many-requests/,'Firebase throttling must be handled');
+assert.match(auth,/الحسابات القديمة ذات @squad\.id تحتاج مسار استرداد منفصل/,'synthetic legacy addresses must not be treated as deliverable');
+assert.match(auth,/لو البريد مرتبط بحساب، هيوصلك رابط استعادة/,'success copy must not confirm account existence');
+assert.match(sw,/v246-in-game-store/,'service worker cache namespace must be bumped');
+assert.ok(version.build>=246);
+console.log('v243 password recovery checks: PASS');

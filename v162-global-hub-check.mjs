@@ -1,0 +1,17 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const html=fs.readFileSync('site/index.html','utf8');
+const js=fs.readFileSync('site/v162-global-hub.js','utf8');
+const css=fs.readFileSync('site/v162-global-hub.css','utf8');
+const sw=fs.readFileSync('site/sw.js','utf8');
+const root=JSON.parse(fs.readFileSync('site/version.json','utf8'));
+const nested=JSON.parse(fs.readFileSync('site/chanse4/version.json','utf8'));
+assert.ok(root.build>=206);assert.deepEqual(root,nested);
+assert.match(html,/v162-global-hub\.css/);assert.match(html,/v162-global-hub\.js/);
+assert.match(sw,/squad-v235-property-room-design-cloud/);assert.match(sw,/v162-global-hub\.js/);assert.match(sw,/v162-global-hub\.css/);
+for(const feature of ['publicProfiles','posts','SquadSocial.publish','users/${uid()}/blocked','data-sq162-unblock','localStorage','aria-modal'])assert.ok(js.includes(feature),`missing feature contract: ${feature}`);
+assert.match(js,/visibility','==','public/);assert.match(js,/status','==','published/);
+assert.match(js,/SQUAD_LOAD_DISTRICT/);assert.match(js,/SQUAD_LOAD_WORLD/);
+assert.match(css,/@media\(max-width:680px\)/);
+assert.ok(!js.includes('firebaseConfig')&&!js.includes('apiKey'));
+console.log('V162 GLOBAL HUB CHECKS PASSED');

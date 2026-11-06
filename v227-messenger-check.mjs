@@ -1,0 +1,20 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const app=fs.readFileSync('site/chanse1/app.js','utf8');
+const rules=fs.readFileSync('site/chanse1/firestore.rules','utf8');
+const sw=fs.readFileSync('site/sw.js','utf8');
+const version=JSON.parse(fs.readFileSync('site/version.json','utf8'));
+assert.match(app,/id="chat-searchbar"/,'chat search toolbar exists');
+assert.match(app,/Object\.entries\(M\)\.filter/,'search filters loaded conversation messages');
+assert.match(app,/limitToLast\(100\)/,'search scope is explicit: latest 100 loaded messages');
+assert.match(app,/\['d\.'\+me\.uid\]:FV\.serverTimestamp\(\)/,'recipient records delivery receipt');
+assert.match(app,/delivered\?'✓✓':'✓'/,'message UI distinguishes sent from delivered');
+assert.match(rules,/Recipient delivery receipt/,'delivery rule is documented');
+assert.match(rules,/affectedKeys\(\)\.hasOnly\(\['d'\]\)/,'delivery update is isolated to delivery map');
+assert.match(rules,/affectedKeys\(\)\.hasOnly\(\[request\.auth\.uid\]\)/,'recipient can update only own receipt key');
+assert.match(sw,/v227-messenger-search-delivery/,'service worker cache namespace bumped');
+assert.match(sw,/v227-messenger\.css/,'new messenger stylesheet is cached');
+assert.ok(version.currentPhase>=227);
+assert.ok(version.currentPhase>=229);
+
+console.log('PASS v227 messenger search and delivery receipt checks');

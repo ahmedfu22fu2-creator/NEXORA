@@ -1,0 +1,14 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const js=fs.readFileSync(new URL('../site/chanse3/social-expansion.js',import.meta.url),'utf8');
+const rules=fs.readFileSync(new URL('../site/chanse1/firestore.rules',import.meta.url),'utf8');
+assert.match(js,/async function loadFriends/);
+assert.match(js,/async function removeFriend/);
+assert.match(js,/async function blockPerson/);
+assert.match(js,/httpsCallable\('resolveAccountId'\)/);
+assert.match(js,/data-sq-remove/);
+assert.match(js,/data-sq-block/);
+assert.match(js,/قائمة أصدقائك/);
+assert.match(rules,/match \/users\/\{u\}\/blocked\/\{b\}/);
+assert.match(rules,/match \/users\/\{ownerUid\}\/friends\/\{friendUid\}/);
+console.log('v224 friends relationships checks passed');

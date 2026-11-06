@@ -1,0 +1,17 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const html=fs.readFileSync('site/index.html','utf8');
+const recovery=fs.readFileSync('site/v175-startup-recovery.js','utf8');
+const app=fs.readFileSync('site/chanse1/app.js','utf8');
+const sw=fs.readFileSync('site/sw.js','utf8');
+assert.match(html,/v175-startup-recovery\.js/);
+assert.match(recovery,/startup timeout after 12s/);
+assert.match(recovery,/window\.addEventListener\('error'/);
+assert.match(recovery,/window\.addEventListener\('unhandledrejection'/);
+assert.match(recovery,/window\.addEventListener\('online'/);
+assert.match(recovery,/window\.addEventListener\('offline'/);
+assert.match(recovery,/squadBootRetry/);
+assert.match(app,/window\.__squadBootReady=true/);
+assert.match(sw,/squad-v235-property-room-design-cloud/);
+assert.match(sw,/v175-startup-recovery\.js/);
+console.log('V174 STARTUP RECOVERY REGRESSION PASSED — original splash fallback and successful auth-state marker retained in v175.');

@@ -1,0 +1,17 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const read=p=>fs.readFileSync(new URL(p,import.meta.url),'utf8');
+const city=read('../site/chanse2/district.js');
+const rules=read('../site/chanse1/firestore.rules');
+const version=JSON.parse(read('../site/version.json'));
+assert.match(city,/function garageWatchCloud\(/,'garage reservations have a Firestore realtime listener');
+assert.match(city,/httpsCallable\('reserveGarageBay'\)/,'bay claims use the server transaction endpoint');
+assert.match(city,/already-exists/,'occupied bay claims are rejected');
+assert.match(city,/garageReservations/,'cloud reservations use a dedicated collection');
+assert.match(city,/camBody/,'CCTV housings are rendered in the 3D garage');
+assert.match(city,/dstGarageRefresh/,'garage status can be refreshed from its panel');
+assert.match(rules,/match \/garageReservations\/{slotId}/,'Firestore rules define garage reservations');
+assert.match(rules,/allow create, update, delete: if false/,'reservation mutations are server-only');
+assert.ok(version.build>=241);
+const pkg=JSON.parse(read('../package.json'));assert.ok(Number.parseInt(pkg.version,10)>=241);
+console.log('v217 garage cloud foundation: PASS — realtime slot listener, server-transactional claim, server-only rules, 3D CCTV housings and release metadata.');

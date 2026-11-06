@@ -1,0 +1,14 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const settings=fs.readFileSync(new URL('../site/chanse3/settings.js',import.meta.url),'utf8');
+const sw=fs.readFileSync(new URL('../site/sw.js',import.meta.url),'utf8');
+const version=JSON.parse(fs.readFileSync(new URL('../site/version.json',import.meta.url),'utf8'));
+assert.match(settings,/data-sx="resendVerification"/,'real-email accounts must have a resend verification action');
+assert.match(settings,/sendEmailVerification\(\)/,'resend action must call Firebase Auth');
+assert.match(settings,/data-sx="refreshVerification"/,'users need a way to refresh verification state');
+assert.match(settings,/auth\.currentUser\.reload\(\)/,'verification state must be refreshed from Firebase Auth');
+assert.match(settings,/@squad\\\.id\$\/i/,'legacy synthetic emails must not be offered email verification');
+assert.match(settings,/ربط بريد إلكتروني حقيقي/,'legacy recovery limitation must be disclosed');
+assert.match(sw,/v246-in-game-store/,'service worker cache namespace must change');
+assert.ok(version.build>=242,'release must retain the email-verification baseline');
+console.log('v242 email verification checks: PASS');

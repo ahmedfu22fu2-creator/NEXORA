@@ -1,0 +1,17 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const base=new URL('../site/',import.meta.url);
+const read=n=>fs.readFileSync(new URL(n,base),'utf8');
+const html=read('index.html'),css=read('v220-auth-door.css'),js=read('v220-auth-door.js'),auth=read('chanse1/auth.js'),sw=read('sw.js'),version=JSON.parse(read('version.json'));
+for(const token of ['v220-auth-door.css','v220-auth-door.js','id="auth"','id="lid"','id="pw"','id="go"','id="resetPassword"'])assert.ok(html.includes(token),`index.html missing ${token}`);
+for(const token of ['sq220-intro','sq220-door-frame','sq220-door','sq220-handle','sq220-light','sq220-floor','sq220-skip','sq220-sound'])assert.ok(js.includes(token),`door JS missing ${token}`);
+for(const token of ['@keyframes sq220-door-in','@keyframes sq220-open','prefers-reduced-motion','sq220-remember','sq220-id-count'])assert.ok(css.includes(token),`door CSS missing ${token}`);
+assert.match(js,/openTimer=setTimeout\(\(\)=>intro\.classList\.add\('sq220-opening'\),5500\)/,'door must begin opening at 5.5 seconds');
+assert.match(js,/timer=setTimeout\(finishIntro,7000\)/,'first-time cinematic sequence must reveal login at 7 seconds');
+assert.match(js,/sq220-door-seen/,'repeat visit should use the shortened intro');
+assert.match(auth,/replace\(\/\\s\+\/g,''\)/,'formatted personal ID spaces must be removed before Firebase auth');
+assert.match(auth,/Auth\.Persistence\[keep\?'LOCAL':'SESSION'\]/,'remember-me must select Firebase persistence');
+assert.match(auth,/auth\/too-many-requests/,'temporary lockout message should be mapped');
+assert.match(sw,/v220-auth-door\.css/);assert.match(sw,/v220-auth-door\.js/);
+assert.ok(version.build>=241);assert.ok(version.featurePhase>=220);
+console.log('v220 auth door checks: PASS');

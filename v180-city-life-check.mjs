@@ -1,0 +1,17 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const js=fs.readFileSync('site/v180-city-life.js','utf8');
+const css=fs.readFileSync('site/v180-city-life.css','utf8');
+const html=fs.readFileSync('site/index.html','utf8');
+const sw=fs.readFileSync('site/sw.js','utf8');
+const pkg=JSON.parse(fs.readFileSync('package.json','utf8'));
+const a=JSON.parse(fs.readFileSync('site/version.json','utf8'));
+const b=JSON.parse(fs.readFileSync('site/chanse4/version.json','utf8'));
+for(const name of ['dashboard','career','homes','missions','market','clubs'])assert.ok(js.includes(`function ${name}`),`missing ${name} view`);
+for(const marker of ['Career Center','Real Estate','Daily Missions','Community Market','Clubs & Crews','localStorage','aria-modal','textContent'])assert.ok(js.includes(marker),`missing ${marker}`);
+assert.ok(css.includes('.sq180-overlay')&&css.includes('@media(max-width:600px)'));
+assert.ok(html.includes('v180-city-life.css')&&html.includes('v180-city-life.js'));
+assert.ok(sw.includes('squad-v235-property-room-design-cloud')&&sw.includes('v180-city-life.css')&&sw.includes('v180-city-life.js'));
+assert.ok(Number.parseInt(pkg.version,10)>=241);assert.ok(a.build>=206);assert.equal(a.version,`v${a.build}-${a.featureName}`);assert.deepEqual(a,b);
+for(const forbidden of ['firestore.rules','storage.rules','firebase-config.js','fetch(','XMLHttpRequest','WebSocket','https://'])assert.ok(!js.includes(forbidden),`local module must not use ${forbidden}`);
+console.log('V180 CITY LIFE CHECK PASSED — six local-first views, safe text rendering, fictional points, mobile styles, entry wiring and synchronized release manifests verified.');

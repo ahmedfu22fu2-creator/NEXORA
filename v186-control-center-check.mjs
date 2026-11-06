@@ -1,0 +1,17 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const read=p=>fs.readFileSync(p,'utf8');
+const js=read('site/v186-control-center.js'),css=read('site/v186-control-center.css'),html=read('site/index.html'),sw=read('site/sw.js');
+const manifest=JSON.parse(read('site/version.json'));
+assert.ok(manifest.build>=206);assert.equal(manifest.version,`v${manifest.build}-${manifest.featureName}`);
+assert.deepEqual(JSON.parse(read('site/chanse4/version.json')),manifest);
+assert.match(html,/v186-control-center\.css/);assert.match(html,/v186-control-center\.js/);
+assert.match(sw,/squad-v235-property-room-design-cloud/);assert.match(sw,/v186-control-center\.js/);assert.match(sw,/v186-control-center\.css/);
+for(const f of ['site/v186-control-center.js','site/v186-control-center.css'])assert.ok(fs.existsSync(f));
+for(const k of ['lite','reduceMotion','compact','largeText'])assert.ok(js.includes(k));
+assert.match(js,/navigator\.onLine/);assert.match(js,/serviceWorker/);assert.match(js,/Firebase SDK/);
+assert.match(js,/لا يثبت نجاح تسجيل الدخول أو اتصال Firebase/);
+assert.match(css,/prefers-reduced-motion/);assert.match(css,/data-squad-lite/);
+const suite=read('site/v184-universe-suite.js');
+assert.match(suite,/\$\{esc\(x\.title\)\}/);assert.match(suite,/\$\{esc\(x\.detail\)\}/);
+console.log('V186 CONTROL CENTER REGRESSION PASSED under v187 — preferences, weak-device mode, accessibility, runtime diagnostics, release wiring and escaped local-memory rendering verified.');
