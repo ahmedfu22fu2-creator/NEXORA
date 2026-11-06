@@ -1,0 +1,4 @@
+/* NEXORA v225 — accessible post and comment editing controls */
+.dr-post-actions button[data-edit-post],.dr-comment button[data-edit-comment]{border:1px solid #c5a45b66;background:#c5a45b12;color:#e7cb8c;border-radius:9px;padding:7px 11px;cursor:pointer}
+.dr-post-actions button[data-edit-post]:hover,.dr-comment button[data-edit-comment]:hover{background:#c5a45b25}
+.dr-post-actions button:focus-visible,.dr-comment button:focus-visible{outline:2px solid #e7cb8c;outline-offset:2px}

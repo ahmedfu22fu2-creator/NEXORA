@@ -1,0 +1,19 @@
+/* NEXORA v253 — messenger visual and usability refinement */
+#chat-searchbar{position:sticky;top:0;z-index:4;display:flex;align-items:center;gap:10px;padding:10px 12px;background:rgba(13,13,22,.94);border-bottom:1px solid rgba(151,132,255,.16);backdrop-filter:blur(16px)}
+#chat-search{min-width:0;min-height:44px;padding:10px 14px;border:1px solid rgba(160,145,220,.2);border-radius:14px;background:rgba(255,255,255,.045);color:var(--tx,#f4f1ff);outline:none;transition:border-color .18s ease,box-shadow .18s ease}
+#chat-search::placeholder{color:rgba(220,215,240,.52)}
+#chat-search:focus-visible{border-color:#9b87ff;box-shadow:0 0 0 3px rgba(139,112,255,.18)}
+#chat-search-count{flex:0 0 auto;color:rgba(218,212,240,.68);font-size:11px;white-space:nowrap}
+#ms{overscroll-behavior:contain;scrollbar-gutter:stable}
+#ms .m{max-width:min( min(78%,620px), calc(100% - 20px) );overflow-wrap:anywhere;border:1px solid rgba(255,255,255,.055);box-shadow:0 8px 24px rgba(0,0,0,.12);transition:border-color .16s ease,box-shadow .16s ease}
+#ms .m.me{border-color:rgba(126,105,255,.2);background-image:linear-gradient(145deg,rgba(111,86,220,.12),transparent 70%)}
+#ms .m.sel,#ms .m:focus-within{border-color:rgba(165,145,255,.48);box-shadow:0 10px 28px rgba(0,0,0,.2)}
+#ms .m img.ph{max-width:min(100%,360px);height:auto;object-fit:contain;border-radius:13px}
+#ms .m audio{max-width:100%}
+#ms .m .ac{display:flex;flex-wrap:wrap;gap:5px}
+#ms .m .ac [data-a]{display:inline-flex;align-items:center;justify-content:center;min-width:32px;min-height:32px;border-radius:10px;background:rgba(255,255,255,.045)}
+#ms .m .ac [data-a]:focus-visible{outline:2px solid #a99cff;outline-offset:2px}
+#ms .dy{position:sticky;top:4px;z-index:2;width:max-content;max-width:90%;margin:14px auto;padding:5px 11px;border:1px solid rgba(255,255,255,.09);border-radius:99px;background:rgba(22,20,35,.88);color:#c8c0e8;font-size:11px;backdrop-filter:blur(10px)}
+#ms .es{margin:28px auto;padding:22px 16px;max-width:360px;border:1px dashed rgba(164,145,255,.22);border-radius:18px;background:rgba(255,255,255,.025);color:rgba(230,225,245,.72);text-align:center}
+@media(max-width:600px){#chat-searchbar{padding:8px;gap:7px}#chat-search{min-height:42px;padding:9px 11px;font-size:14px}#chat-search-count{font-size:10px}#ms .m{max-width:88%}}
+@media(prefers-reduced-motion:reduce){#chat-search,#ms .m{transition:none!important}}

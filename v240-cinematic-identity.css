@@ -1,0 +1,84 @@
+/* NEXORA v240 — cinematic entry + editorial social workspace.
+   Additive presentation layer only: no auth, routing, Firebase, or data behavior is replaced. */
+:root{--sq240-ink:#f4f5fb;--sq240-muted:#a5abc0;--sq240-blue:#65b9ff;--sq240-violet:#9c83ff;--sq240-gold:#d9bd82;--sq240-line:rgba(165,185,255,.17)}
+/* ENTRY: a restrained cinematic skyline, not a generic neon template. */
+#auth{min-height:100svh;min-height:100dvh;display:flex;align-items:center;justify-content:flex-end;padding:clamp(18px,5vw,76px);overflow:hidden;isolation:isolate;background:
+ radial-gradient(ellipse at 23% 64%,rgba(46,105,176,.24),transparent 36%),
+ radial-gradient(ellipse at 48% 20%,rgba(105,79,177,.18),transparent 35%),
+ linear-gradient(112deg,#050912 0%,#091326 48%,#090b17 100%)!important}
+#auth[hidden]{display:none!important}
+#auth:before{content:"";position:absolute;z-index:-1;inset:0;pointer-events:none;background:
+ linear-gradient(180deg,transparent 42%,rgba(4,7,14,.22) 62%,#05070d 100%),
+ repeating-linear-gradient(90deg,transparent 0 5.7%,rgba(105,158,225,.035) 5.75% 5.85%,transparent 5.9% 11.5%),
+ linear-gradient(90deg,rgba(5,9,18,.08),rgba(5,9,18,.12) 52%,rgba(5,7,14,.76));}
+#auth:after{content:"NEXORA\A YOUR WORLD. YOUR PEOPLE.\A\A A SOCIAL UNIVERSE, BUILT AROUND YOU.";white-space:pre;position:absolute;z-index:0;left:clamp(24px,8vw,132px);top:50%;transform:translateY(-50%);width:min(43vw,610px);color:#f4f4fb;font:800 clamp(28px,4.5vw,62px)/1.16 Sora,Inter,sans-serif;letter-spacing:.055em;text-shadow:0 12px 55px #000;pointer-events:none;background:linear-gradient(100deg,#fff 0%,#d5e6ff 52%,#b6a6ff 100%);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+/* layered skyline silhouettes */
+#auth .sq240-skyline{display:none}
+#auth .card{z-index:5;width:min(100%,448px);max-height:calc(100dvh - 36px);margin:0 clamp(0px,3vw,38px) 0 0;padding:clamp(22px,3vw,34px);border:1px solid rgba(177,196,255,.22);border-radius:24px;background:linear-gradient(150deg,rgba(17,25,43,.94),rgba(8,12,23,.97) 70%);box-shadow:0 32px 100px #0009,0 0 0 1px #ffffff08,inset 0 1px #ffffff13;backdrop-filter:blur(22px) saturate(1.18)}
+#auth .card:before{content:"";position:absolute;inset:0 18% auto;height:1px;background:linear-gradient(90deg,transparent,#9bcaffaa,#c5a8ff88,transparent)}
+#auth .auth-card-head{margin-bottom:20px}
+#auth .auth-card-head .auth-kicker{display:inline-flex;align-items:center;gap:8px;color:#b8c8eb;font:700 10px/1.4 Inter,sans-serif;letter-spacing:.2em}
+#auth .auth-card-head .auth-kicker:before{content:"";width:22px;height:1px;background:var(--sq240-gold);box-shadow:0 0 12px #d9bd82}
+#auth .auth-card-head h1{margin:10px 0 7px;font:750 clamp(24px,3vw,32px)/1.2 Sora,"IBM Plex Sans Arabic",sans-serif;letter-spacing:-.035em;color:#f5f7ff}
+#auth .auth-card-head p{max-width:34ch;color:#aab4cb;font-size:13px;line-height:1.75}
+#auth .tb{padding:4px;margin:18px 0 20px;border:1px solid #9eb8e51c;border-radius:13px;background:#070d19}
+#auth .tb button{min-height:42px;border-radius:10px;color:#aab4c8;font-size:12px;transition:background .22s,color .22s,box-shadow .22s}
+#auth .tb button.on{color:#f8faff;background:linear-gradient(110deg,#244c78,#54428c);box-shadow:inset 0 1px #ffffff26,0 5px 18px #030711}
+#auth .card label{margin:13px 0;color:#dce4f4;font-size:12px;font-weight:650}
+#auth .card input:not([type=checkbox]),#auth .card textarea,#auth .card select{min-height:49px;border:1px solid #a6bde426;border-radius:12px;background:rgba(4,9,18,.78);color:#f5f7ff;transition:border-color .2s,box-shadow .2s,background .2s}
+#auth .card input:focus,#auth .card textarea:focus,#auth .card select:focus{border-color:#79bfff;box-shadow:0 0 0 3px #5aaeff20;background:#071225}
+#auth .card input::placeholder{color:#69758e}
+#auth #go{min-height:51px;margin-top:18px;border:1px solid #a9d8ff45;border-radius:13px;background:linear-gradient(105deg,#267bc0 0%,#5363c7 55%,#7958ad 100%);color:#fff;box-shadow:0 12px 30px #2b66aa36,inset 0 1px #ffffff35;font-size:14px;letter-spacing:.01em;transition:transform .2s,filter .2s,box-shadow .2s}
+#auth #go:hover{filter:brightness(1.1);transform:translateY(-1px);box-shadow:0 16px 36px #2b66aa55}
+#auth #resetPassword,#auth .card .gh{color:#a9cbf4;text-decoration:none}
+#auth #aerr{color:#ffaaa9}
+#auth .auth-card-foot{margin-top:22px;color:#71809b}
+#auth .auth-card-foot small{font:700 9px Inter,sans-serif;letter-spacing:.2em}
+#auth .auth-card-foot span{background:linear-gradient(90deg,transparent,#7892b455,transparent)}
+/* Keep the existing portal intro, but refine its materials and visual hierarchy. */
+#auth .sq202-portal-stage{background:radial-gradient(ellipse at 50% 46%,#253b69 0,#101a32 43%,#050912 82%)!important}
+#auth .sq202-portal-copy h2{letter-spacing:.13em;text-shadow:0 12px 48px #0009,0 0 36px #85bfff35}
+#auth .sq202-gate{filter:drop-shadow(0 0 30px #659cff55)}
+#auth .sq202-gate-ring{background:linear-gradient(135deg,#e8d6a6,#6daeff 38%,#9b83e9 72%,#e8d6a6) border-box;box-shadow:0 0 24px #669fff77,inset 0 0 18px #d8e7ff66}
+#auth .sq202-gate-core{background:radial-gradient(ellipse at 50% 44%,#8eb9e9 0,#3d5791 28%,#172341 62%,#050912 82%)}
+#auth .sq202-enter{border:1px solid #b7d8ff66;background:linear-gradient(105deg,#245b91,#5550a0 58%,#8061a8);box-shadow:0 14px 42px #07122699,inset 0 1px #ffffff30}
+/* SOCIAL: quiet luxury, editorial spacing, clear content hierarchy. */
+#app{background:radial-gradient(ellipse at 68% 0,rgba(53,82,139,.14),transparent 36%),#070a11;color:var(--sq240-ink)}
+#social-shell{--sq195-gold:#a9c9ef;--sq195-gold-hi:#e5efff;--sq195-muted:#8c9ab2;gap:clamp(12px,1.6vw,22px)!important;padding:clamp(10px,1.6vw,22px)!important;grid-template-columns:minmax(218px,252px) minmax(0,1fr) minmax(210px,250px)!important;align-items:start!important}
+#social-rail.sq195-rail{top:14px;height:calc(100dvh - 28px);min-height:520px;padding:18px 13px;background:linear-gradient(165deg,rgba(17,24,38,.97),rgba(8,12,20,.98));border:1px solid rgba(151,184,235,.16);border-radius:20px;box-shadow:0 24px 70px #0006}
+.sq195-rail .dr-brand{border-color:#9ebee51c}
+.sq195-rail .dr-brand-mark{border-color:#8cb8ed66;background:linear-gradient(145deg,#203550,#101827);color:#dceaff;box-shadow:inset 0 0 18px #7dbbff14,0 0 20px #6eaaff12}
+.sq195-rail .dr-brand small{color:#8caed6}
+.sq195-workspace{border-color:#8eb8e522;background:#78aeea0a;color:#cbd8ec}
+.sq195-live-dot{background:#8ec9ff;box-shadow:0 0 10px #8ec9ff}
+.sq195-group[open]{border-color:#8eb8e522;background:linear-gradient(110deg,#75a9e90c,#ffffff03)}
+.sq195-group>summary>i,.sq195-subnav button>span{color:#a9cfff}
+.sq195-group>summary:after{color:#8299b8}
+.sq195-subnav button:hover,.sq195-subnav button:focus-visible{border-color:#8eb8e533;background:#83baff12;color:#eef6ff}
+.sq195-subnav button.is-current{border-color:#8eb8e544;background:linear-gradient(90deg,#83baff1d,#83baff05);color:#eaf4ff}
+.sq195-account{border-color:#8eb8e52c;background:linear-gradient(120deg,#7fb7f011,#ffffff04);color:#eaf2ff}
+.sq195-avatar{border-color:#8eb8e577;background:#1d3048;color:#eaf4ff}
+#social-main{min-width:0;padding:clamp(3px,1vw,12px) 0 28px}
+#social-main .dr-top{position:sticky;top:0;z-index:15;display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:76px;margin:0 0 18px;padding:12px 18px;border:1px solid #9ebee51a;border-radius:17px;background:rgba(10,15,25,.88);box-shadow:0 12px 34px #0003;backdrop-filter:blur(18px)}
+#dr-title{color:#f1f5ff;font:750 clamp(20px,2.4vw,27px)/1.2 Sora,"IBM Plex Sans Arabic",sans-serif;letter-spacing:-.025em}
+#dr-subtitle{margin-top:5px;color:#8f9db4;font-size:11px}
+#social-main .dr-icon-btn{border:1px solid #9ebee52b;border-radius:12px;background:#111c2c;color:#cde2ff}
+#dr-screen{min-width:0}
+#social-aside{position:sticky;top:14px;display:grid;gap:14px;max-height:calc(100dvh - 28px);overflow:auto;padding:0 0 10px}
+#social-aside .dr-side-card{border:1px solid #9ebee51c;border-radius:18px;background:linear-gradient(155deg,rgba(18,27,43,.94),rgba(9,14,23,.97));box-shadow:0 16px 42px #0004;padding:16px}
+#social-aside .dr-side-card h3{color:#e4edfc;font-size:13px}
+#social-aside .dr-shortcut{border-color:transparent;border-radius:12px;color:#c0cce0;transition:background .2s,border-color .2s,transform .2s}
+#social-aside .dr-shortcut:hover{border-color:#8eb8e522;background:#82b9f00c;transform:translateX(-2px)}
+#social-aside .dr-shortcut>i{border:1px solid #8eb8e52b;border-radius:10px;background:#83baff0e;color:#a9d1ff}
+#social-aside .dr-empty{color:#8c9ab2}
+/* Mobile navigation becomes a discreet floating dock. */
+.dr-mobile-nav{border:1px solid #a4c6f02c!important;border-radius:18px!important;background:rgba(9,15,25,.94)!important;box-shadow:0 14px 44px #0009!important;backdrop-filter:blur(18px)}
+.dr-mobile-nav button{color:#9eacc3!important}
+.dr-mobile-nav button.active{color:#d9eaff!important}
+.dr-mobile-nav button.create{background:linear-gradient(135deg,#347db7,#685ab1)!important;box-shadow:0 7px 22px #477bb755!important}
+/* Wide layouts keep the feed central; compact devices drop the auxiliary rail. */
+@media(max-width:1180px){#social-shell{grid-template-columns:minmax(205px,225px) minmax(0,1fr)!important}#social-aside{display:none!important}}
+@media(max-width:760px){#auth{justify-content:center;padding:16px}#auth:after{content:"NEXORA\A YOUR WORLD. YOUR PEOPLE.";top:10%;left:0;width:100%;padding:0 20px;text-align:center;font-size:clamp(25px,8vw,40px);transform:none}#auth .card{margin:clamp(150px,30vh,230px) 0 12px;width:min(100%,460px);max-height:calc(100dvh - 170px);padding:22px;border-radius:20px}#social-shell{grid-template-columns:1fr!important;padding:8px!important;gap:8px!important}#social-rail.sq195-rail{display:none!important}#social-main{padding:0 0 88px}#social-main .dr-top{position:relative;top:auto;min-height:66px;padding:10px 13px;margin-bottom:12px}#social-aside{display:none!important}}
+@media(max-width:390px){#auth .card{padding:18px;margin-top:145px}#auth .auth-card-head h1{font-size:23px}}
+@media(prefers-reduced-motion:reduce){#auth *,#social-shell *{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}}
+html.squad-lite #auth .card,html.squad-lite #social-main .dr-top,html.squad-lite #social-aside .dr-side-card{backdrop-filter:none!important;box-shadow:0 10px 28px #0005}

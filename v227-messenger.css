@@ -1,0 +1,5 @@
+/* NEXORA v227 — Messenger search and delivery receipts */
+#chat-searchbar{display:flex;gap:8px;align-items:center;padding:7px 12px;background:var(--p2);border-bottom:1px solid var(--ln)}
+#chat-search{min-width:0;flex:1;background:transparent;color:inherit;border:1px solid var(--ln);border-radius:12px;padding:8px 11px}
+#chat-search-count{font-size:11px;color:var(--mu);white-space:nowrap}
+.tm b.delivered{opacity:.8}

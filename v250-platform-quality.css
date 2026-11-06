@@ -1,0 +1,48 @@
+/* NEXORA v250 — platform-wide quality layer.
+   Additive only: preserves feature layouts, handlers, Firebase contracts and the existing brand. */
+:root{
+  --sq250-focus:#b9d5ff;
+  --sq250-line:rgba(143,174,238,.18);
+  --sq250-surface:rgba(12,18,34,.78);
+  --sq250-ease:cubic-bezier(.2,.75,.25,1);
+}
+html{scroll-behavior:smooth;text-size-adjust:100%;-webkit-text-size-adjust:100%}
+body{min-width:320px;overflow-x:clip;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+:where(button,input,textarea,select){font:inherit}
+:where(button,a,[role="button"],input,textarea,select,[tabindex]):focus-visible{
+  outline:3px solid var(--sq250-focus)!important;
+  outline-offset:3px!important;
+}
+:where(img,video,canvas,svg){max-inline-size:100%}
+#social-shell,#social-main,#social-aside,#dr-screen{min-width:0}
+#social-main{scroll-margin-top:16px}
+#dr-screen{overflow-wrap:anywhere}
+#dr-screen :where(input,select,textarea){max-inline-size:100%;color-scheme:dark}
+#dr-screen textarea{min-height:104px;resize:vertical}
+#dr-screen :where(button,a,[role="button"]){touch-action:manipulation}
+#social-main .dr-top{isolation:isolate}
+#social-main .dr-top :where(h1,p){overflow-wrap:anywhere}
+#social-rail :where(button,a),#social-aside :where(button,a){touch-action:manipulation}
+.sq250-skip-link{
+  position:fixed;z-index:100000;inset-block-start:12px;inset-inline-start:12px;
+  transform:translateY(-160%);padding:12px 16px;border:1px solid rgba(185,213,255,.5);
+  border-radius:12px;background:#111a2d;color:#fff;font-weight:800;text-decoration:none;
+  box-shadow:0 12px 32px rgba(0,0,0,.45);transition:transform 160ms var(--sq250-ease)
+}
+.sq250-skip-link:focus{transform:translateY(0)}
+#social-main:focus{outline:none}
+@media(max-width:760px){
+  #social-main{scroll-margin-top:8px}
+  #dr-screen :where(input,select,textarea){font-size:16px}
+  #dr-screen :where(button,a,[role="button"]){-webkit-tap-highlight-color:transparent}
+}
+@media(hover:hover) and (pointer:fine){
+  #dr-screen :where(button:not(:disabled),a,[role="button"]){transition:transform 160ms var(--sq250-ease),border-color 160ms ease,box-shadow 160ms ease}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto!important}
+  .sq250-skip-link{transition:none}
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+html.squad-lite #social-rail,html.squad-lite #social-aside .dr-side-card,
+html.squad-lite #social-main .dr-top{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}

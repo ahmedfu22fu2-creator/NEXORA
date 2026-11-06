@@ -1,0 +1,219 @@
+/* NEXORA v158 — Midnight Atelier visual system.
+   Additive presentation layer only: no application, auth, chat, or Firebase logic is replaced. */
+:root{
+  --sq158-void:#070b11;
+  --sq158-panel:#101722;
+  --sq158-panel-raised:#151f2b;
+  --sq158-panel-soft:#0c131c;
+  --sq158-line:rgba(213,188,143,.17);
+  --sq158-line-strong:rgba(213,188,143,.34);
+  --sq158-gold:#d2b27a;
+  --sq158-gold-bright:#f0dcb2;
+  --sq158-text:#f4f2ed;
+  --sq158-muted:#9ba8b5;
+  --sq158-radius:22px;
+  --sq158-shadow:0 22px 60px rgba(0,0,0,.28);
+}
+
+html,body{background:var(--sq158-void)}
+body:has(#app.social-mode){background:
+  radial-gradient(900px 580px at 82% -12%,rgba(103,124,148,.12),transparent 65%),
+  radial-gradient(680px 440px at 10% 20%,rgba(190,155,94,.075),transparent 68%),
+  var(--sq158-void)!important}
+#app.social-mode{background:transparent!important}
+#app.social-mode #social-shell{
+  width:min(1660px,100%);
+  grid-template-columns:236px minmax(0,790px) 278px;
+  justify-content:center;
+  gap:clamp(14px,1.8vw,26px);
+  padding:24px clamp(14px,2vw,30px) 36px;
+}
+
+/* Left navigation: calm hierarchy, better active state and clearer spacing. */
+#app.social-mode #social-rail{
+  top:20px;height:calc(100dvh - 40px);max-height:940px;
+  border:1px solid var(--sq158-line);border-radius:26px;
+  background:linear-gradient(165deg,rgba(20,29,40,.96),rgba(9,15,23,.96));
+  box-shadow:var(--sq158-shadow),inset 0 1px 0 rgba(255,255,255,.035);
+  padding:20px 14px;gap:24px;
+}
+#app.social-mode .dr-brand{padding:7px 9px 20px;border-bottom:1px solid var(--sq158-line);letter-spacing:.14em}
+#app.social-mode .dr-brand-mark{width:42px;height:42px;border-radius:15px;border-color:rgba(230,203,154,.65);background:linear-gradient(145deg,#342d20,#111a24);box-shadow:0 8px 26px rgba(0,0,0,.32),0 0 26px rgba(210,178,122,.08)}
+#app.social-mode .dr-nav{gap:6px}
+#app.social-mode .dr-nav button,#app.social-mode .dr-message-link{
+  min-height:48px;border-radius:14px;padding-inline:13px;color:#aeb9c5;
+  transition:background .2s ease,border-color .2s ease,color .2s ease,transform .2s ease;
+}
+#app.social-mode .dr-nav button:hover,#app.social-mode .dr-message-link:hover{background:rgba(255,255,255,.045);color:#fff;transform:translateX(2px)}
+#app.social-mode .dr-nav button.active{
+  color:var(--sq158-gold-bright);
+  border-color:rgba(210,178,122,.28);
+  background:linear-gradient(100deg,rgba(210,178,122,.18),rgba(210,178,122,.035));
+  box-shadow:inset 3px 0 0 var(--sq158-gold);
+}
+#app.social-mode .dr-message-link{margin-top:auto;border:1px solid var(--sq158-line-strong);background:linear-gradient(120deg,rgba(210,178,122,.11),rgba(255,255,255,.025));color:#ead8b8}
+#app.social-mode .dr-count{background:linear-gradient(145deg,#d8b66f,#a97e43);color:#17130c;border:2px solid #111923;box-shadow:0 4px 14px rgba(210,178,122,.2)}
+
+/* Main stage: quieter header and a consistent content column. */
+#app.social-mode #social-main{max-width:790px;width:100%;margin-inline:auto;padding-bottom:48px!important}
+#app.social-mode .dr-top{
+  top:0;min-height:82px;padding:17px 18px;margin:0 0 19px;
+  border:1px solid var(--sq158-line);border-radius:20px;
+  background:linear-gradient(110deg,rgba(16,23,34,.94),rgba(13,20,29,.82));
+  box-shadow:0 12px 36px rgba(0,0,0,.16);
+}
+#app.social-mode .dr-top h1{font-size:clamp(23px,2vw,30px);letter-spacing:-.045em;color:#faf8f2}
+#app.social-mode .dr-top p{margin-top:5px;color:var(--sq158-muted);font-size:12.5px}
+#app.social-mode .dr-icon-btn{width:44px;height:44px;border-radius:15px;background:linear-gradient(145deg,#1b2633,#111a24)!important;border-color:var(--sq158-line-strong)!important;color:var(--sq158-gold-bright)}
+#app.social-mode #dr-screen{width:100%;max-width:100%;min-width:0}
+
+/* Right rail: shortcut cards read as one coherent utility panel. */
+#app.social-mode #social-aside{top:20px;height:auto;max-height:calc(100dvh - 40px);gap:13px}
+#app.social-mode #social-aside .dr-side-card{
+  padding:17px;border:1px solid var(--sq158-line);border-radius:20px;
+  background:linear-gradient(150deg,rgba(21,31,43,.96),rgba(11,18,27,.96));
+  box-shadow:0 14px 34px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.025);
+}
+#app.social-mode #social-aside h3{font-size:13px;letter-spacing:.02em;color:var(--sq158-gold-bright);margin-bottom:13px}
+#app.social-mode .dr-shortcut{gap:12px;padding:11px 2px;border-top-color:rgba(255,255,255,.055);border-radius:12px;transition:background .18s ease,padding .18s ease}
+#app.social-mode .dr-shortcut:hover{padding-inline:8px;background:rgba(255,255,255,.035)}
+#app.social-mode .dr-shortcut i{width:40px;height:40px;border:1px solid rgba(210,178,122,.16);border-radius:14px;background:linear-gradient(145deg,rgba(210,178,122,.18),rgba(210,178,122,.045));color:var(--sq158-gold-bright)}
+#app.social-mode .dr-shortcut span{font-size:13px;font-weight:650}
+#app.social-mode .dr-shortcut small{font-size:11px;color:var(--sq158-muted)}
+
+/* Feed and stories: stronger rhythm, more breathing room, less visual noise. */
+#app.social-mode .dr-stories{gap:16px;margin:0 0 17px;padding:13px 12px 15px;border:1px solid var(--sq158-line);border-radius:20px;background:linear-gradient(120deg,rgba(18,27,39,.96),rgba(12,19,28,.92));box-shadow:0 12px 30px rgba(0,0,0,.14)}
+#app.social-mode .dr-story{flex-basis:76px;color:#e9e7e1;font-size:11px}
+#app.social-mode .dr-story-ring{width:66px;height:66px;padding:3px;background:linear-gradient(135deg,#f2dfb8,#a78049 55%,#586b7d);box-shadow:0 5px 18px rgba(0,0,0,.22)}
+#app.social-mode .dr-story-ring>span{background:linear-gradient(145deg,#25303b,#101720);border:2px solid #111923;color:#f2dcae}
+#app.social-mode .dr-story small{color:#93a0ad}
+#app.social-mode .dr-feed{gap:17px}
+#app.social-mode .dr-post,#app.social-mode .dr-panel{
+  border:1px solid var(--sq158-line)!important;border-radius:22px!important;
+  background:linear-gradient(155deg,rgba(22,32,45,.98),rgba(12,19,28,.99))!important;
+  box-shadow:0 17px 42px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.035)!important;
+  transition:border-color .2s ease,transform .2s ease,box-shadow .2s ease;
+}
+#app.social-mode .dr-post:hover{border-color:rgba(210,178,122,.31)!important;box-shadow:0 20px 48px rgba(0,0,0,.27)!important}
+#app.social-mode .dr-post-head{padding:17px 18px 12px;gap:12px}
+#app.social-mode .dr-avatar{width:45px;height:45px;border:1px solid rgba(230,203,154,.56);background:linear-gradient(145deg,#594a31,#1b2835);color:#f3dfb7;box-shadow:0 4px 14px rgba(0,0,0,.22)}
+#app.social-mode .dr-post-head b{font-size:13.5px;color:#f7f5ef}
+#app.social-mode .dr-post-head small{color:#95a2af;font-size:11px}
+#app.social-mode .dr-post-copy{padding:1px 18px 16px;color:#e8edf1;line-height:1.85;font-size:14px;direction:rtl;text-align:right}
+#app.social-mode .dr-real-images{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:3px;overflow:hidden;background:#080e15}
+#app.social-mode .dr-real-images img{width:100%;max-height:500px;min-height:150px;object-fit:cover}
+#app.social-mode .dr-post-media{min-height:220px;border-block:1px solid rgba(255,255,255,.04)}
+#app.social-mode .dr-post-stats{padding:11px 18px;color:#9eabb7;border-color:rgba(255,255,255,.075);font-size:11px}
+#app.social-mode .dr-post-actions{padding:8px 10px;gap:5px}
+#app.social-mode .dr-post-actions button{min-height:42px;border-radius:12px;color:#aab6c2;font-size:12px;transition:background .18s ease,color .18s ease}
+#app.social-mode .dr-post-actions button:hover,#app.social-mode .dr-post-actions button.active{background:rgba(210,178,122,.11);color:var(--sq158-gold-bright)}
+#app.social-mode .dr-more{border-radius:11px;width:36px;height:36px;color:#abb7c3}
+#app.social-mode .dr-empty{border:1px dashed var(--sq158-line-strong);border-radius:20px;background:rgba(16,24,35,.66);color:#aab5c0;line-height:1.7}
+#app.social-mode .dr-empty strong,#app.social-mode .dr-empty b{color:var(--sq158-gold-bright)}
+#app.social-mode .dr-primary{box-shadow:0 8px 20px rgba(181,143,79,.18);transition:transform .16s ease,filter .16s ease}
+#app.social-mode .dr-primary:hover{filter:brightness(1.06);transform:translateY(-1px)}
+#app.social-mode .dr-secondary{border-color:var(--sq158-line-strong)!important;background:linear-gradient(145deg,#1a2633,#111a24)!important;color:#e6edf3!important}
+
+/* Messaging hub: search, smart filters, conversation rows, and call shortcut. */
+#app.social-mode .dr-message-list{display:grid;gap:13px;padding:18px;border:1px solid var(--sq158-line)!important;border-radius:23px!important;background:linear-gradient(155deg,rgba(20,30,43,.96),rgba(10,17,26,.98))!important;box-shadow:var(--sq158-shadow)!important}
+#app.social-mode #dr-chat-search{height:48px;margin:0;padding:0 16px;border:1px solid var(--sq158-line-strong)!important;border-radius:15px!important;background:rgba(5,11,18,.76)!important;color:#f2f4f6!important;font-size:13px;direction:auto!important;text-align:start!important}
+#app.social-mode #dr-chat-search:focus{outline:2px solid rgba(210,178,122,.18);border-color:rgba(230,203,154,.58)!important}
+#app.social-mode .s4-filterbar{flex-wrap:nowrap;gap:8px;padding:1px 0 7px;overflow-x:auto;scrollbar-width:none}
+#app.social-mode .s4-filterbar::-webkit-scrollbar{display:none}
+#app.social-mode .s4-filterbar button{min-height:37px;padding:8px 15px;border:1px solid var(--sq158-line)!important;border-radius:999px;background:rgba(255,255,255,.035)!important;color:#b7c0c9!important;font-size:11px;font-weight:650}
+#app.social-mode .s4-filterbar button.on{border-color:transparent!important;background:linear-gradient(125deg,#eedbb5,#c39a5f)!important;color:#201a10!important;box-shadow:0 5px 18px rgba(195,154,95,.16)}
+#app.social-mode #dr-chat-list{display:grid;gap:8px}
+#app.social-mode #dr-chat-list .dr-conversation,#app.social-mode #dr-chat-list .s4-conversation{
+  min-height:78px;padding:13px 14px!important;gap:13px!important;
+  border:1px solid rgba(213,188,143,.12)!important;border-radius:17px!important;
+  background:linear-gradient(115deg,rgba(24,36,50,.92),rgba(13,22,32,.96))!important;
+  box-shadow:0 8px 22px rgba(0,0,0,.12)!important;
+  transition:transform .18s ease,border-color .18s ease,background .18s ease;
+}
+#app.social-mode #dr-chat-list .dr-conversation:hover,#app.social-mode #dr-chat-list .s4-conversation:hover{transform:translateY(-1px);border-color:rgba(230,203,154,.38)!important;background:linear-gradient(115deg,#202f40,#111d2a)!important}
+#app.social-mode #dr-chat-list .dr-avatar{width:48px;height:48px;border-radius:16px;font-size:17px}
+#app.social-mode #dr-chat-list .dr-conversation b,#app.social-mode #dr-chat-list .s4-conversation b{color:#f3f3ee;font-size:13px}
+#app.social-mode #dr-chat-list .dr-conversation small,#app.social-mode #dr-chat-list .s4-conversation small{color:#9eabb8;font-size:11px;line-height:1.5}
+#app.social-mode .s4-conv-meta small{color:var(--sq158-gold-bright);font-weight:750}
+#app.social-mode .s4-conv-meta i{color:#8492a0}
+#app.social-mode .s4-conv-menu{height:42px;border-color:var(--sq158-line)!important;border-radius:14px;background:#111c28;color:#d7bd8f}
+#app.social-mode .dr-message-list>[data-open-calls]{border:1px solid var(--sq158-line-strong)!important;background:linear-gradient(120deg,rgba(210,178,122,.12),rgba(17,27,39,.95))!important}
+
+/* Live conversation: dedicated stage with clear header, readable bubbles and composer. */
+#app.dr-legacy-chat #chat{
+  inset:clamp(10px,2.2vh,22px)!important;width:min(1120px,calc(100vw - 36px))!important;
+  height:min(900px,calc(100dvh - 44px))!important;
+  border:1px solid var(--sq158-line-strong)!important;border-radius:26px!important;
+  background:var(--sq158-void)!important;box-shadow:0 34px 110px rgba(0,0,0,.72),0 0 0 1px rgba(255,255,255,.02)!important;
+}
+#app.dr-legacy-chat #chat .cv{background:radial-gradient(600px 240px at 50% 0,rgba(210,178,122,.075),transparent 72%),linear-gradient(180deg,#0b131d,#080e15)!important}
+#app.dr-legacy-chat #chat .cv>header{min-height:76px;padding:12px 17px!important;background:rgba(16,25,36,.96)!important;border-bottom:1px solid var(--sq158-line)!important;backdrop-filter:blur(16px)}
+#app.dr-legacy-chat #chat .cv>header #ct{min-width:0;flex:1;color:var(--sq158-text)}
+#app.dr-legacy-chat #chat .cv>header .ic{width:40px;height:40px;border:1px solid var(--sq158-line)!important;border-radius:13px;background:#172331!important;color:#e5d0a8!important}
+#app.dr-legacy-chat #chat #cb{border-bottom:1px solid var(--sq158-line);background:rgba(210,178,122,.06)}
+#app.dr-legacy-chat #chat #ms{
+  min-height:0;padding:22px clamp(15px,4vw,52px)!important;gap:11px!important;
+  background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.026) 1px,transparent 0);background-size:24px 24px;
+}
+#app.dr-legacy-chat #chat #ms .m{
+  max-width:min(72%,620px)!important;padding:11px 14px!important;
+  border:1px solid rgba(190,205,219,.13)!important;border-radius:18px 18px 18px 6px!important;
+  background:linear-gradient(145deg,#1b2a3a,#14202d)!important;color:#f1f4f6!important;
+  box-shadow:0 7px 20px rgba(0,0,0,.2)!important;line-height:1.7;
+}
+#app.dr-legacy-chat #chat #ms .m.me{
+  border-color:rgba(210,178,122,.28)!important;border-radius:18px 18px 6px 18px!important;
+  background:linear-gradient(145deg,#4a3d2b,#30291f)!important;color:#fbf5e9!important;
+}
+#app.dr-legacy-chat #chat #ms .m p{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+#app.dr-legacy-chat #chat #ms .m .tm{display:flex;justify-content:flex-end;gap:5px;margin-top:5px;color:rgba(224,229,233,.58);font-size:10px}
+#app.dr-legacy-chat #chat #ms .m .rx{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px}
+#app.dr-legacy-chat #chat #ms .m .ph{display:block;max-width:min(100%,440px);max-height:420px;object-fit:contain;border-radius:13px}
+#app.dr-legacy-chat #chat #ms .m audio{max-width:100%;height:38px}
+#app.dr-legacy-chat #chat footer{
+  min-height:76px;gap:9px!important;padding:12px 16px calc(12px + env(safe-area-inset-bottom))!important;
+  border-top:1px solid var(--sq158-line)!important;background:rgba(15,24,35,.97)!important;
+}
+#app.dr-legacy-chat #chat footer .ic{width:43px;height:43px;flex:0 0 43px;border:1px solid var(--sq158-line)!important;border-radius:14px;background:#1a2735!important;color:#e7d3ad!important}
+#app.dr-legacy-chat #chat footer #in{min-height:46px;padding:12px 15px!important;border:1px solid var(--sq158-line-strong)!important;border-radius:16px!important;background:#09121c!important;color:#f5f4ef!important;line-height:1.55}
+#app.dr-legacy-chat #chat footer #in:focus{outline:2px solid rgba(210,178,122,.15);border-color:rgba(230,203,154,.55)!important}
+#app.dr-legacy-chat #chat footer #snd{border:0!important;background:linear-gradient(135deg,#edd9ad,#b98f55)!important;color:#17130d!important;box-shadow:0 6px 18px rgba(185,143,85,.2)}
+
+/* Mobile/tablet: no horizontal overflow, bottom navigation stays reachable. */
+@media(max-width:1120px){
+  #app.social-mode #social-shell{grid-template-columns:218px minmax(0,1fr);gap:17px}
+  #app.social-mode #social-aside{display:none!important}
+}
+@media(max-width:760px){
+  #app.social-mode #social-shell{display:block!important;padding:0 12px calc(92px + env(safe-area-inset-bottom))!important}
+  #app.social-mode #social-main{max-width:none;min-height:100dvh;padding:0 0 22px!important}
+  #app.social-mode .dr-top{min-height:72px;margin:0 -1px 14px;padding:12px 13px;border-radius:0 0 18px 18px;border-top:0;border-inline:0}
+  #app.social-mode .dr-top h1{font-size:22px}
+  #app.social-mode .dr-top p{font-size:11px}
+  #app.social-mode .dr-stories{margin-inline:0;padding:11px 10px 13px;border-radius:18px}
+  #app.social-mode .dr-post{border-radius:18px!important;margin-bottom:13px}
+  #app.social-mode .dr-post-head{padding:13px 13px 9px}
+  #app.social-mode .dr-post-copy{padding-inline:14px;font-size:13.5px}
+  #app.social-mode .dr-message-list{padding:13px;border-radius:19px!important}
+  #app.social-mode #dr-chat-list .dr-conversation,#app.social-mode #dr-chat-list .s4-conversation{min-height:70px;padding:10px!important}
+  #app.social-mode .dr-mobile-nav{height:calc(72px + env(safe-area-inset-bottom));padding:8px 8px calc(8px + env(safe-area-inset-bottom));border-top:1px solid var(--sq158-line-strong)!important;background:rgba(9,15,23,.96)!important;box-shadow:0 -10px 35px rgba(0,0,0,.28);backdrop-filter:blur(20px)}
+  #app.social-mode .dr-mobile-nav button.active{color:var(--sq158-gold-bright)}
+  #app.social-mode .dr-mobile-nav .create{box-shadow:0 8px 24px rgba(210,178,122,.24)}
+  #app.dr-legacy-chat #chat{inset:0!important;width:100%!important;height:100dvh!important;max-height:100dvh!important;border:0!important;border-radius:0!important}
+  #app.dr-legacy-chat #chat .cv>header{min-height:66px;padding-inline:11px!important}
+  #app.dr-legacy-chat #chat #ms{padding:15px 12px!important}
+  #app.dr-legacy-chat #chat #ms .m{max-width:86%!important;padding:10px 12px!important}
+  #app.dr-legacy-chat #chat footer{gap:6px!important;padding-inline:9px!important}
+  #app.dr-legacy-chat #chat footer .ic{width:38px;height:40px;flex-basis:38px;border-radius:12px}
+  #app.dr-legacy-chat #chat footer #in{min-width:0;min-height:42px;padding:10px!important}
+}
+@media(max-width:390px){
+  #app.social-mode #social-shell{padding-inline:9px}
+  #app.social-mode .dr-post-actions{grid-template-columns:repeat(4,minmax(0,1fr));padding-inline:4px}
+  #app.social-mode .dr-post-actions button{font-size:10.5px;padding-inline:1px}
+  #app.dr-legacy-chat #chat footer .ic{width:34px;flex-basis:34px}
+}
+@media(prefers-reduced-motion:reduce){
+  #app.social-mode *,#app.social-mode *::before,#app.social-mode *::after,#app.dr-legacy-chat #chat *,#app.dr-legacy-chat #chat *::before,#app.dr-legacy-chat #chat *::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+html.squad-lite #app.social-mode .dr-post,html.squad-lite #app.social-mode .dr-panel,html.squad-lite #app.social-mode #social-rail,html.squad-lite #app.social-mode #social-aside .dr-side-card{backdrop-filter:none!important;box-shadow:0 8px 22px rgba(0,0,0,.16)!important}

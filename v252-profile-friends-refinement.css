@@ -1,0 +1,35 @@
+/* NEXORA v252 — profile and relationships visual refinement */
+.pfcard{position:relative;isolation:isolate;overflow:hidden;padding:26px 22px 20px!important;border:1px solid rgba(125,105,255,.28)!important;border-radius:24px!important;background:radial-gradient(ellipse at 50% -25%,rgba(91,67,190,.30),transparent 58%),linear-gradient(155deg,#171627 0%,#0d0d16 62%,#11101b 100%)!important;box-shadow:0 24px 70px rgba(0,0,0,.48),inset 0 1px rgba(255,255,255,.06)!important;text-align:center}
+.pfcard:before{content:"NEXORA · MEMBER PROFILE";display:block;margin:0 0 16px;color:#a99cff;font:700 10px/1.4 Inter,system-ui,sans-serif;letter-spacing:.19em}
+.pfcard h3{font-size:clamp(21px,4vw,28px)!important;font-weight:850!important;letter-spacing:-.035em;color:#fff}
+.pfcard>p{max-width:48ch;margin:12px auto 18px!important;color:#c6c3d4;line-height:1.8}
+.pfcard .st-list{display:grid;gap:8px;padding:12px;border:1px solid rgba(255,255,255,.07);border-radius:17px;background:rgba(255,255,255,.035)}
+.pfcard .st-row{min-height:48px;padding:9px 12px;border:1px solid rgba(255,255,255,.045);border-radius:12px;background:rgba(255,255,255,.025)}
+.pfcard .pri,.pfcard .gh2{min-height:44px;border-radius:13px!important;font-weight:750}
+.pfcard .pri{background:linear-gradient(110deg,#7659ec,#3c7be9)!important;box-shadow:0 8px 24px rgba(91,89,230,.22)}
+.pfcard .gh2{border:1px solid rgba(255,255,255,.12)!important;background:rgba(255,255,255,.045)!important;color:#e7e4f5}
+.sq-social-hub{--sq-glow:rgba(116,91,235,.20);color:var(--tx,#f4f1ff)}
+.sq-social-hub>header{position:relative;overflow:hidden;padding:clamp(18px,3vw,30px)!important;border:1px solid rgba(135,112,255,.24)!important;border-radius:24px!important;background:radial-gradient(ellipse at 90% 0,var(--sq-glow),transparent 55%),linear-gradient(135deg,#171626,#0d0d16)!important;box-shadow:0 18px 50px rgba(0,0,0,.22)}
+.sq-social-hub>header small{color:#a99cff;font-weight:800;letter-spacing:.17em}
+.sq-social-hub>header h2{margin:8px 0;font-size:clamp(23px,4vw,34px);font-weight:900;letter-spacing:-.04em}
+.sq-social-hub>header p{color:#bdb9d0;line-height:1.75}
+.sq-social-columns{gap:15px!important;align-items:start}
+.sq-social-columns>.sq-feature-card{min-width:0;padding:clamp(15px,2vw,21px)!important;border:1px solid rgba(255,255,255,.085)!important;border-radius:20px!important;background:linear-gradient(150deg,rgba(28,26,45,.96),rgba(13,13,22,.97))!important;box-shadow:0 14px 38px rgba(0,0,0,.18);transition:border-color .2s ease,transform .2s ease,box-shadow .2s ease}
+.sq-social-columns>.sq-feature-card:hover{border-color:rgba(142,122,255,.32)!important;box-shadow:0 18px 44px rgba(0,0,0,.26)}
+.sq-social-columns>.sq-feature-card h3{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 14px;font-size:16px;font-weight:850}
+.sq-social-columns .sq-result-list{display:grid;gap:9px;min-width:0}
+.sq-social-columns .sq-person,.sq-social-columns .sq-notice{min-width:0;padding:10px 11px!important;border:1px solid rgba(255,255,255,.07)!important;border-radius:14px!important;background:rgba(255,255,255,.035)!important;gap:9px}
+.sq-social-columns .sq-person b{min-width:0;overflow-wrap:anywhere}
+.sq-social-columns .dr-avatar{flex:0 0 38px;width:38px;height:38px;border:1px solid rgba(154,132,255,.32);background:linear-gradient(145deg,#5944a8,#202b58);box-shadow:0 5px 15px rgba(69,54,154,.25)}
+.sq-social-columns .dr-field{width:100%;min-height:46px;border-radius:13px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.22);color:inherit;padding:10px 13px}
+.sq-social-columns button{min-height:38px;border-radius:11px;transition:filter .18s ease,transform .18s ease}
+.sq-social-columns button:hover{filter:brightness(1.12)}
+.sq-social-columns button:focus-visible,.pfcard button:focus-visible,.sq-social-hub input:focus-visible{outline:3px solid #a99cff;outline-offset:3px}
+@media(max-width:680px){.sq-social-columns{grid-template-columns:minmax(0,1fr)!important}.sq-social-columns>.sq-feature-card{border-radius:17px!important}.sq-social-columns .sq-person{flex-wrap:wrap}.sq-social-columns .sq-person b{flex:1 1 100px}.pfcard{padding:20px 14px 16px!important}}
+@media(prefers-reduced-motion:reduce){.sq-social-columns>.sq-feature-card,.sq-social-columns button{transition:none!important}}
+/* v262 — friend list filtering and search result clarity */
+.sq-social-columns #sq-friend-filter{width:100%;min-height:44px;margin:0 0 10px;padding:10px 13px;border:1px solid rgba(255,255,255,.12);border-radius:13px;background:rgba(0,0,0,.22);color:inherit}
+.sq-social-columns #sq-friend-filter:focus-visible,.sq-social-columns #sq-friend-query:focus-visible{outline:3px solid #a99cff;outline-offset:3px}
+.sq-social-columns .sq-person .sq199-verified{display:inline-grid;place-items:center;width:17px;height:17px;margin-inline-start:4px;border-radius:50%;background:#287de8;color:#fff;font-size:11px;vertical-align:middle}
+.sq-social-columns #sq-friend-list:empty:after{content:'لا توجد عناصر لعرضها';display:block;color:#aaa5bd;padding:12px}
+@media(max-width:680px){.sq-social-columns #sq-friend-filter{min-height:46px}.sq-social-columns .sq-person button{flex:1 1 auto}}

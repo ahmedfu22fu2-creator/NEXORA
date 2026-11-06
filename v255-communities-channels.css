@@ -1,0 +1,29 @@
+/* NEXORA v255 — communities and channels visual refinement */
+#cml.sq-community-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:13px;margin-top:14px;align-items:stretch}
+.sq-community-card{min-width:0;display:flex;flex-direction:column;justify-content:space-between;gap:14px;padding:16px;border:1px solid #8da7ff24;border-radius:19px;background:radial-gradient(ellipse at 92% 0,#6d5df01b,transparent 55%),linear-gradient(145deg,#111a32ed,#080d1bf5);box-shadow:0 12px 32px #0003;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.sq-community-card:hover{transform:translateY(-2px);border-color:#c5a45b70;box-shadow:0 16px 38px #0005,0 0 24px #7666ff12}
+.sq-community-card .wi{display:flex;align-items:center;gap:12px;min-width:0}
+.sq-community-card .wi>div{display:grid;gap:5px;min-width:0}
+.sq-community-card .wi b{font-size:15px;line-height:1.5;color:#f4f6ff;overflow-wrap:anywhere}
+.sq-community-card .wi span{font-size:12px;line-height:1.7;color:#aab6d2;overflow-wrap:anywhere}
+.sq-community-card .av{flex:0 0 46px;width:46px;height:46px;display:grid;place-items:center;border-radius:15px;background:linear-gradient(145deg,hsl(var(--h,230) 65% 35% / .65),#11182c);border:1px solid #ffffff20;text-decoration:none;font-weight:800;font-size:19px}
+.sq-community-actions{display:flex;gap:7px;flex-wrap:wrap;padding:0!important}
+.sq-community-actions button{flex:1 1 auto;min-height:39px;padding:8px 11px;border:1px solid #ffffff20;border-radius:12px;background:#ffffff09;color:#e9edff;font:inherit;font-size:12px;cursor:pointer;transition:background .16s ease,border-color .16s ease}
+.sq-community-actions button.pri{background:linear-gradient(120deg,#a98a4c,#e5ce91);border-color:transparent;color:#17130b;font-weight:700}
+.sq-community-actions button:hover{border-color:#d9bd7b;background:#c5a45b20}
+.sq-community-actions button:focus-visible,#oth #cms:focus-visible,#oth #cmn:focus-visible,#oth #cmd:focus-visible{outline:2px solid #e5ce91;outline-offset:3px}
+#oth #cms{box-sizing:border-box;width:100%;margin-top:12px;padding:12px 14px;border:1px solid #8796c833;border-radius:13px;background:#080e20;color:#f2f4ff;font:inherit}
+#oth [data-cm="f"]{border:1px solid #ffffff1b;border-radius:999px;padding:8px 13px;background:#ffffff08;color:#dfe5ff;cursor:pointer}
+#oth [data-cm="f"]:hover,#oth [data-cm="f"]:focus-visible{border-color:#c5a45b;color:#f2d99b}
+.sq-community-empty{grid-column:1/-1;display:grid;gap:7px;justify-items:center;padding:30px 16px;border:1px dashed #9aa9d344;border-radius:17px;color:#e9edff;text-align:center;background:#ffffff05}
+.sq-community-empty span{font-size:13px;color:#9eabc8}
+@media(max-width:560px){#cml.sq-community-grid{grid-template-columns:1fr;gap:10px}.sq-community-card{padding:14px;border-radius:16px}.sq-community-actions button{min-height:42px}}
+@media(prefers-reduced-motion:reduce){.sq-community-card,.sq-community-actions button{transition:none}.sq-community-card:hover{transform:none}}
+
+/* NEXORA v259 — community discovery refinement */
+#cml[aria-busy="true"]{opacity:.78;pointer-events:none}
+#cml .sq-community-empty[role="alert"]{border-color:#e5a56b66}
+#cml .sq-community-empty button{min-height:40px;padding:8px 14px;border:1px solid #c5a45b80;border-radius:12px;background:#c5a45b18;color:#f3d99a;font:inherit;cursor:pointer}
+#cml .sq-community-empty button:focus-visible{outline:2px solid #e5ce91;outline-offset:3px}
+#oth #cms{min-height:44px}
+@media(max-width:560px){#oth [data-cm="f"]{min-height:40px;padding:9px 12px}}
