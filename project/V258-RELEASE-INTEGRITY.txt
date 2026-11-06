@@ -1,0 +1,3 @@
+RELEASE INTEGRITY PASSED — v258, root + legacy manifests synced, 159 valid precache entries, all four source/site folders present.
+
+ZIP VALIDATION: PASS — 2062 entries; archive size 26443602 bytes; unzip -t reported no errors.

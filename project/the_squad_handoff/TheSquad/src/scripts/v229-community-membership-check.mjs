@@ -1,0 +1,30 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const community=fs.readFileSync('site/chanse1/community.js','utf8');
+const app=fs.readFileSync('site/chanse1/app.js','utf8');
+const rules=fs.readFileSync('site/chanse1/firestore.rules','utf8');
+const sw=fs.readFileSync('site/sw.js','utf8');
+const a=JSON.parse(fs.readFileSync('site/version.json','utf8'));
+const b=JSON.parse(fs.readFileSync('site/chanse4/version.json','utf8'));
+assert.deepEqual(a,b);
+assert.ok(a.currentPhase>=229);
+
+assert.match(community,/async function communityMembership\(id,join\)/);
+assert.match(community,/db\.runTransaction/);
+assert.match(community,/community-full/);
+assert.match(community,/owner-cannot-leave/);
+assert.match(community,/b\('edit','✏️ تعديل'\)/);
+assert.match(community,/data-cm="saveedit"/);
+assert.match(community,/await communityMembership\(id,true\)/);
+assert.match(community,/await communityMembership\(id,false\)/);
+assert.match(app,/async function updateGroupMembership\(chatId,change\)/);
+assert.match(app,/if\(ps\.exists\)tx\.update\(communityRef,\{mc:next\.length\}\)/);
+assert.match(rules,/getAfter\(\/databases\/\$\(database\)\/documents\/chats\/\$\(id\)\)\.data\.members\.size\(\) == request\.resource\.data\.mc/);
+assert.match(rules,/request\.resource\.data\.mc <= 500/);
+assert.match(rules,/request\.resource\.data\.cat in \['ألعاب','تقنية','رياضة','تعليم','عام'\]/);
+assert.match(rules,/affectedKeys\(\)\.hasOnly\(\['nm','cat','ds'\]\)/);
+assert.match(sw,/v229-community-membership/);
+assert.match(sw,/FIRESTORE-RULES-v229\.rules/);
+for (const f of ['FIRESTORE-RULES-v229.rules','site/FIRESTORE-RULES-v229.rules','site/chanse4/FIRESTORE-RULES-v229.rules'])
+  assert.equal(fs.readFileSync(f,'utf8'),rules,`${f} must mirror deploy rules`);
+console.log('V229 COMMUNITY MEMBERSHIP CHECKS PASSED');

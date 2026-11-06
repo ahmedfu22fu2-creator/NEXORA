@@ -1,0 +1,1 @@
+PASS — node --check site/chanse3/social-expansion.js

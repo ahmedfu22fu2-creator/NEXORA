@@ -1,0 +1,14 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const settings=fs.readFileSync(new URL('../site/chanse3/settings.js',import.meta.url),'utf8');
+const sw=fs.readFileSync(new URL('../site/sw.js',import.meta.url),'utf8');
+const version=JSON.parse(fs.readFileSync(new URL('../site/version.json',import.meta.url),'utf8'));
+assert.match(settings,/reauthenticateWithCredential/,'password change must require recent credential verification');
+assert.match(settings,/await me\.updatePassword\(n\)/,'password must be updated through Firebase Auth');
+assert.match(settings,/httpsCallable\('revokeMySessions'\)/,'successful password change should revoke refresh tokens');
+assert.match(settings,/await auth\.signOut\(\)/,'current client must sign out after revocation');
+assert.match(settings,/auth\/requires-recent-login/,'recent-login errors must be explained');
+assert.match(settings,/@squad\\\.id/,'synthetic legacy addresses must not be treated as email credentials');
+assert.match(sw,/v246-in-game-store/,'service worker cache namespace must be bumped');
+assert.ok(version.build>=246);
+console.log('v244 password/session security checks: PASS');

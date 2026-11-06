@@ -1,0 +1,11 @@
+THE SQUAD v257 — release integrity
+Date: 2026-11-06
+Command: node scripts/release-integrity-check.mjs
+Result: PASS
+- Release v257 metadata validated.
+- Root and legacy version manifests synchronized.
+- 159 precache entries validated.
+- Four expected source/site folders present.
+- Source and handoff copies synchronized for changed dashboard assets, release manifests, package metadata, test scripts, index and service worker.
+
+Archive validation is performed separately after ZIP creation.

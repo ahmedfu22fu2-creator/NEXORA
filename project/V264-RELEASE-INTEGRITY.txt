@@ -1,0 +1,1 @@
+RELEASE INTEGRITY PASSED — v264, root + legacy manifests synced, 161 valid precache entries, all four source/site folders present.

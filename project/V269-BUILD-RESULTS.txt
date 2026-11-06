@@ -1,0 +1,5 @@
+Production build: BLOCKED
+Command: npm run build
+Result: sh: 1: vite: not found
+Exit code: 127
+No dependency installation or lockfile mutation was attempted.

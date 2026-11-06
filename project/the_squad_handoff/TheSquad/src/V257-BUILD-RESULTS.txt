@@ -1,0 +1,7 @@
+THE SQUAD v257 — production build
+Date: 2026-11-06
+Command: npm run build
+Result: BLOCKED
+Reason: vite is not installed in the current environment (`sh: 1: vite: not found`).
+No dependency installation was attempted; package lockfiles were not generated or changed.
+This is an environment/dependency availability blocker, not a successful production build.

@@ -1,0 +1,8 @@
+V269 targeted validation
+PASS node --check site/v269-spatial-social.js
+PASS node scripts/v268-social-ai-check.mjs — 12/12
+PASS node scripts/v269-spatial-social-check.mjs — 14/14
+PASS node scripts/release-integrity-check.mjs — 167 valid precache entries
+BLOCKED npm test — full suite exceeded the available 200-second execution window; log stopped during v172, before v269 was reached.
+BLOCKED npm run build — vite: not found (exit 127).
+NOT TESTED live browser, microphone hardware, Firebase realtime, multi-device room sync, deployment.

@@ -1,0 +1,4 @@
+PASS node --check site/chanse3/cafe3.js
+PASS node --check source/The-Squad-v137/chanse3/cafe3.js
+PASS node --check the_squad_handoff/TheSquad/src/site/chanse3/cafe3.js
+PASS node --check scripts/v264-avatar-expression-lipsync-check.mjs

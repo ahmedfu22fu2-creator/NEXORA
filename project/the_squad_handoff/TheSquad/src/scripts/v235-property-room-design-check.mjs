@@ -1,0 +1,22 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import path from 'node:path';
+const root=path.resolve(import.meta.dirname,'..');
+const read=p=>fs.readFileSync(path.join(root,p),'utf8');
+const backend=read('backend/firebase-functions/index.js');
+const district=read('site/chanse2/district.js');
+assert.match(backend,/exports\.propertyRoomLayout = onCall/);
+assert.match(backend,/permission-denied.*لا يمكن تعديل أثاث عقار لا تملكه/);
+assert.match(backend,/propertyRoomLayouts/);
+assert.match(backend,/PROPERTY_LAYOUT_TYPES/);
+assert.match(backend,/deleteQueryTree\(db\.collection\('propertyRoomLayouts'\)/);
+assert.match(district,/roomDecorProperty/);
+assert.match(district,/httpsCallable\('propertyRoomLayout'\)/);
+assert.doesNotMatch(district,/collection\('roomLayouts'\)/);
+assert.match(district,/امتلك عقاراً أو شقة لتفعيل الحفظ السحابي/);
+for(const p of ['source/The-Squad-v137/chanse2/district.js','the_squad_handoff/TheSquad/src/site/chanse2/district.js','the_squad_handoff/TheSquad/src/source/The-Squad-v137/chanse2/district.js']) assert.equal(read(p),district);
+for(const p of ['source/The-Squad-v137/chanse4/firebase-functions/index.js','the_squad_handoff/TheSquad/src/backend/firebase-functions/index.js','the_squad_handoff/TheSquad/src/source/The-Squad-v137/chanse4/firebase-functions/index.js']) assert.equal(read(p),backend);
+for(const p of ['site/version.json','site/chanse4/version.json']) { const v=JSON.parse(read(p)); assert.ok(v.build>=241); assert.equal(v.currentPhase,v.build); }
+for(const p of ['FIRESTORE-RULES-v235.rules','site/FIRESTORE-RULES-v235.rules','site/chanse4/FIRESTORE-RULES-v235.rules']) assert.match(read(p),/match \/propertyRoomLayouts\/\{layoutId\} \{ allow read, write: if false; \}/);
+assert.match(read('site/sw.js'),/v235-property-room-design-cloud/);
+console.log('v235 property room design checks passed');

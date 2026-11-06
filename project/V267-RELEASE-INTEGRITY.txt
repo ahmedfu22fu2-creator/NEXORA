@@ -1,0 +1,1 @@
+RELEASE INTEGRITY PASSED — v267, root + legacy manifests synced, 163 valid precache entries, all four source/site folders present.

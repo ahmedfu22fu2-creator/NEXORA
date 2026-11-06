@@ -1,0 +1,2 @@
+PASS — node --check site/v265-avatar-creator.js
+PASS — node --check scripts/v266-avatar-3d-viewer-check.mjs

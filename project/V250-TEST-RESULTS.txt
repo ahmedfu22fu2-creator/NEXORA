@@ -1,0 +1,13 @@
+THE SQUAD v250 — TEST SUMMARY
+npm test: PASS (full root pipeline, including v249 and v250 checks)
+v249 store product details: PASS 9/9
+v250 platform quality: PASS 10/10
+JavaScript syntax: PASS 82/82
+CSS parsing: PASS 62 files, 0 parse errors
+Main index local references: PASS, 0 missing
+Static duplicate IDs: PASS, 0 duplicates
+Service Worker precache: PASS 154/154
+Release integrity: PASS v250
+Build: BLOCKED — Vite is not installed in this environment
+Browser visual interaction: NOT TESTED — Chromium blocked by environment policy
+Firebase live / purchase / deployment: NOT TESTED

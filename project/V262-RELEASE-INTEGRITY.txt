@@ -1,0 +1,8 @@
+PASS — release metadata v262 synchronized across site/source/handoff.
+PASS — root and site package versions set to 262.0.0.
+PASS — Service Worker cache namespace advanced to v262.
+PASS — 159 precache entries validated by release-integrity-check.mjs.
+PASS — source/The-Squad-v137 and handoff social-expansion.js mirrors match site copy.
+PASS — v262 refinement test is included in npm test.
+PASS — ZIP archive integrity verified after packaging.
+NOT TESTED — live Firebase, browser session, physical devices, deployment.

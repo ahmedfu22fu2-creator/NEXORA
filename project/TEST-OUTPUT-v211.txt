@@ -1,0 +1,154 @@
+
+> the-squad@211.0.0 test
+> npm run audit:production && node scripts/smoke-tests.mjs && node scripts/localization-check.mjs && node scripts/owner-monitor-check.mjs && node scripts/account-monitor-check.mjs && node scripts/release-integrity-check.mjs && node scripts/v156-regression-check.mjs && node scripts/v157-zero-cost-messaging-check.mjs && node scripts/v158-visual-refresh-check.mjs && node scripts/v159-elevator-performance-check.mjs && node scripts/v160-aurora-check.mjs && node scripts/v161-startup-recovery-check.mjs && node scripts/v162-global-hub-check.mjs && node scripts/v163-community-evolution-check.mjs && node scripts/v164-platform-expansion-check.mjs && node scripts/v165-squad-universe-check.mjs && node scripts/v166-global-connect-check.mjs && node scripts/v167-conversation-digest-check.mjs && node scripts/v168-universe-integration-check.mjs && node scripts/v169-sync-conflict-guard-check.mjs && node scripts/v170-personal-vault-check.mjs && node scripts/v171-achievements-check.mjs && node scripts/v172-events-hub-check.mjs && node scripts/v173-shared-events-check.mjs && node scripts/v174-startup-recovery-check.mjs && node scripts/v175-startup-diagnostics-check.mjs && node scripts/v176-build-readiness-check.mjs && node scripts/v177-architecture-check.mjs && node scripts/v177-wallet-hardening-check.mjs && node scripts/v178-civilization-check.mjs && node scripts/v179-living-universe-check.mjs && node scripts/v180-city-life-check.mjs && node scripts/v181-world-systems-check.mjs && node scripts/v182-cloud-sync-check.mjs && node scripts/v183-shared-city-check.mjs && node scripts/v184-universe-suite-check.mjs && node scripts/v185-runtime-check.mjs && node scripts/v186-control-center-check.mjs && node scripts/v187-call-network-check.mjs && node scripts/v188-startup-repair-check.mjs && node scripts/v194-startup-cache-check.mjs && node scripts/v195-premium-navigation-check.mjs && node scripts/v196-entry-check.mjs && node scripts/v197-home-command-check.mjs && node scripts/v199-profile-identity-check.mjs && node scripts/v200-stories-channels-check.mjs && node scripts/v201-3d-calls-check.mjs && node scripts/v203-design-system-check.mjs && node scripts/v204-offline-resilience-check.mjs && node scripts/v205-visual-expansion-check.mjs && node scripts/v206-lifestyle-check.mjs && node scripts/v207-cloud-lifestyle-check.mjs && node scripts/v208-driving-suite-check.mjs && node scripts/v209-city-experience-check.mjs && node scripts/v210-living-interiors-check.mjs && node scripts/v211-living-city-check.mjs
+
+
+> the-squad@211.0.0 audit:production
+> node scripts/audit-production.mjs
+
+PRODUCTION AUDIT PASSED — 58 local HTML references checked; four source and site folders present; test fixtures excluded; basic Firestore guard checks passed.
+SMOKE TESTS PASSED — 66 local scripts resolved; 78 JavaScript files parsed; basic Firestore checks passed.
+LOCALIZATION CHECK PASSED — English/Arabic selectable entry points, shared translator, and Service Worker cache are wired.
+PASS release metadata matches current release
+PASS dashboard is English and explicitly private
+PASS owner identity remains server-verified
+PASS all privileged dashboard requests use callable endpoints
+PASS financial changes require explicit confirmation
+PASS wallet ID is read from the backend response, not hardcoded as the admin ID
+PASS private message bodies and passwords are not rendered
+PASS report text and service names are escaped
+PASS wallet payout is clearly described as manual only
+PASS dashboard handles narrow layouts and reduced motion
+PASS dashboard assets are loaded by the main page
+PASS dashboard assets are included in the new Service Worker cache
+12/12 OWNER MONITOR CHECKS PASSED
+PASS release metadata matches current release
+PASS account lookup accepts exact SID or username only
+PASS account endpoints require owner authorization
+PASS account result is privacy minimized
+PASS activity uses aggregate counts, not private message reads
+PASS legacy and social report formats are both supported
+PASS report queue is read-only from the client
+PASS account UI calls only secured callable endpoints
+PASS account search and reports are in the owner dashboard
+PASS dynamic account and report fields are escaped
+PASS responsive account monitoring styling exists
+PASS deployment copy matches reviewed backend
+PASS service worker cache matches current release
+13/13 ACCOUNT MONITOR CHECKS PASSED
+RELEASE INTEGRITY PASSED — v211, root + legacy manifests synced, 140 valid precache entries, all four source/site folders present.
+PASS Stage 4 bridge is emitted from the actual IIFE-local social renderer
+PASS chat-data changes notify Stage 4 without replacing legacy auth/chat functions
+PASS Stage 4 no longer relies on inaccessible window.drRender/drRoute globals
+PASS Stage 4 filtering, conversation opening and management controls remain wired
+PASS login artwork URL resolves from its CSS directory
+PASS login artwork is included in the new service-worker precache
+PASS login controls and current Firebase sign-in routes are retained
+PASS backend still exports both server-verified legacy sign-in callables
+PASS document scrollbar styling targets the real page scroller
+PASS nested momentum scrolling is limited to actual overflow panes
+PASS large desktop feeds defer off-screen paint without changing scroll containers
+PASS scroll repair is loaded after the platform base stylesheet
+PASS source and deployed chanse1 directories are preserved
+PASS source and deployed chanse2 directories are preserved
+PASS source and deployed chanse3 directories are preserved
+PASS source and deployed chanse4 directories are preserved
+V156 REGRESSION CHECKS PASSED
+PASS Firestore offline persistence remains enabled
+PASS active chat query remains bounded to 100 latest messages
+PASS new images are compressed and bounded before Firestore send
+PASS new chat media handlers do not upload to Firebase Storage
+PASS new voice notes use bounded inline data URLs instead of Firebase Storage
+PASS existing Firestore rules already accept bounded image/audio data URLs
+PASS legacy Storage paths remain readable for old messages
+PASS unread fallback derives from last-message and per-user seen timestamps
+PASS posts and Cinema Storage dependencies are explicitly documented as remaining migration work
+PASS E2EE and WhatsApp-scale claims are not falsely enabled
+PASS sensitive backend file retained: site/chanse1/firestore.rules
+PASS sensitive backend file retained: site/chanse3/storage.rules
+PASS sensitive backend file retained: site/chanse4/firebase-config.js
+PASS sensitive backend file retained: backend/firebase-functions/index.js
+V157 ZERO-COST MESSAGING CHECKS PASSED
+PASS release manifests remain synchronized with v186 and remain synchronized
+PASS new visual stylesheet loads after previous platform layer
+PASS new visual stylesheet is present in Service Worker precache
+PASS platform rail, feed, stories, and side utility panels receive new styling
+PASS message center and legacy live chat receive dedicated visual treatment
+PASS mobile navigation and reduced-motion preferences are handled
+PASS Firestore rules remain present and unchanged by the visual-only release
+PASS v173 baseline rules remain byte-for-byte intact and v182/v183/v185 add only the documented private and public sync paths
+PASS preserved site folder exists: chanse1
+PASS preserved site folder exists: chanse2
+PASS preserved site folder exists: chanse3
+PASS preserved site folder exists: chanse4
+V158 VISUAL REFRESH CHECKS PASSED
+V159 ELEVATOR + PERFORMANCE CHECKS PASSED — 13 lifts, 34 building floors inspected, 24650 ms of controlled travel simulated, 1,800 movement frames, no Firestore schema changes.
+PASS release manifests are v186 and synchronized
+PASS index loads the new stylesheet after v158 and the script deferred
+PASS service worker precaches both new files under the v180 cache name
+PASS v160 script parses
+PASS layer never touches Firebase, auth or network APIs (comments excluded)
+PASS palette is accessible (dialog, combobox, listbox, active descendant, Escape)
+PASS motion and weak-device safeguards exist in CSS and JS
+PASS Arabic normalization is implemented
+PASS all new CSS classes are namespaced
+PASS preserved folder: chanse1
+PASS preserved folder: chanse2
+PASS preserved folder: chanse3
+PASS preserved folder: chanse4
+PASS v173 Firestore rules retained with additive v182, v183 and v185 account sync policies
+V160 AURORA CHECKS PASSED
+STARTUP RECOVERY REGRESSION PASSED — splash has a bounded recovery path and auth-state completion marker.
+V162 GLOBAL HUB CHECKS PASSED
+V163 COMMUNITY EVOLUTION CHECKS PASSED
+v164 static integration checks passed
+v165 Squad Universe static integration checks passed
+v166 Global Connect checks passed — external translation handoff, optional browser dictation, manual translated speech, and local caption drafts are wired with limitations disclosed.
+v167 Conversation Digest checks passed — local-only extractive summary, follow-up candidates, manual review notice, and release metadata.
+v167 summarizer behavior checks passed — Arabic/English summary, follow-up extraction, question extraction, and minimum-length guard.
+v168 integration checks passed — private per-user vault, message translation handoff, friend request flow, missions, legacy world/assets bridges, and release metadata.
+v169 sync conflict guard checks passed — remote changes no longer silently overwrite unsynced local edits; user chooses which version to keep.
+v170 personal vault checks passed
+v171 member journey checks passed
+v172 events hub checks passed
+v173 shared events checks passed — UI wiring, Firestore schema, invite/RSVP ownership constraints, release assets.
+V174 STARTUP RECOVERY REGRESSION PASSED — original splash fallback and successful auth-state marker retained in v175.
+V175 STARTUP DIAGNOSTICS PASSED — local-file guidance, offline/online recovery, missing SDK diagnosis, retry control, timeout, and successful-start guard.
+V176 BUILD READINESS CHECK PASSED — package versions, build scripts, Vite config, preflight helper, manifests, and cache version are synchronized.
+V177 ARCHITECTURE CHECK PASSED — one canonical Firebase deploy target; 4 GLB assets measured (squad-luxury-suv.glb=38KB, squad-luxury-sedan.glb=29KB, squad-luxury-super.glb=29KB, squad-luxury-sport.glb=29KB); legacy files retained.
+PASS all platform wallet mutations remain server-admin authorized
+PASS wallet amounts are converted to integer cents
+PASS stored wallet values reject negative, non-finite and excessive values
+PASS earning ledger guards balance and lifetime-earned overflow
+PASS withdrawal requests validate balance and pending totals
+PASS settlement refuses inconsistent pending ledger instead of clamping silently
+PASS manual payout remains manual and status-gated
+PASS wallet callable exports remain available
+8/8 V177 WALLET HARDENING CHECKS PASSED
+V178 CIVILIZATION CHECK PASSED — all nine foundations represented; local-first boundary, main entry, styles, cache and release manifests verified.
+V179 LIVING UNIVERSE CHECK PASSED — 12 local-first feature views, safe text rendering, mobile styles, entry wiring, service-worker cache and release manifests verified.
+V180 CITY LIFE CHECK PASSED — six local-first views, safe text rendering, fictional points, mobile styles, entry wiring and synchronized release manifests verified.
+V181 WORLD SYSTEMS CHECK PASSED — six local-first views, portals, memories, civilization, council, design lab, guide, phrasebook, economy, projects, challenges, radio and reputation verified.
+v182 cloud sync checks passed: account-scoped Firestore path, state validation, ownership rules, offline fallback, script wiring, and release manifests.
+v183 shared-city checks passed: authenticated public feed, owner-only publishing, bounded sanitized activity, private-state separation, UI wiring, and release manifests.
+v184 feature suite regression passed under v186: 22 modules, account-scoped persistence, responsive UI, accessibility hooks, and cloud-sync wiring.
+V185 RUNTIME CHECK PASSED — 22 features registered; account data isolation, first-login adoption, account switching, remote-state validation, cloud wiring and owner-only Firestore policy verified.
+V186 CONTROL CENTER REGRESSION PASSED under v187 — preferences, weak-device mode, accessibility, runtime diagnostics, release wiring and escaped local-memory rendering verified.
+V187 CALL NETWORK CHECK PASSED — authenticated short-lived TURN credentials, STUN fallback, ICE restart hooks and release wiring verified.
+V188 STARTUP REPAIR CHECK PASSED — deferred cinema startup, safe Universe listeners, single-file inline delivery, and auth/Firebase wiring retained.
+V194 STARTUP CACHE REGRESSION PASSED under v195 — startup recovery and lamp assets retained, 140 valid precache entries, fresh cache namespace, lamp assets and diagnostic fallback wired.
+V195 PREMIUM NAVIGATION CHECK PASSED — six groups, 13 destinations, account footer, route bridges, reduced-motion styling, and precache wiring verified.
+V196 COMPATIBILITY CHECK PASSED — dedicated AI and Store pages, honest integration boundaries, navigation, metadata and cache verified.
+V197 HOME COMMAND CHECK PASSED — additive dashboard, existing-route wiring, truthful live counts, mobile layout and cache verified.
+v199 Squad Identity checks: PASS
+v200 Stories & Channels checks: PASS
+v201 3D CALLS CHECK PASSED — screen-share permission flow, track replacement, participant roster, responsive controls, service-worker assets and release manifests verified.
+V203 DESIGN SYSTEM CHECK PASSED — 40 icons, tokens/components/motion/responsive/a11y present, v202 assets now precached, 140 precache entries valid.
+V204 OFFLINE RESILIENCE REGRESSION CHECK PASSED — bounded navigation recovery, cached fallback, first-run offline explanation, synced release metadata, 140 precache assets.
+V205 VISUAL EXPANSION CHECK PASSED — auth, workspace, social, universe, messenger and mobile design coverage; 140 precache assets valid.
+v206 lifestyle checks: PASS — 20 brands, 5 showrooms, demo wallet, garage, property ownership, daily reward and events wiring.
+v207 cloud lifestyle checks: PASS — authenticated server-owned purchases, daily reward, event CRUD and cloud-owned inventory.
+v208 driving suite checks: PASS — touch accelerator/reverse/steering/brake, pointer-release safety, live speed/gear HUD, existing city physics and multiplayer vehicle sync preserved.
+v209 city experience checks: PASS — proximity entry, building/floor panel, safe interior spawn, exit restoration, source mirror, and prior driving sync preserved.
+v210 living interiors checks: PASS — six 3D furniture types, rotate/undo/clear, per-floor local persistence, 24-item limit, and source mirror.
+v211 living city checks: PASS — 3-floor garage, animated ambient traffic, furniture collision guard, private Firestore room layouts, source mirrors.

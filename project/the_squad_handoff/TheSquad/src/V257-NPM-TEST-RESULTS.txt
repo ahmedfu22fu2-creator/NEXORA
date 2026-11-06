@@ -1,0 +1,15 @@
+THE SQUAD v257 — npm test
+Date: 2026-11-06
+Command: npm test
+Result: PASS (exit code 0)
+
+The full root regression pipeline completed successfully, including historical smoke/audit/regression checks through v256 and the new v257 admin-control refinement test.
+New v257 test: PASS — 12/12 assertions.
+The v233 historical release-compatibility allowlist and v249/v251/v256 historical version assertions were extended only to accept later v257 releases; their functional assertions remain in place.
+
+Additional direct checks:
+- node --check site/chanse3/admin-monitor.js: PASS
+- node --check scripts/v257-admin-control-refinement-check.mjs: PASS
+- node scripts/release-integrity-check.mjs: PASS
+
+Not covered by these static/regression checks: live Firebase deployment, browser interaction, real device testing, GitHub Pages deployment.

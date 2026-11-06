@@ -1,0 +1,18 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const read=p=>fs.readFileSync(new URL(p,import.meta.url),'utf8');
+const backend=read('../backend/firebase-functions/index.js');
+const city=read('../site/chanse2/district.js');
+const rules=read('../site/chanse1/firestore.rules');
+const version=JSON.parse(read('../site/version.json'));
+assert.ok(version.build>=241);
+assert.match(backend,/exports\.reserveGarageBay\s*=\s*onCall/);
+assert.match(backend,/exports\.releaseGarageBay\s*=\s*onCall/);
+assert.match(backend,/tx\.get\(controlRef\)/);
+assert.match(backend,/status === 'closed'/);
+assert.match(backend,/already-exists/);
+assert.match(city,/httpsCallable\('reserveGarageBay'\)/);
+assert.match(city,/httpsCallable\('releaseGarageBay'\)/);
+assert.doesNotMatch(city,/db\.runTransaction\(async tx=>\{const snap=await tx\.get\(ref\)/);
+assert.match(rules,/match \/garageReservations\/\{slotId\} \{[\s\S]*?allow create, update, delete: if false;/);
+console.log('v217 garage reservation security: PASS — server-authoritative reservation, closed-bay enforcement, one active bay per user, client writes denied.');

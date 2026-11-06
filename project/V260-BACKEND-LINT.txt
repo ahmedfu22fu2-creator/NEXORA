@@ -1,0 +1,4 @@
+
+> lint
+> node --check index.js
+

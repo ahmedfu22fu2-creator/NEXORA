@@ -1,0 +1,16 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const html=fs.readFileSync('site/index.html','utf8');
+const js=fs.readFileSync('site/v163-community-evolution.js','utf8');
+const css=fs.readFileSync('site/v163-community-evolution.css','utf8');
+const sw=fs.readFileSync('site/sw.js','utf8');
+const a=JSON.parse(fs.readFileSync('site/version.json','utf8'));
+const b=JSON.parse(fs.readFileSync('site/chanse4/version.json','utf8'));
+assert.ok(a.build>=206);assert.deepEqual(a,b);
+assert.match(html,/v163-community-evolution\.css/);assert.match(html,/v163-community-evolution\.js/);
+assert.match(sw,/squad-v235-property-room-design-cloud/);assert.match(sw,/v163-community-evolution\.js/);assert.match(sw,/v163-community-evolution\.css/);
+for(const feature of ['Moments','publicProfiles','SquadSocial.publish','SquadSocial.follow','visibility','published','URL.createObjectURL','localStorage','data-open-feed'])assert.ok(js.includes(feature),`missing v163 feature: ${feature}`);
+assert.match(js,/limit\(60\)/);assert.match(js,/limit\(100\)/);assert.match(js,/files\.length>4/);
+assert.match(css,/@media\(max-width:680px\)/);
+assert.ok(!js.includes('firebaseConfig')&&!js.includes('apiKey'));
+console.log('V163 COMMUNITY EVOLUTION CHECKS PASSED');

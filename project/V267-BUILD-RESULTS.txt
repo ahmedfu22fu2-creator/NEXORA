@@ -1,0 +1,3 @@
+BLOCKED — npm run build could not run because Vite is not installed in the execution environment.
+Observed: sh: 1: vite: not found
+No dependency installation or lockfile modification was performed.
